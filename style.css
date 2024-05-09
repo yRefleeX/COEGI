@@ -1,0 +1,430 @@
+*{
+  margin: 0%;
+  padding: 0;
+ 
+}
+
+html,
+body {
+  height: 100%;
+}
+
+p,h1,h3{
+  font-family: Arial;
+}
+.conteiner {
+
+  background-color: blue;
+  margin: 0px;
+  padding: 0px;
+
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.coluna1 {
+
+  background-color: whitesmoke;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  border: 1px solid black;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+.head {
+  background-color: #64a44e;
+  height: 80px;
+  margin: 0;
+  border: 1px black solid;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: center;
+}
+
+.phead {
+
+  padding: 3px;
+  text-align: center;
+  background-color: white;
+  border-radius: 2px;
+
+
+
+}
+
+.menu {
+
+  background-color: red;
+  height: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.pesquisar {
+
+  background-color: whitesmoke;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 110px;
+  justify-content: center;
+
+
+}
+
+.pesquisar input {
+
+  padding: 0px;
+  margin-top: 50px;
+  width: 150px;
+  height: 30px;
+  border-radius: 10px 0px 0px 10px;
+  border-color: black;
+  font-size: 10px;
+  margin-left: 0;
+  padding-left: 0;
+
+}
+
+.botoes {
+
+  height: 30px;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+
+
+
+}
+
+.botoes button {
+
+  position: relative;
+
+  width: 160px;
+  height: 30px;
+  margin: 0px;
+}
+
+
+button:hover {
+  background-color: whitesmoke;
+  cursor: pointer;
+}
+
+button:active {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+
+#botao {
+
+  position: relative;
+  right: 5px;
+  width: 50px;
+  border-radius: 0px 10px 10px 0px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+
+}
+
+#transportadores {
+
+  
+  flex-direction: column;
+  background-color: whitesmoke;
+  text-align: center;
+  opacity: 90%;
+
+
+}
+
+.transportadores hr {
+  border: 1px solid black;
+  width: 100%;
+}
+
+.saibaMais{
+ 	cursor: pointer;
+	color:blue;
+	float:left
+}
+
+#Login {
+
+ 
+  background-color: whitesmoke;
+  border-top: 0px solid black;
+  text-align: center;
+  align-items: center;
+  opacity: 90%;
+  display: none;
+  justify-content: center;
+  height: 100%;
+}
+
+#FormularioLogin {
+
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50px;
+  padding: 10px;
+  align-items: center;
+  background-color:#64a44e;
+  border:1px solid black;
+  border-radius: 5px;
+
+
+}
+
+#img {
+  mix-blend-mode: multiply;
+  width:100px;
+  height:100px ;
+}
+
+#FormularioLogin input {
+
+  margin: 6px;
+  border-color:white;
+}
+
+#LoginOpcoes {
+
+  position: relative;
+  top: 100px;
+}
+
+#LoginOpcoes button {
+
+  width: 100px;
+  margin: 5px;
+}
+
+
+
+#Usuario {
+
+  height: 100%;
+  background-color: whitesmoke;
+  border-top: 0px solid black;
+  text-align: center;
+  opacity: 90%;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+
+}
+
+.formularioCentro {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.formularioCentro label {
+
+  margin: 20px;
+
+}
+
+#Usuario label {
+
+  position: center;
+}
+
+#myMap {
+  display: flex;
+
+}
+
+#Cad {
+
+  background-color: whitesmoke;
+  border: 0px solid black;
+  text-align: center;
+  opacity: 90%;
+  display: none;
+  overflow-y: auto;
+}
+
+#Cad input {
+  margin: 20px;
+  width: 50%;
+  height: 20px;
+  border-radius: 5px;
+}
+
+#Cad i {
+  position: relative;
+  margin: 20px;
+}
+
+#EditarMotorista {
+
+  height: 700px;
+  background-color: whitesmoke;
+  border-top: 0px solid black;
+  text-align: center;
+  opacity: 90%;
+   overflow-y: auto;
+  display: none;
+
+}
+
+#EditarMotorista input,p{
+  margin:20px;
+}
+
+#ExcluirMotorista{
+
+flex-direction: column;
+height: 100%;
+background-color: whitesmoke;
+text-align: center;
+opacity: 90%;
+display: none;
+}
+
+#InfMotorista{
+  flex-direction: column;
+  height: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  opacity: 90%;
+  display: none;
+}
+#descMotorista{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width:300px;
+  height: 200px;
+  border: 2px solid black;
+  border-radius: 2%;
+}
+#descMotorista p{
+  margin: 5px;
+  margin-top: 10px;
+  float: left;
+ 
+  
+}
+
+#listMot{
+  
+  display:flex;
+  flex-direction: column;
+  width: 100%;
+ 
+}
+
+.ImgM {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: #fff;
+  line-height: 1.7em;
+  overflow: hidden;
+  float: left;
+  margin-top: 13px;
+}
+
+.desc{
+
+float:left;
+position:relative;
+width:230px; 
+	
+}
+.desc p {
+	
+ text-align:left;
+  margin:auto;
+
+}
+
+.desc h3{
+	
+	background-color:#64a44e;
+	border-radius:2px;
+	
+}
+
+
+.Mot {
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  transition: box-shadow .3s;
+  padding:4px;
+
+}
+
+.Mot button img{
+  width:20px; 
+  height: 20px;
+  float: right;
+  mix-blend-mode: multiply;
+}
+
+.Mot button{
+  border: 0px;
+  margin: auto;
+  float: right;
+  background-color: whitesmoke;
+}
+
+.Mot:hover {
+  box-shadow: 0 5px 5px -5px #333;
+}
+
+input[text-text] {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+input[text-text]:focus {
+  border-color: blue;
+  box-shadow: 0 0 8px 0 blue;
+}
+
+.ButCad {
+  border-radius: 20px;
+  width: 150px;
+  height: 50px;
+  background-color: #e5f8ff;
+}

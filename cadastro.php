@@ -25,7 +25,9 @@ $periodo= $_POST["periodo"];
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 
-$query = mysqli_query($conn, "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha)values('$nome','$sobrenome','$rg','$cpf','$cnh','$preco','$rotas','$telefone','$periodo','$email','$senha')"); // Cadastra o Motorista no Banco de dados.
+if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
+    $query = mysqli_query($conn, "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha)values('$nome','$sobrenome','$rg','$cpf','$cnh','$preco','$rotas','$telefone','$periodo','$email','$senha')"); // Cadastra o Motorista no Banco de dados.
+}
 
 header("location: index.php");
 

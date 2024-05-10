@@ -7,7 +7,7 @@
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script type='text/javascript' src='script.js'> </script>
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
 </head>
@@ -56,7 +56,7 @@
 
           <form method="POST">
 
-            <input type="search" placeholder="Procurar...">
+          <input type="search" placeholder="Procurar..." id="searchInput">
             <input type="submit" value="ok" id="botao">
 
           </form>
@@ -85,7 +85,7 @@
 						  echo'<p >'. 'Rotas:  ' .$row['rotas']. '</p>';
 						  echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';
 						  echo'<p >'. 'telefone:  ' .$row['telefone'].'</p>';
-						  echo'<input type="hidden" name="idMot" id="idMot" value="'.$row['motorista_id'].'"><button type="button" id="salvar" name="salvar" style=" cursor: pointer; color:blue; float:left">saiba mais</button></div></div>';
+						  echo'<input type="hidden" name="idMot" id="idMot" value="'.$row['motorista_id'].'"><button type="button" id="salvar" name="salvar">Saiba Mais</button></div></div>';
 						
 						 
 
@@ -219,18 +219,18 @@
           <p>Para cadastrar-se no site como um motorista, preencha e insira os documetos abaixo:</p>
 
           <!-- Cadastro -->
-          <form method="POST" action="cadastro.php">
-            <input type="text" placeholder="Nome" name="nome" required>
-            <input type="text" placeholder="Sobrenome" name="sobrenome" required>
-            <input type="text" placeholder="RG" name="rg" required>
-            <input type="text" placeholder="CPF" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" required>
-            <input type="text" placeholder="CNH" name="cnh" required><br>
-            <input type="text" placeholder="Preço" name="preco" required>
-            <input type="text" placeholder="Rotas" name="rotas" required>
-            <input type="text" placeholder="Telefone" name="telefone" required>
-            <input type="text" placeholder="Periodo" name="periodo" required>
-            <input type="text" placeholder="Email para Login" name="email" required>
-            <input type="text" placeholder="Senha para Login" name="senha" required><br>
+          <form action="cadastro.php" method="post">
+            <input type="text" placeholder="Nome" name="nome" id="nome">
+            <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
+            <input type="text" placeholder="RG" name="rg" id="rg">
+            <input type="text" placeholder="CPF" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" id="cpf">
+            <input type="text" placeholder="CNH" name="cnh" id="cnh"><br>
+            <input type="text" placeholder="Preço" name="preco" id="preco">
+            <input type="text" placeholder="Rotas" name="rotas" id="rotas">
+            <input type="text" placeholder="Telefone" name="telefone" id="telefone">
+            <input type="text" placeholder="Periodo" name="periodo" id="periodo">
+            <input type="text" placeholder="Email para Login" name="email" id="email">
+            <input type="text" placeholder="Senha para Login" name="senha" id="senha"><br>
 
             <h1> Documentos Necessários</h1>
 

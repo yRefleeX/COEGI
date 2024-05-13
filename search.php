@@ -1,6 +1,9 @@
 <?php
 include_once("conexao.php");
 
+if (!$conn) {
+  die("Conexão falhou: " . mysqli_connect_error());
+}
 
 if (isset($_POST["search"])) {
   $searchTerm = mysqli_real_escape_string($conn, $_POST["search"]);
@@ -17,11 +20,6 @@ if (isset($_POST["search"])) {
         echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';
         echo'<p >'. 'telefone:  ' .$row['telefone'].'</p>';
         echo'<input type="hidden" name="idMot" id="idMot" value="'.$row['motorista_id'].'"><button type="button" id="salvar" name="salvar">Saiba Mais</button></div></div>';
-      
-       
-
-        
-        echo'<hr>';
     }
   } else {
     echo "<p>Nenhum motorista encontrado.</p>";

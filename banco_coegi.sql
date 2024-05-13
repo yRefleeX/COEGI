@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Maio-2024 às 05:48
+-- Tempo de geração: 10-Maio-2024 às 23:17
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -38,17 +38,9 @@ CREATE TABLE `motorista` (
   `rotas` varchar(50) NOT NULL,
   `telefone` char(15) NOT NULL,
   `periodo` varchar(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `senha` varchar(20) NOT NULL
+  `email` varchar(100) NOT NULL,
+  `senha` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Extraindo dados da tabela `motorista`
---
-
-INSERT INTO `motorista` (`motorista_id`, `nome`, `sobrenome`, `cpf`, `rg`, `cnh`, `preco`, `rotas`, `telefone`, `periodo`, `email`, `senha`) VALUES
-(1, 'aa', 'aa', '107.970.368-30', '532.268.278-', '1111111111', '333.00', 'aaa', '(19) 98323-3788', 'manhã', 'aaa@gmail.com', '12345678'),
-(3, 'aa', 'aa', '532.268.278-39', '56.728.893-6', '2222222222', '111.00', 'bbb', '(19) 98277-3804', 'tarde', 'bbb@gmail.com', '4444');
 
 --
 -- Índices para tabelas despejadas
@@ -73,7 +65,7 @@ ALTER TABLE `motorista`
 -- AUTO_INCREMENT de tabela `motorista`
 --
 ALTER TABLE `motorista`
-  MODIFY `motorista_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `motorista_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

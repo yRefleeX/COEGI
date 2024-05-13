@@ -64,11 +64,6 @@
 
         </div>
 
-
-
-
-        <hr>
-
         <div id="listMot">
 
 

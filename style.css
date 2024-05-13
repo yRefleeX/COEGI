@@ -151,7 +151,6 @@ p,h1,h3{
 .pesquisar {
   background-color: #f5f5f5; /* Fundo cinza claro */
   padding: 20px; /* Espaçamento interno */
-  border-bottom: 1px solid #ddd; /* Linha sutil na parte inferior */
   display: flex;
   justify-content: center; /* Centraliza os elementos horizontalmente */
   align-items: center; /* Centraliza os elementos verticalmente */

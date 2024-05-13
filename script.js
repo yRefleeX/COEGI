@@ -1,6 +1,22 @@
 // ajax para o envio do id sem refresh na pagina para expor as informações do motorista expessifico
 
 $(document).ready(function(){
+  $("#botao").click(function(event) {
+    event.preventDefault(); // Impede o envio do formulário
+
+    var searchTerm = $("#searchInput").val(); // Obtém o valor do campo de pesquisa
+
+    $.ajax({
+      url: "search.php", // URL do script PHP que irá consultar o banco de dados
+      method: "POST",
+      data: { search: searchTerm },
+      dataType: "html",
+      success: function(response) {
+        $("#listMot").html(response); // Atualiza a lista de motoristas com os resultados
+      }
+    });
+  });
+
   // Função para enviar a solicitação AJAX e exibir detalhes
   function exibirDetalhes(idMot, motDiv) {  
     $.ajax({
@@ -11,8 +27,9 @@ $(document).ready(function(){
       success: function(dados) {
         // Verificar se os dados existem
         if ("nome" in dados && "sobrenome" in dados) {
-          // Cria a div com o ID "descMotorista"
-          var detalhesDiv = document.getElementById("InfMotorista");
+          var detalhesDiv = document.getElementById("InfMotorista"); // Cria a div com o ID "InfMotorista"
+
+          // Pegando as outras divs para apresentar display: "none"
           var ed = document.getElementById("EditarMotorista");
           var log = document.getElementById("Login");
           var cad = document.getElementById("Cad");
@@ -41,8 +58,7 @@ $(document).ready(function(){
           excl.style.display = "none";
           infMot.style.display = "block";
         } else {
-          // Lidar com a ausência de dados (exibir mensagem de erro, etc.)
-          alert("Erro: Dados do motorista não encontrados.");
+          alert("Erro: Dados do motorista não encontrados."); // Lidar com a ausência de dados (exibir mensagem de erro, etc.)
         }
       },
       error: function(jqXHR, textStatus, errorThrown) {
@@ -59,8 +75,6 @@ $(document).ready(function(){
     exibirDetalhes(idMot, motDiv);
   });
 });
-
-
 
 // funções para o funcionamento do mapa
 
@@ -233,4 +247,18 @@ function buttonInfoMotorista(){
    ed.style.display = "none";
    excl.style.display = "none";
    infMot.style.display = "block";
+}
+
+function buttonMenu(){
+	
+	var menu = document.getElementById("botoes");
+	
+	if(menu.style.display == "flex"){
+		
+		menu.style.display = "none";
+	
+	}
+	else{
+		menu.style.display = "flex";
+	}
 }

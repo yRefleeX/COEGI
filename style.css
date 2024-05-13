@@ -1,3 +1,82 @@
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Empilhe as colunas verticalmente */
+  }
+
+  #myMap {
+    max-width: 40vh; /* Diminua a altura máxima em telas menores */
+  }
+  
+  .coluna1 {
+    width: 100%; /* Ocupe toda a largura da tela */
+  }
+  
+  .Mot {
+    flex-direction: column; /* Empilhe as informações do motorista verticalmente */
+  }
+  
+  .Mot .ImgM {
+    margin: 0 auto 10px auto; /* Centralize a imagem */
+  }
+}
+
+@media (max-width: 480px) {
+  .pesquisar input[type="search"] {
+    width: 100%; /* Ocupe toda a largura disponível */
+  }
+  
+  .container {
+    padding: 10px; /* Diminua o padding para economizar espaço */
+  }
+
+  .coluna1 {
+    width: 100%;
+  }
+
+  .pesquisar {
+    flex-direction: column; /* Empilhe o campo de busca e o botão verticalmente */
+    padding: 10px;
+  }
+
+  .pesquisar input[type="search"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .botoes {
+    flex-direction: column; /* Empilhe os botões verticalmente */
+  }
+
+  .botoes button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .Mot {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .Mot .ImgM {
+    width: 100%; /* A imagem ocupa a largura total */
+    height: auto; /* Altura ajusta automaticamente */
+    margin-bottom: 10px;
+  }
+
+  .desc {
+    width: 100%;
+  }
+
+  #myMap {
+    max-width: 20vh;
+  }
+  
+  .botoes button {
+    width: 100%; /* Ocupe toda a largura disponível */
+    margin-bottom: 10px; /* Adicione espaço entre os botões */
+  }
+}
+
 *{
   margin: 0%;
   padding: 0;
@@ -45,7 +124,7 @@ p,h1,h3{
   display: flex;
   flex-direction: row;
   padding: 5px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .phead {
@@ -60,65 +139,73 @@ p,h1,h3{
 }
 
 .menu {
+  background-color: transparent; /* Remove a cor de fundo */
+  border-bottom: none; /* Remove a linha inferior */ 
+}
 
-  background-color: red;
-  height: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 0px;
-  padding: 0px;
+#menuBurger{
+	cursor:pointer;
 }
 
 
 .pesquisar {
-
-  background-color: whitesmoke;
-  margin: 0;
-  padding: 0;
+  background-color: #f5f5f5; /* Fundo cinza claro */
+  padding: 20px; /* Espaçamento interno */
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  height: 110px;
-  justify-content: center;
-
-
+  justify-content: center; /* Centraliza os elementos horizontalmente */
+  align-items: center; /* Centraliza os elementos verticalmente */
 }
 
-.pesquisar input {
+.pesquisar form {
+  display: flex; /* Permite organizar os elementos do formulário lado a lado */
+}
 
-  padding: 0px;
-  margin-top: 50px;
-  width: 150px;
-  height: 30px;
-  border-radius: 10px 0px 0px 10px;
-  border-color: black;
-  font-size: 10px;
-  margin-left: 0;
-  padding-left: 0;
+.pesquisar input[type="search"] {
+  width: 300px; /* Largura do campo de pesquisa */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px; /* Borda arredondada à esquerda */
+  font-size: 16px;
+}
 
+.pesquisar input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 0 5px 5px 0; /* Borda arredondada à direita */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.pesquisar input[type="submit"]:hover {
+  background-color: #d32f2f /* Cor mais escura ao passar o mouse */
 }
 
 .botoes {
-
-  height: 30px;
-  background-color: whitesmoke;
-  display: flex;
-  flex-direction: row;
-  margin: 0px;
-  padding: 0px;
-
-
-
+  display: none;
+  justify-content: space-around; /* Distribui os botões com espaço entre eles */
+  padding: 15px;
+  background-color: #f0f0f0; /* Fundo cinza bem claro */
+  flex-direction: column;
+  border: none;
 }
 
 .botoes button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px;
+  margin: 1px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Transição suave */
+}
 
-  position: relative;
-
-  width: 160px;
-  height: 30px;
-  margin: 0px;
+.botoes button:hover {
+  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
 }
 
 
@@ -153,19 +240,13 @@ button:active {
   background-color: whitesmoke;
   text-align: center;
   opacity: 90%;
-
-
+  overflow-y: auto; /* Adicione esta linha para habilitar a barra de rolagem vertical */
+  max-height: 1000px; /* Defina uma altura máxima para a lista (ajuste conforme necessário) */
+  overflow-x: hidden;
 }
 
 .transportadores hr {
-  border: 1px solid black;
   width: 100%;
-}
-
-.saibaMais{
- 	cursor: pointer;
-	color:blue;
-	float:left
 }
 
 #Login {
@@ -358,6 +439,30 @@ display: none;
   margin-top: 13px;
 }
 
+.Mot .ImgM {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.Mot .desc {
+  display: flex;
+  flex-direction: column;
+}
+
+.Mot .desc h3 {
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.Mot .desc p {
+  margin-bottom: 3px;
+  color: #555;
+  font-size: 14px;
+}
+
 .desc{
 
 float:left;
@@ -367,7 +472,7 @@ width:230px;
 }
 .desc p {
 	
- text-align:left;
+  margin-left: 0px;
   margin:auto;
 
 }
@@ -381,12 +486,14 @@ width:230px;
 
 
 .Mot {
-  display:flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
-  transition: box-shadow .3s;
-  padding:4px;
-
+  padding: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc; /* Linha sutil separando os motoristas */
+  background-color: #f9f9f9; /* Fundo levemente cinza */
+  border-radius: 5px; /* Bordas arredondadas */
 }
 
 .Mot button img{
@@ -428,4 +535,29 @@ input[text-text]:focus {
   width: 150px;
   height: 50px;
   background-color: #e5f8ff;
+}
+
+#salvar {
+  background-color: #4CAF50; /* Cor de fundo verde */
+  color: white; /* Texto branco */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  float: left;
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+#salvar:hover {
+  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+}
+
+#salvar::before {
+  content: "\f00c"; /* Ícone de "check" do FontAwesome */
+  font-family: FontAwesome;
+  margin-right: 10px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
 }

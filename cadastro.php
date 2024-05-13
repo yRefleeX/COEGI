@@ -11,7 +11,6 @@ include_once("conexao.php");
 if (!$conn) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
-echo "Conexão feita com sucesso";
 
 $nome = $_POST["nome"];
 $sobrenome = $_POST["sobrenome"];
@@ -23,9 +22,11 @@ $rotas = $_POST["rotas"];
 $telefone = $_POST["telefone"];
 $periodo= $_POST["periodo"];
 $email = $_POST["email"];
-$senha = $_POST["senha"];
+$senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
-$query = mysqli_query($conn, "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha)values('$nome','$sobrenome','$rg','$cpf','$cnh','$preco','$rotas','$telefone','$periodo','$email','$senha')"); // Cadastra o Motorista no Banco de dados.
+if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
+    $query = mysqli_query($conn, "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha)values('$nome','$sobrenome','$rg','$cpf','$cnh','$preco','$rotas','$telefone','$periodo','$email','$senha')"); // Cadastra o Motorista no Banco de dados.
+}
 
 header("location: index.php");
 

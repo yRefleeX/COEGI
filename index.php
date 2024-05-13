@@ -25,14 +25,15 @@
 
         <img src="https://moodle.cmp.ifsp.edu.br/pluginfile.php/1/theme_moove/logo/1706647608/LogoIFSPCMP_moodle.png"
           style="height: 80px; width: 180px;">
-
+        
+          <svg id="menuBurger" onclick="buttonMenu()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
 
       </div>
 
 
       <div class="menu">
 
-        <div class="botoes">
+        <div class="botoes" id="botoes">
 
 
           <button type="submit" onclick="buttonMoto()"> Motoristas</button>
@@ -86,11 +87,6 @@
 						  echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';
 						  echo'<p >'. 'telefone:  ' .$row['telefone'].'</p>';
 						  echo'<input type="hidden" name="idMot" id="idMot" value="'.$row['motorista_id'].'"><button type="button" id="salvar" name="salvar">Saiba Mais</button></div></div>';
-						
-						 
-
-						  
-						  echo'<hr>';
 						  
 					 }
 					 

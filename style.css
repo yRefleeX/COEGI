@@ -557,3 +557,7 @@ input[text-text]:focus {
   font-family: FontAwesome;
   margin-right: 10px;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}

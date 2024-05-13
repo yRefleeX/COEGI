@@ -248,3 +248,17 @@ function buttonInfoMotorista(){
    excl.style.display = "none";
    infMot.style.display = "block";
 }
+
+function buttonMenu(){
+	
+	var menu = document.getElementById("botoes");
+	
+	if(menu.style.display == "flex"){
+		
+		menu.style.display = "none";
+	
+	}
+	else{
+		menu.style.display = "flex";
+	}
+}

@@ -124,7 +124,7 @@ p,h1,h3{
   display: flex;
   flex-direction: row;
   padding: 5px;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .phead {
@@ -141,6 +141,10 @@ p,h1,h3{
 .menu {
   background-color: transparent; /* Remove a cor de fundo */
   border-bottom: none; /* Remove a linha inferior */ 
+}
+
+#menuBurger{
+	cursor:pointer;
 }
 
 
@@ -181,18 +185,20 @@ p,h1,h3{
 }
 
 .botoes {
-  display: flex;
+  display: none;
   justify-content: space-around; /* Distribui os botões com espaço entre eles */
   padding: 15px;
   background-color: #f0f0f0; /* Fundo cinza bem claro */
-  border-bottom: 1px solid #ddd; /* Linha sutil na parte inferior */
+  flex-direction: column;
+  border: none;
 }
 
 .botoes button {
   background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 4px;
+  margin: 1px;
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
@@ -201,15 +207,6 @@ p,h1,h3{
 
 .botoes button:hover {
   background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
-}
-
-.botoes button {
-
-  position: relative;
-
-  width: 160px;
-  height: 30px;
-  margin: 0px;
 }
 
 
@@ -477,7 +474,7 @@ width:230px;
 }
 .desc p {
 	
- text-align:left;
+  margin-left: 0px;
   margin:auto;
 
 }

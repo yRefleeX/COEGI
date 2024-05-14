@@ -34,17 +34,16 @@
       <div class="menu">
 
         <div class="botoes" id="botoes">
-
-
-          <button type="submit" onclick="buttonMoto()"> Motoristas</button>
-
-          <button type="submit" onclick="buttonCadastra()"> Cadastrar</button>
-
-          <button type="submit" onclick="buttonLogin()">Login</button>
-
-
-
-
+        <button type="submit" onclick="buttonMoto()"> Motoristas</button>
+        <?php
+          session_start();
+          if (isset($_SESSION['motorista_id'])) {
+            echo '<button type="submit" onclick="buttonPerfil()"> Perfil</button>';
+          } else {
+            echo '<button type="submit" onclick="buttonCadastra()"> Cadastrar</button>';
+            echo '<button type="submit" onclick="buttonLogin()">Login</button>';
+          }
+          ?>
         </div>
 
 
@@ -99,6 +98,17 @@
 
       </div>
 
+      <div id="Perfil" class="Login">
+        <p>PERFIL</p>
+        <hr style="border: 1px solid black;">
+        <div class="botoes" id="botoesPerfil">
+          <button type="button" onclick="buttonVerPerfil()"> Ver Perfil</button>
+          <button type="submit" onclick="buttonEdita()"> Editar Perfil</button>
+          <button type="submit" onclick="buttonLogout()"> Fazer Logout</button>
+        </div>
+      </div>
+
+
       <!-- Tela de login -->
 
       <div id="Login" class="Login">
@@ -121,8 +131,6 @@
             <button type="submit">Entrar</button>
 
           </form>
-
-          <button onclick="buttonUsuario()">Entrar</button>
 
         </div>
 

@@ -118,7 +118,10 @@ function getRoute(start, end, color) {
 
 // funções para ocultar e mostrar divs na tela
 
+var perfil = document.getElementById("Perfil");
+
 function buttonLogin(){
+  var perfil = document.getElementById("Perfil");
    var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -134,11 +137,13 @@ function buttonLogin(){
    ed.style.display = "none";
    excl.style.display = "none";
    infMot.style.display = "none";
+   perfil.style.display = "none";
 
 }
 
 
 function buttonUsuario(){
+  var perfil = document.getElementById("Perfil");
   var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -154,9 +159,11 @@ function buttonUsuario(){
    ed.style.display = "none";
    excl.style.display = "none";
    infMot.style.display = "none";
+   perfil.style.display = "none";
 }
 
 function buttonMoto(){
+  var perfil = document.getElementById("Perfil");
   var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -172,9 +179,11 @@ function buttonMoto(){
    ed.style.display = "none";
    excl.style.display = "none";
    infMot.style.display = "none";
+   perfil.style.display = "none";
 }
 
 function buttonCadastra(){
+  var perfil = document.getElementById("Perfil");
   var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -190,10 +199,12 @@ function buttonCadastra(){
    ed.style.display = "none";
    excl.style.display = "none";
    infMot.style.display = "none";
+   perfil.style.display = "none";
 }
 
 function buttonEdita(){
 
+  var perfil = document.getElementById("Perfil");
   var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -209,11 +220,13 @@ function buttonEdita(){
    ed.style.display = "block";
    excl.style.display = "none";
    infMot.style.display = "none";
+   perfil.style.display = "none";
   
 }
 
 function buttonExclui(){
 
+  var perfil = document.getElementById("Perfil");
   var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -229,9 +242,11 @@ function buttonExclui(){
    ed.style.display = "none";
    excl.style.display = "block";
    infMot.style.display = "none";
+   perfil.style.display = "none";
 }
 function buttonInfoMotorista(){
 
+  var perfil = document.getElementById("Perfil");
   var ed = document.getElementById("EditarMotorista");
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
@@ -246,7 +261,36 @@ function buttonInfoMotorista(){
    usu.style.display = "none";
    ed.style.display = "none";
    excl.style.display = "none";
-   infMot.style.display = "block";
+   perfil.style.display = "none";
+
+   var detalhesDiv = document.getElementById("InfMotorista"); 
+
+   $.ajax({
+       url: "mostraPerfil.php",
+       method: "POST",
+       dataType: "json",
+       success: function(dados) {
+           if ("nome" in dados && "sobrenome" in dados) {
+               detalhesDiv.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
+               '<img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4216967Y1" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
+               '<div id="descMotorista">' +
+               'Rotas: ' + dados.rotas + '<br>' +
+               'Periodo: ' + dados.periodo + '<br>' +
+               'Telefone: ' + dados.telefone + '' +
+               '</div></div>';
+
+               // Exibe a div InfMotorista
+               infMot.style.display = "block"; 
+           } else {
+               alert("Erro: Dados do motorista não encontrados."); 
+           }
+       },
+       error: function(jqXHR, textStatus, errorThrown) {
+           alert("Erro ao buscar detalhes.");
+           console.log(jqXHR, textStatus, errorThrown);
+       }
+   });
+   
 }
 
 function buttonMenu(){
@@ -261,4 +305,31 @@ function buttonMenu(){
 	else{
 		menu.style.display = "flex";
 	}
+}
+
+function buttonPerfil(){
+  var perfil = document.getElementById("Perfil");
+  var log = document.getElementById("Login");
+  var moto = document.getElementById("transportadores");
+  var cad = document.getElementById("Cad");
+  var usu = document.getElementById("Usuario");
+  var ed = document.getElementById("EditarMotorista");
+  var excl = document.getElementById("ExcluirMotorista");
+  var infMot = document.getElementById("InfMotorista");
+  
+  log.style.display = "none";
+  moto.style.display = "none";
+  cad.style.display = "none";
+  usu.style.display = "none";
+  ed.style.display = "none";
+  excl.style.display = "none";
+  infMot.style.display = "none";
+  perfil.style.display = "block";
+}
+
+function buttonVerPerfil(){
+  buttonInfoMotorista();
+}
+function buttonLogout(){
+  window.location.href = "logout.php";
 }

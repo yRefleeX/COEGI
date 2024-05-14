@@ -13,6 +13,8 @@ if(!(empty($email) || empty($senha))){
     $usuario = mysqli_fetch_assoc($query);
     
     if(password_verify($senha, $usuario["senha"])){
+        session_start();
+        $_SESSION['motorista_id'] = $usuario['motorista_id'];
         echo "Usuário logado!";
     }
     else{

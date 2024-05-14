@@ -5,8 +5,8 @@ if (!$conn) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
 
-$email = $_POST["emailLogin"];
-$senha = $_POST["senhaLogin"];
+$email = addslashes($_POST["emailLogin"]);
+$senha = addslashes($_POST["senhaLogin"]);
 
 if(!(empty($email) || empty($senha))){
     $query = mysqli_query($conn, "SELECT * FROM motorista WHERE email = '$email'");

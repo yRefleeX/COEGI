@@ -1,5 +1,12 @@
 <?php
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
+//Load Composer's autoloader
+require 'vendor/autoload.php';
 
 ini_set("display_errors", 1);
 ini_set('display_startup_errors', 1);
@@ -10,6 +17,17 @@ include_once("conexao.php");
 
 if (!$conn) {
     die("Conexão falhou: " . mysqli_connect_error());
+}
+
+session_start();
+
+function gerarCodigo($tamanho = 6) {
+    $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $codigo = '';
+    for ($i = 0; $i < $tamanho; $i++) {
+        $codigo .= $caracteres[rand(0, strlen($caracteres) - 1)];
+    }
+    return $codigo;
 }
 
 $nome = $_POST["nome"];
@@ -25,9 +43,68 @@ $email = $_POST["email"];
 $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
 if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
-    $query = mysqli_query($conn, "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha)values('$nome','$sobrenome','$rg','$cpf','$cnh','$preco','$rotas','$telefone','$periodo','$email','$senha')"); // Cadastra o Motorista no Banco de dados.
-}
+    // Gere um código de 6 caracteres
+    $codigoVerificacao = gerarCodigo();
 
-header("location: index.php");
+    $_SESSION['dados_motorista'] = [
+        'nome' => $nome,
+        'sobrenome' => $sobrenome,
+        'rg' => $rg,
+        'cpf' => $cpf,
+        'cnh' => $cnh,
+        'preco' => $preco,
+        'rotas' => $rotas,
+        'telefone' => $telefone,
+        'periodo' => $periodo,
+        'email' => $email,
+        'senha' => $senha
+    ];
+
+    $dataExpiracao = date('Y-m-d H:i:s', strtotime('+1 hour'));
+    $sql = "INSERT INTO verificacao_email (email, codigo_verificacao, data_expiracao) VALUES (?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $email, $codigoVerificacao, $dataExpiracao);
+
+    if($stmt->execute()){
+        $_SESSION['email_verificacao'] = $email;
+
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'andre.miiada@gmail.com';                     //SMTP username
+            $mail->Password   = 'kzamisbnlwyicwve';                               //SMTP password
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    
+            //Recipients
+            $mail->setFrom('andre.miiada@gmail.com', 'COEGI');
+            $mail->addAddress($email);
+    
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = 'Confirmação de email';
+            $mail->Body    = "Seu código de verificação é: <b>$codigoVerificacao</b><br>
+                            Clique aqui para verificar seu email: <a href='localhost/COEGI/verificar_email.php'>Verificar Email</a>";
+    
+            if($mail->send()) {
+                // Redireciona para verificar_email.php 
+                header("Location: verificar_email.php");
+                exit(); 
+            } else {
+                echo "Erro ao enviar email: " . $mail->ErrorInfo;
+            }
+        }
+        catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+    }
+    else {
+        echo "Erro ao cadastrar o usuário: " . $stmt->error;
+    } 
+}
 
 ?>

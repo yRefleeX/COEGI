@@ -57,7 +57,7 @@
           <form method="POST">
 
           <input type="search" placeholder="Procurar..." id="searchInput">
-            <input type="submit" value="ok" id="botao">
+            <input type="submit" value="Ok" id="botao">
 
           </form>
 

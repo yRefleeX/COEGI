@@ -1,82 +1,3 @@
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column; /* Empilhe as colunas verticalmente */
-  }
-
-  #myMap {
-    max-width: 40vh; /* Diminua a altura máxima em telas menores */
-  }
-  
-  .coluna1 {
-    width: 100%; /* Ocupe toda a largura da tela */
-  }
-  
-  .Mot {
-    flex-direction: column; /* Empilhe as informações do motorista verticalmente */
-  }
-  
-  .Mot .ImgM {
-    margin: 0 auto 10px auto; /* Centralize a imagem */
-  }
-}
-
-@media (max-width: 480px) {
-  .pesquisar input[type="search"] {
-    width: 100%; /* Ocupe toda a largura disponível */
-  }
-  
-  .container {
-    padding: 10px; /* Diminua o padding para economizar espaço */
-  }
-
-  .coluna1 {
-    width: 100%;
-  }
-
-  .pesquisar {
-    flex-direction: column; /* Empilhe o campo de busca e o botão verticalmente */
-    padding: 10px;
-  }
-
-  .pesquisar input[type="search"] {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .botoes {
-    flex-direction: column; /* Empilhe os botões verticalmente */
-  }
-
-  .botoes button {
-    width: 100%;
-    margin-bottom: 10px;
-  }
-
-  .Mot {
-    flex-direction: column;
-    padding: 10px;
-  }
-
-  .Mot .ImgM {
-    width: 100%; /* A imagem ocupa a largura total */
-    height: auto; /* Altura ajusta automaticamente */
-    margin-bottom: 10px;
-  }
-
-  .desc {
-    width: 100%;
-  }
-
-  #myMap {
-    max-width: 20vh;
-  }
-  
-  .botoes button {
-    width: 100%; /* Ocupe toda a largura disponível */
-    margin-bottom: 10px; /* Adicione espaço entre os botões */
-  }
-}
-
 *{
   margin: 0%;
   padding: 0;
@@ -92,13 +13,8 @@ p,h1,h3{
   font-family: Arial;
 }
 .container {
-
   background-color: blue;
-  margin: 0px;
-  padding: 0px;
-
   display: flex;
-  flex-direction: row;
   width: 100%;
   height: 100%;
 }
@@ -106,7 +22,6 @@ p,h1,h3{
 .coluna1 {
 
   background-color: whitesmoke;
-  margin: 0;
   display: flex;
   flex-direction: column;
   width: 500px;
@@ -119,12 +34,12 @@ p,h1,h3{
 .head {
   background-color: #64a44e;
   height: 80px;
-  margin: 0;
   border: 1px black solid;
   display: flex;
   flex-direction: row;
   padding: 5px;
   justify-content: space-between;
+  align-items: center;
 }
 
 .phead {
@@ -145,6 +60,7 @@ p,h1,h3{
 
 #menuBurger{
 	cursor:pointer;
+  margin-right: 10px;
 }
 
 
@@ -227,8 +143,6 @@ button:active {
   right: 5px;
   width: 50px;
   border-radius: 0px 10px 10px 0px;
-  margin: 0px;
-  padding: 0px;
   cursor: pointer;
 
 }
@@ -338,7 +252,11 @@ button:active {
 
 #myMap {
   display: flex;
+}
 
+.map {
+  width: calc(100% - 500px); /* Largura do mapa */
+  height: 100%;
 }
 
 #Cad {
@@ -531,10 +449,19 @@ input[text-text]:focus {
 }
 
 .ButCad {
-  border-radius: 20px;
   width: 150px;
   height: 50px;
-  background-color: #e5f8ff;
+  background-color: #4CAF50; /* Cor de fundo verde */
+  color: white; /* Texto branco */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: background-color 0.3s ease; /* Transição suave */
+}
+
+.butCad:hover{
+  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
 }
 
 #salvar {
@@ -600,4 +527,37 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .Login button:hover {
   background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+}
+
+/* Estilos responsivos */
+
+/* Tablets */
+@media (max-width: 992px) {  
+  .sidebar {
+    width: 40%; 
+    height: auto;
+  }
+
+  .map {
+    width: 60%;
+    height: 100%;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) { /* Ajuste o valor conforme necessário */
+  .container {
+    flex-direction: column;
+  }
+
+  .coluna1 {
+    width: 100%; /* Ocupa a largura total da tela */
+    height: auto; /* Altura ajustada automaticamente */
+  }
+
+  .map {
+    width: 100%; /* Ocupa a largura total da tela */
+    height: 50vh; /* Define a altura do mapa como 50% da altura da viewport */
+    flex-grow: 1;
+  }
 }

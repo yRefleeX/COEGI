@@ -552,7 +552,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
   .coluna1 {
     width: 100%; /* Ocupa a largura total da tela */
-    height: auto; /* Altura ajustada automaticamente */
+    height: 50%; /* Altura ajustada em 50% */
   }
 
   .map {

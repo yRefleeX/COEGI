@@ -104,7 +104,7 @@ if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cn
     }
     else {
         echo "Erro ao cadastrar o usuário: " . $stmt->error;
-    } 
+    }
 }
 
 ?>

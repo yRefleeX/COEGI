@@ -145,30 +145,6 @@
 
       </div>
 
-      <!-- opções do usuario motorista -->
-
-      <div id="Usuario" class="row">
-
-        <p> USUÁRIO</p>
-        <hr style="border: 1px solid black;">
-
-        <div class="formularioCentro">
-
-
-          <p>Usuário: Gabriel Fernandes</p>
-
-          <label>Editar informações do motorista
-            <button type="submit" onclick="buttonEdita()">Seguir</button>
-          </label>
-
-          <label> Excluir conta e motorista do site
-            <button type="submit" onclick="buttonExclui()">Seguir</button>
-          </label>
-
-        </div>
-
-      </div>
-
       <div id="EditarMotorista">
 
         <p> EDITAR</p>
@@ -198,17 +174,6 @@
 
       </div>
 
-      <div id="ExcluirMotorista">
-
-        <p> EXCLUIR</p>
-        <hr style="border: 1px solid black;">
-
-        <p>Você tem certeza que deseja excluir sua conta e motorista do site? essa a ação não pode ser desfeita.</p>
-
-        <button>CONFIRMAR</button> <button>CANCELAR</button>
-
-      </div>
-
       <div id="InfMotorista">
       </div>
 
@@ -229,8 +194,8 @@
             <input type="text" placeholder="Rotas" name="rotas" id="rotas">
             <input type="text" placeholder="Telefone" name="telefone" id="telefone">
             <input type="text" placeholder="Periodo" name="periodo" id="periodo">
-            <input type="text" placeholder="Email para Login" name="email" id="email">
-            <input type="text" placeholder="Senha para Login" name="senha" id="senha"><br>
+            <input type="email" placeholder="Email para Login" name="email" id="email">
+            <input type="password" placeholder="Senha para Login" name="senha" id="senha"><br>
 
             <h1> Documentos Necessários</h1>
 

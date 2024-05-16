@@ -184,7 +184,7 @@
           <p>Para cadastrar-se no site como um motorista, preencha e insira os documetos abaixo:</p>
 
           <!-- Cadastro -->
-          <form action="cadastro.php" method="post">
+          <form action="cadastro.php" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Nome" name="nome" id="nome">
             <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
             <input type="text" placeholder="RG" name="rg" id="rg">

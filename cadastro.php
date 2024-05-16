@@ -30,80 +30,84 @@ function gerarCodigo($tamanho = 6) {
     return $codigo;
 }
 
-$nome = $_POST["nome"];
-$sobrenome = $_POST["sobrenome"];
-$cpf = $_POST["cpf"];
-$rg = $_POST["rg"];
-$cnh = $_POST["cnh"];
-$preco = $_POST["preco"];
-$rotas = $_POST["rotas"];
-$telefone = $_POST["telefone"];
-$periodo= $_POST["periodo"];
-$email = $_POST["email"];
-$senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $nome = $_POST["nome"];
+    $sobrenome = $_POST["sobrenome"];
+    $cpf = $_POST["cpf"];
+    $rg = $_POST["rg"];
+    $cnh = $_POST["cnh"];
+    $preco = $_POST["preco"];
+    $rotas = $_POST["rotas"];
+    $telefone = $_POST["telefone"];
+    $periodo= $_POST["periodo"];
+    $email = $_POST["email"];
+    $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
 
-if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
-    // Gere um código de 6 caracteres
-    $codigoVerificacao = gerarCodigo();
+   $pasta = "imagens/";
 
-    $_SESSION['dados_motorista'] = [
-        'nome' => $nome,
-        'sobrenome' => $sobrenome,
-        'rg' => $rg,
-        'cpf' => $cpf,
-        'cnh' => $cnh,
-        'preco' => $preco,
-        'rotas' => $rotas,
-        'telefone' => $telefone,
-        'periodo' => $periodo,
-        'email' => $email,
-        'senha' => $senha
-    ];
+    if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
+        // Gere um código de 6 caracteres
+        $codigoVerificacao = gerarCodigo();
 
-    $dataExpiracao = date('Y-m-d H:i:s', strtotime('+1 hour'));
-    $sql = "INSERT INTO verificacao_email (email, codigo_verificacao, data_expiracao) VALUES (?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sss", $email, $codigoVerificacao, $dataExpiracao);
+        $_SESSION['dados_motorista'] = [
+            'nome' => $nome,
+            'sobrenome' => $sobrenome,
+            'rg' => $rg,
+            'cpf' => $cpf,
+            'cnh' => $cnh,
+            'preco' => $preco,
+            'rotas' => $rotas,
+            'telefone' => $telefone,
+            'periodo' => $periodo,
+            'email' => $email,
+            'senha' => $senha
+        ];
 
-    if($stmt->execute()){
-        $_SESSION['email_verificacao'] = $email;
+        $dataExpiracao = date('Y-m-d H:i:s', strtotime('+1 hour'));
+        $sql = "INSERT INTO verificacao_email (email, codigo_verificacao, data_expiracao) VALUES (?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sss", $email, $codigoVerificacao, $dataExpiracao);
 
-        $mail = new PHPMailer(true);
-        try {
-            //Server settings
-            $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
-            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
-            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'andre.miiada@gmail.com';                     //SMTP username
-            $mail->Password   = 'kzamisbnlwyicwve';                               //SMTP password
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-    
-            //Recipients
-            $mail->setFrom('andre.miiada@gmail.com', 'COEGI');
-            $mail->addAddress($email);
-    
-            //Content
-            $mail->isHTML(true);                                  //Set email format to HTML
-            $mail->Subject = 'Confirmação de email';
-            $mail->Body    = "Seu código de verificação é: <b>$codigoVerificacao</b><br>
-                            Clique aqui para verificar seu email: <a href='localhost/COEGI/verificar_email.php'>Verificar Email</a>";
-    
-            if($mail->send()) {
-                // Redireciona para verificar_email.php 
-                header("Location: verificar_email.php");
-                exit(); 
-            } else {
-                echo "Erro ao enviar email: " . $mail->ErrorInfo;
+        if($stmt->execute()){
+            $_SESSION['email_verificacao'] = $email;
+
+            $mail = new PHPMailer(true);
+            try {
+                //Server settings
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+                $mail->isSMTP();                                            //Send using SMTP
+                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+                $mail->Username   = 'andre.miiada@gmail.com';                     //SMTP username
+                $mail->Password   = 'kzamisbnlwyicwve';                               //SMTP password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+                $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        
+                //Recipients
+                $mail->setFrom('andre.miiada@gmail.com', 'COEGI');
+                $mail->addAddress($email);
+        
+                //Content
+                $mail->isHTML(true);                                  //Set email format to HTML
+                $mail->Subject = 'Confirmação de email';
+                $mail->Body    = "Seu código de verificação é: <b>$codigoVerificacao</b><br>
+                                Clique aqui para verificar seu email: <a href='localhost/COEGI/verificar_email.php'>Verificar Email</a>";
+        
+                if($mail->send()) {
+                    // Redireciona para verificar_email.php 
+                    header("Location: verificar_email.php");
+                    exit(); 
+                } else {
+                    echo "Erro ao enviar email: " . $mail->ErrorInfo;
+                }
+            }
+            catch (Exception $e) {
+                echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
         }
-        catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        else {
+            echo "Erro ao cadastrar o usuário: " . $stmt->error;
         }
-    }
-    else {
-        echo "Erro ao cadastrar o usuário: " . $stmt->error;
     }
 }
 

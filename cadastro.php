@@ -43,8 +43,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email = $_POST["email"];
     $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
     $res = $_FILES["res"];
-    $foto_2x2_1 = $_FILES["2x2_1"];
-    $foto_2x2_2 = $_FILES["2x2_2"];
+    $foto_2x2_1 = $_FILES["foto_2x2_1"];
+    $foto_2x2_2 = $_FILES["foto_2x2_2"];
     $crlv = $_FILES["crlv"];
 
     if($res["error"] || $foto_2x2_1["error"] || $foto_2x2_2["error"] || $crlv["error"]){
@@ -63,7 +63,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $nomeRes = $res['name'];
    $nome_2x2_1 = $foto_2x2_1['name'];
    $nome_2x2_2 = $foto_2x2_2['name'];
-   $nomeCrlv = $foto_2x2_1['crlv'];
+   $nomeCrlv = $crlv['name'];
 
    $novoNomeRes = uniqid();
    $novoNome_2x2_1 = uniqid();
@@ -99,7 +99,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             'telefone' => $telefone,
             'periodo' => $periodo,
             'email' => $email,
-            'senha' => $senha
+            'senha' => $senha,
+            'pathRes' => $pathRes,
+            'path_2x2_1' => $path_2x2_1,
+            'path_2x2_2' => $path_2x2_2,
+            'pathCrlv' => $pathCrlv,
+            'res' => $res,
+            'foto_2x2_1' => $foto_2x2_1,
+            'foto_2x2_2' => $foto_2x2_2,
+            'crlv' => $crlv
         ];
 
         $dataExpiracao = date('Y-m-d H:i:s', strtotime('+1 hour'));

@@ -36,12 +36,31 @@
             $periodo = $_SESSION['dados_motorista']['periodo'];
             $telefone = $_SESSION['dados_motorista']['telefone'];
             $senha = $_SESSION['dados_motorista']['senha'];
+            $pathRes = $_SESSION['dados_motorista']['pathRes'];
+            $path_2x2_1 = $_SESSION['dados_motorista']['path_2x2_1'];
+            $path_2x2_2 = $_SESSION['dados_motorista']['path_2x2_2'];
+            $pathCrlv = $_SESSION['dados_motorista']['pathCrlv'];
+            
+            $res = $_SESSION['dados_motorista']['res'];
+            $foto_2x2_1 = $_SESSION['dados_motorista']['foto_2x2_1'];
+            $foto_2x2_2 = $_SESSION['dados_motorista']['foto_2x2_2'];
+            $crlv = $_SESSION['dados_motorista']['crlv'];
+
+
+
+            $pastaRes = "imagensRes/";
+            $pasta_2x2_1 = "imagens_2x2_1/";
+            $pasta_2x2_2 = "imagens_2x2_2/";
+            $pastaCrlv = "imagensCrlv/";
+
+            // CONTINUAR DAQUI
+            // $deu_certoRes = move_uploaded_file($res['tmp_name'], )
 
             $stmt->close(); // Fecha o statement da consulta SELECT 
-    
-            $sql = "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            $sql = "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssdsssss", $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha);
+            $stmt->bind_param("sssssdsssssssss", $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
 
             if ($stmt->execute()) {
                 // Remove o código da tabela 'verificacao_email'

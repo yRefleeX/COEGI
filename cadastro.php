@@ -42,8 +42,47 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $periodo= $_POST["periodo"];
     $email = $_POST["email"];
     $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
+    $res = $_FILES["res"];
+    $foto_2x2_1 = $_FILES["2x2_1"];
+    $foto_2x2_2 = $_FILES["2x2_2"];
+    $crlv = $_FILES["crlv"];
 
-   $pasta = "imagens/";
+    if($res["error"] || $foto_2x2_1["error"] || $foto_2x2_2["error"] || $crlv["error"]){
+        die("Falha ao enviar as imagens!");
+    }
+
+    if($res["size"] > 2097152 || $foto_2x2_1["size"] > 2097152 || $foto_2x2_2["size"] > 2097152 || $crlv["size"] > 2097152){
+        die("Imagens muito grandes! Max: 2MB");
+    }
+
+   $pastaRes = "imagensRes/";
+   $pasta_2x2_1 = "imagens_2x2_1/";
+   $pasta_2x2_2 = "imagens_2x2_2/";
+   $pastaCrlv = "imagensCrlv/";
+
+   $nomeRes = $res['name'];
+   $nome_2x2_1 = $foto_2x2_1['name'];
+   $nome_2x2_2 = $foto_2x2_2['name'];
+   $nomeCrlv = $foto_2x2_1['crlv'];
+
+   $novoNomeRes = uniqid();
+   $novoNome_2x2_1 = uniqid();
+   $novoNome_2x2_2 = uniqid();
+   $novoNomeCrlv = uniqid();
+
+   $extensaoRes = strtolower(pathinfo($nomeRes, PATHINFO_EXTENSION));
+   $extensao_2x2_1 = strtolower(pathinfo($nome_2x2_1, PATHINFO_EXTENSION));
+   $extensao_2x2_2 = strtolower(pathinfo($nome_2x2_2, PATHINFO_EXTENSION));
+   $extensaoCrlv = strtolower(pathinfo($nomeCrlv, PATHINFO_EXTENSION));
+
+   if(($extensaoRes != 'jpg' && $extensaoRes != 'png') || ($extensao_2x2_1 != 'jpg' && $extensao_2x2_1 != 'png') || ($extensao_2x2_2 != 'jpg' && $extensao_2x2_2 != 'png') || ($extensaoCrlv != 'jpg' && $extensaoCrlv != 'png')){
+        die("Tipo de arquivo não aceito!");    
+   }
+
+   $pathRes = $pastaRes . $novoNomeRes . "." . $extensaoRes;
+   $path_2x2_1 = $pasta_2x2_1 . $novoNome_2x2_1 . "." . $extensao_2x2_1;
+   $path_2x2_2 = $pasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
+   $pathCrlv = $pastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
 
     if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
         // Gere um código de 6 caracteres

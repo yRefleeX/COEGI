@@ -200,11 +200,12 @@
             <h1> Documentos Necessários</h1>
 
             <p>COMPROVANTE ATUALIZADO DE RESIDÊNCIA:</p>
-            <input type="file" accept=".png, .pdf, .jpg">
+            <input type="file" name="res" accept=".png, .pdf, .jpg">
             <p>DUAS FOTOS TAMANHO 2x2:</p>
-            <input type="file" accept=".png, .pdf, .jpg">
+            <input type="file" name="2x2_1" accept=".png, .pdf, .jpg">
+            <input type="file" name="2x2_2" accept=".png, .pdf, .jpg">
             <p>Certificado de registro e licenciamento de veículo (CRLV)</p>
-            <input type="file" accept=".png, .pdf, .jpg"><br>
+            <input type="file" name="crlv" accept=".png, .pdf, .jpg"><br>
             <button class="ButCad" type="submit">Cadastrar</button>
           </form><br><br>
 

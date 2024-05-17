@@ -46,23 +46,21 @@
             $foto_2x2_2 = $_SESSION['dados_motorista']['foto_2x2_2'];
             $crlv = $_SESSION['dados_motorista']['crlv'];
 
-
-
-            $pastaRes = "imagensRes/";
-            $pasta_2x2_1 = "imagens_2x2_1/";
-            $pasta_2x2_2 = "imagens_2x2_2/";
-            $pastaCrlv = "imagensCrlv/";
-
-            // CONTINUAR DAQUI
-            // $deu_certoRes = move_uploaded_file($res['tmp_name'], )
-
             $stmt->close(); // Fecha o statement da consulta SELECT 
+
+            $deu_certoRes = move_uploaded_file($res['tmp_name'], $pathRes);
+            $deu_certo_2x2_1 = move_uploaded_file($foto_2x2_1['tmp_name'], $path_2x2_1);
+            $deu_certo_2x2_2 = move_uploaded_file($foto_2x2_2['tmp_name'], $path_2x2_2);
+            $deu_certoCrlv = move_uploaded_file($crlv['tmp_name'], $pathCrlv);
 
             $sql = "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("sssssdsssssssss", $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
 
-            if ($stmt->execute()) {
+
+            // DEU ERRO AQUI - AJUSTAR PARA VER O QUE ESTÁ ACONTECENDO (o erro está em: "&& ($deu_certoRes && $deu_certo_2x2_1 && $deu_certo_2x2_2 && $deu_certoCrlv")
+            // Não está armazenando as imagens nas pastas!
+            if (($stmt->execute()) && ($deu_certoRes && $deu_certo_2x2_1 && $deu_certo_2x2_2 && $deu_certoCrlv)) {
                 // Remove o código da tabela 'verificacao_email'
                 $sql = "DELETE FROM verificacao_email WHERE email = ?";
                 $stmt = $conn->prepare($sql);

@@ -55,10 +55,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die("Imagens muito grandes! Max: 2MB");
     }
 
-   $pastaRes = "imagensRes/";
-   $pasta_2x2_1 = "imagens_2x2_1/";
-   $pasta_2x2_2 = "imagens_2x2_2/";
-   $pastaCrlv = "imagensCrlv/";
+   $tempPastaRes = "tempRes/";
+   $tempPasta_2x2_1 = "temp_2x2_1/";
+   $tempPasta_2x2_2 = "temp_2x2_2/";
+   $tempPastaCrlv = "tempCrlv/";
 
    $nomeRes = $res['name'];
    $nome_2x2_1 = $foto_2x2_1['name'];
@@ -79,10 +79,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         die("Tipo de arquivo não aceito!");    
    }
 
-   $pathRes = $pastaRes . $novoNomeRes . "." . $extensaoRes;
-   $path_2x2_1 = $pasta_2x2_1 . $novoNome_2x2_1 . "." . $extensao_2x2_1;
-   $path_2x2_2 = $pasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
-   $pathCrlv = $pastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
+   $tempPathRes = $tempPastaRes . $novoNomeRes . "." . $extensaoRes;
+   $tempPath_2x2_1 = $tempPasta_2x2_1 . $novoNome_2x2_1 . "." . $extensao_2x2_1;
+   $tempPath_2x2_2 = $tempPasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
+   $tempPathCrlv = $tempPastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
+
+   $deu_certoRes = move_uploaded_file($res['tmp_name'], $tempPathRes);
+   $deu_certo_2x2_1 = move_uploaded_file($foto_2x2_1['tmp_name'], $tempPath_2x2_1);
+   $deu_certo_2x2_2 = move_uploaded_file($foto_2x2_2['tmp_name'], $tempPath_2x2_2);
+   $deu_certoCrlv = move_uploaded_file($crlv['tmp_name'], $tempPathCrlv);
 
     if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($telefone) || empty($periodo) || empty($email) || empty($senha))){
         // Gere um código de 6 caracteres
@@ -100,14 +105,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             'periodo' => $periodo,
             'email' => $email,
             'senha' => $senha,
-            'pathRes' => $pathRes,
-            'path_2x2_1' => $path_2x2_1,
-            'path_2x2_2' => $path_2x2_2,
-            'pathCrlv' => $pathCrlv,
-            'res' => $res,
-            'foto_2x2_1' => $foto_2x2_1,
-            'foto_2x2_2' => $foto_2x2_2,
-            'crlv' => $crlv
+            'tempPathRes' => $tempPathRes,
+            'tempPath_2x2_1' => $tempPath_2x2_1,
+            'tempPath_2x2_2' => $tempPath_2x2_2,
+            'tempPathCrlv' => $tempPathCrlv
         ];
 
         $dataExpiracao = date('Y-m-d H:i:s', strtotime('+1 hour'));

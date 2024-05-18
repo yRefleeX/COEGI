@@ -36,54 +36,67 @@
             $periodo = $_SESSION['dados_motorista']['periodo'];
             $telefone = $_SESSION['dados_motorista']['telefone'];
             $senha = $_SESSION['dados_motorista']['senha'];
-            $pathRes = $_SESSION['dados_motorista']['pathRes'];
-            $path_2x2_1 = $_SESSION['dados_motorista']['path_2x2_1'];
-            $path_2x2_2 = $_SESSION['dados_motorista']['path_2x2_2'];
-            $pathCrlv = $_SESSION['dados_motorista']['pathCrlv'];
-            
-            $res = $_SESSION['dados_motorista']['res'];
-            $foto_2x2_1 = $_SESSION['dados_motorista']['foto_2x2_1'];
-            $foto_2x2_2 = $_SESSION['dados_motorista']['foto_2x2_2'];
-            $crlv = $_SESSION['dados_motorista']['crlv'];
+            $tempPathRes = $_SESSION['dados_motorista']['tempPathRes'];
+            $tempPath_2x2_1 = $_SESSION['dados_motorista']['tempPath_2x2_1'];
+            $tempPath_2x2_2 = $_SESSION['dados_motorista']['tempPath_2x2_2'];
+            $tempPathCrlv = $_SESSION['dados_motorista']['tempPathCrlv'];
+
+            $pastaRes = "imagensRes/";
+            $pasta_2x2_1 = "imagens_2x2_1/";
+            $pasta_2x2_2 = "imagens_2x2_2/";
+            $pastaCrlv = "imagensCrlv/";
 
             $stmt->close(); // Fecha o statement da consulta SELECT 
 
-            $deu_certoRes = move_uploaded_file($res['tmp_name'], $pathRes);
-            $deu_certo_2x2_1 = move_uploaded_file($foto_2x2_1['tmp_name'], $path_2x2_1);
-            $deu_certo_2x2_2 = move_uploaded_file($foto_2x2_2['tmp_name'], $path_2x2_2);
-            $deu_certoCrlv = move_uploaded_file($crlv['tmp_name'], $pathCrlv);
+            $nomeRes = basename($tempPathRes);
+            $nome_2x2_1 = basename($tempPath_2x2_1);
+            $nome_2x2_2 = basename($tempPath_2x2_2);
+            $nomeCrlv = basename($tempPathCrlv);
 
-            $sql = "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssssdsssssssss", $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
+            $pathRes = $pastaRes . $nomeRes;
+            $path_2x2_1 = $pasta_2x2_1 . $nome_2x2_1;
+            $path_2x2_2 = $pasta_2x2_2 . $nome_2x2_2;
+            $pathCrlv = $pastaCrlv . $nomeCrlv;
 
-
-            // DEU ERRO AQUI - AJUSTAR PARA VER O QUE ESTÁ ACONTECENDO (o erro está em: "&& ($deu_certoRes && $deu_certo_2x2_1 && $deu_certo_2x2_2 && $deu_certoCrlv")
-            // Não está armazenando as imagens nas pastas!
-            if (($stmt->execute()) && ($deu_certoRes && $deu_certo_2x2_1 && $deu_certo_2x2_2 && $deu_certoCrlv)) {
-                // Remove o código da tabela 'verificacao_email'
-                $sql = "DELETE FROM verificacao_email WHERE email = ?";
+            if(copy($tempPathRes, $pathRes) && copy($tempPath_2x2_1, $path_2x2_1) && copy($tempPath_2x2_2, $path_2x2_2) && copy($tempPathCrlv, $pathCrlv)){
+                $sql = "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("s", $email);
-                $stmt->execute();
-    
-                // Destrói as variáveis de sessão 
-                unset($_SESSION['email_verificacao']);
-                unset($_SESSION['dados_motorista']);
-    
-                echo 'Usuário cadastrado e email verificado com sucesso!';
-                
-                // Redirecione para a página de login ou outra página de sua preferência
-                header("Location: index.php");
-                exit();
-    
-            } else {
-                echo "Erro ao cadastrar o usuário: " . $stmt->error;
+                $stmt->bind_param("sssssdsssssssss", $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
+
+                if (($stmt->execute())) {
+                    // Remove o código da tabela 'verificacao_email'
+                    $sql = "DELETE FROM verificacao_email WHERE email = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $email);
+                    $stmt->execute();
+        
+                    // Destrói as variáveis de sessão 
+                    unset($_SESSION['email_verificacao']);
+                    unset($_SESSION['dados_motorista']);
+
+                    unlink($tempPathRes);
+                    unlink($tempPath_2x2_1);
+                    unlink($tempPath_2x2_2);
+                    unlink($tempPathCrlv);
+        
+                    echo 'Usuário cadastrado e email verificado com sucesso!';
+                    
+                    // Redirecione para a página de login ou outra página de sua preferência
+                    header("Location: index.php");
+                    exit();
+        
+                } else {
+                    echo "Erro ao cadastrar o usuário: " . $stmt->error;
+                }
+
+                $stmt->close();
             }
-        } else {
+            else{
+                echo "ERRO AO ARMAZENAR O ARQUIVO";
+            }
+        }
+        else {
             echo "Código de verificação inválido ou expirado.";
         }
-
-        $stmt->close();
     }
 ?>

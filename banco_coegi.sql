@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Maio-2024 às 23:17
+-- Tempo de geração: 19-Maio-2024 às 00:02
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -39,7 +39,24 @@ CREATE TABLE `motorista` (
   `telefone` char(15) NOT NULL,
   `periodo` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `senha` varchar(255) NOT NULL
+  `senha` varchar(255) NOT NULL,
+  `pathRes` varchar(100) NOT NULL,
+  `path_2x2_1` varchar(100) NOT NULL,
+  `path_2x2_2` varchar(100) NOT NULL,
+  `pathCrlv` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `verificacao_email`
+--
+
+CREATE TABLE `verificacao_email` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `codigo_verificacao` varchar(10) NOT NULL,
+  `data_expiracao` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -58,6 +75,13 @@ ALTER TABLE `motorista`
   ADD UNIQUE KEY `telefone` (`telefone`);
 
 --
+-- Índices para tabela `verificacao_email`
+--
+ALTER TABLE `verificacao_email`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT de tabelas despejadas
 --
 
@@ -66,6 +90,12 @@ ALTER TABLE `motorista`
 --
 ALTER TABLE `motorista`
   MODIFY `motorista_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `verificacao_email`
+--
+ALTER TABLE `verificacao_email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

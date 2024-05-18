@@ -75,7 +75,7 @@
 					 
 					 while (  $row = mysqli_fetch_assoc($query)) {
 										 
-						  echo '<div class="Mot"><div class="ImgM"><img style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4216967Y1"></div><div class="desc">';			 
+						  echo '<div class="Mot"><div class="ImgM"><img style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
 						  echo '<h3>'. $row['nome']. ' ' .$row['sobrenome'].'</h3>';
 						  echo'<p >'. 'Rotas:  ' .$row['rotas']. '</p>';
 						  echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';

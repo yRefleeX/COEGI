@@ -12,7 +12,7 @@ Email: andre.miiada@gmail.com
 ## Próximos objetivos com o projeto
 - Armazenamento das imagens no banco de dados e apresentação das fotos dos motoristas na tela; ✅
 - Verificar email antes de realizar o cadastro do motorista; ✅
-- Sistema de recuperação de senha; ❌
+- Sistema de recuperação de senha; ✅
 - Hospedagem do site. ❌
 
 ## Autores do projeto:

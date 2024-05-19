@@ -20,6 +20,8 @@ Desenvolvedores do projeto:
 - André Takeo Miiada Caseiro;
 - Gabriel Fernandes Matozinhos;
 - Matheus Tonini dos Santos.
+- Gabriel Fernandes Matozinhos;
+- Matheus Tonini dos Santos.
 
 Orientadores do projeto:
 - Cecília Pereira de Andrade (orientadora);

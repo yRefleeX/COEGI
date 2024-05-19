@@ -10,16 +10,16 @@ COEGI trata-se de um site em desenvolvimento pelos estudantes do Campus Campinas
 Email: andre.miiada@gmail.com
 
 ## Próximos objetivos com o projeto
-- Armazenamento das imagens no banco de dados e apresentação das fotos dos motoristas na tela;
-- Verificar email antes de realizar o cadastro do motorista;
-- Sistema de recuperação de senha;
-- Hospedagem do site.
+- Armazenamento das imagens no banco de dados e apresentação das fotos dos motoristas na tela; ✅
+- Verificar email antes de realizar o cadastro do motorista; ✅
+- Sistema de recuperação de senha; ✅
+- Hospedagem do site. ❌
 
 ## Autores do projeto:
 Desenvolvedores do projeto:
 - André Takeo Miiada Caseiro;
-- Gabriel Fernandes Matozinhos ;
-- Matheus Tonini dos Santos
+- Gabriel Fernandes Matozinhos;
+- Matheus Tonini dos Santos.
 
 Orientadores do projeto:
 - Cecília Pereira de Andrade (orientadora);

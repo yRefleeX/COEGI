@@ -139,10 +139,13 @@
           <p>Suporte</p>
 
 
-          <button onclick="buttonInfoMotorista()">Esqueceu a senha</button>
+          <button onclick="buttonEsqueciSenha()">Esqueceu a senha</button>
 
         </div>
 
+      </div>
+
+      <div id="esqueciSenha">
       </div>
 
       <div id="EditarMotorista">

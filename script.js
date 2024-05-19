@@ -123,6 +123,7 @@ function buttonLogin(){
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad"); 
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
 
    log.style.display = "block";
    moto.style.display = "none";
@@ -130,6 +131,7 @@ function buttonLogin(){
    ed.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 
 }
 
@@ -140,6 +142,7 @@ function buttonMoto(){
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
    log.style.display = "none";
    moto.style.display = "block";
@@ -147,6 +150,7 @@ function buttonMoto(){
    ed.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 }
 
 function buttonCadastra(){
@@ -156,6 +160,7 @@ function buttonCadastra(){
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
    log.style.display = "none";
    moto.style.display = "none";
@@ -163,6 +168,7 @@ function buttonCadastra(){
    ed.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 }
 
 function buttonEdita(){
@@ -173,6 +179,7 @@ function buttonEdita(){
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
    log.style.display = "none";
    moto.style.display = "none";
@@ -180,6 +187,7 @@ function buttonEdita(){
    ed.style.display = "block";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
   
 }
 
@@ -191,12 +199,14 @@ function buttonInfoMotorista(){
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
 
    log.style.display = "none";
    moto.style.display = "none";
    cad.style.display = "none";
    ed.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 
    $.ajax({
        url: "mostraPerfil.php",
@@ -247,6 +257,7 @@ function buttonPerfil(){
   var cad = document.getElementById("Cad");
   var ed = document.getElementById("EditarMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
   log.style.display = "none";
   moto.style.display = "none";
@@ -254,6 +265,7 @@ function buttonPerfil(){
   ed.style.display = "none";
   infMot.style.display = "none";
   perfil.style.display = "block";
+  divEsqueciSenha.style.display = "none";
 }
 
 function buttonVerPerfil(){
@@ -261,4 +273,46 @@ function buttonVerPerfil(){
 }
 function buttonLogout(){
   window.location.href = "logout.php";
+}
+
+function buttonEsqueciSenha(){
+  var perfil = document.getElementById("Perfil");
+  var ed = document.getElementById("EditarMotorista");
+  var log = document.getElementById("Login");
+  var moto = document.getElementById("transportadores");
+  var cad = document.getElementById("Cad");
+  var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
+  
+  log.style.display = "none";
+  moto.style.display = "none";
+  cad.style.display = "none";
+  ed.style.display = "none";
+  infMot.style.display = "none";
+  perfil.style.display = "none";
+  divEsqueciSenha.style.display = "block";
+
+  divEsqueciSenha.innerHTML = '<input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><button onclick="enviarEmailRedefinicao()">Enviar</button>';
+}
+
+function enviarEmailRedefinicao(){
+  var email = document.getElementById("emailEsqueciSenha").value;
+  if(email === "") {
+    alert("Por favor, digite seu email!");
+    return;
+  }
+
+  $.ajax({
+    url: "enviarEmailRedefinicao.php",
+    method: "POST",
+    data: { email: email },
+    success: function(response) {
+      alert(response);
+      document.getElementById("esqueciSenha").display = "none";
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      alert("Erro ao enviar email. Tente novamente mais tarde.");
+      console.log(jqXHR, textStatus, errorThrown);
+    }
+  });
 }

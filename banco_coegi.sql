@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Maio-2024 às 00:02
+-- Tempo de geração: 19-Maio-2024 às 06:07
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -49,6 +49,19 @@ CREATE TABLE `motorista` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `redsenha_email`
+--
+
+CREATE TABLE `redsenha_email` (
+  `id` int(11) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `token` varchar(10) NOT NULL,
+  `data_expiracao` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `verificacao_email`
 --
 
@@ -75,6 +88,14 @@ ALTER TABLE `motorista`
   ADD UNIQUE KEY `telefone` (`telefone`);
 
 --
+-- Índices para tabela `redsenha_email`
+--
+ALTER TABLE `redsenha_email`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `token` (`token`);
+
+--
 -- Índices para tabela `verificacao_email`
 --
 ALTER TABLE `verificacao_email`
@@ -90,6 +111,12 @@ ALTER TABLE `verificacao_email`
 --
 ALTER TABLE `motorista`
   MODIFY `motorista_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de tabela `redsenha_email`
+--
+ALTER TABLE `redsenha_email`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `verificacao_email`

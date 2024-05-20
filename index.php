@@ -75,7 +75,7 @@
 					 
 					 while (  $row = mysqli_fetch_assoc($query)) {
 										 
-						  echo '<div class="Mot"><div class="ImgM"><img style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4216967Y1"></div><div class="desc">';			 
+						  echo '<div class="Mot"><div class="ImgM"><img style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
 						  echo '<h3>'. $row['nome']. ' ' .$row['sobrenome'].'</h3>';
 						  echo'<p >'. 'Rotas:  ' .$row['rotas']. '</p>';
 						  echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';
@@ -139,34 +139,13 @@
           <p>Suporte</p>
 
 
-          <button onclick="buttonInfoMotorista()">Esqueceu a senha</button>
+          <button onclick="buttonEsqueciSenha()">Esqueceu a senha</button>
 
         </div>
 
       </div>
 
-      <!-- opções do usuario motorista -->
-
-      <div id="Usuario" class="row">
-
-        <p> USUÁRIO</p>
-        <hr style="border: 1px solid black;">
-
-        <div class="formularioCentro">
-
-
-          <p>Usuário: Gabriel Fernandes</p>
-
-          <label>Editar informações do motorista
-            <button type="submit" onclick="buttonEdita()">Seguir</button>
-          </label>
-
-          <label> Excluir conta e motorista do site
-            <button type="submit" onclick="buttonExclui()">Seguir</button>
-          </label>
-
-        </div>
-
+      <div id="esqueciSenha">
       </div>
 
       <div id="EditarMotorista">
@@ -198,17 +177,6 @@
 
       </div>
 
-      <div id="ExcluirMotorista">
-
-        <p> EXCLUIR</p>
-        <hr style="border: 1px solid black;">
-
-        <p>Você tem certeza que deseja excluir sua conta e motorista do site? essa a ação não pode ser desfeita.</p>
-
-        <button>CONFIRMAR</button> <button>CANCELAR</button>
-
-      </div>
-
       <div id="InfMotorista">
       </div>
 
@@ -219,7 +187,7 @@
           <p>Para cadastrar-se no site como um motorista, preencha e insira os documetos abaixo:</p>
 
           <!-- Cadastro -->
-          <form action="cadastro.php" method="post">
+          <form action="cadastro.php" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Nome" name="nome" id="nome">
             <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
             <input type="text" placeholder="RG" name="rg" id="rg">
@@ -229,17 +197,18 @@
             <input type="text" placeholder="Rotas" name="rotas" id="rotas">
             <input type="text" placeholder="Telefone" name="telefone" id="telefone">
             <input type="text" placeholder="Periodo" name="periodo" id="periodo">
-            <input type="text" placeholder="Email para Login" name="email" id="email">
-            <input type="text" placeholder="Senha para Login" name="senha" id="senha"><br>
+            <input type="email" placeholder="Email para Login" name="email" id="email">
+            <input type="password" placeholder="Senha para Login" name="senha" id="senha"><br>
 
             <h1> Documentos Necessários</h1>
 
             <p>COMPROVANTE ATUALIZADO DE RESIDÊNCIA:</p>
-            <input type="file" accept=".png, .pdf, .jpg">
+            <input type="file" name="res" accept=".png, .pdf, .jpg">
             <p>DUAS FOTOS TAMANHO 2x2:</p>
-            <input type="file" accept=".png, .pdf, .jpg">
+            <input type="file" name="foto_2x2_1" accept=".png, .pdf, .jpg">
+            <input type="file" name="foto_2x2_2" accept=".png, .pdf, .jpg">
             <p>Certificado de registro e licenciamento de veículo (CRLV)</p>
-            <input type="file" accept=".png, .pdf, .jpg"><br>
+            <input type="file" name="crlv" accept=".png, .pdf, .jpg"><br>
             <button class="ButCad" type="submit">Cadastrar</button>
           </form><br><br>
 

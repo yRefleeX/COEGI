@@ -33,14 +33,12 @@ $(document).ready(function(){
           var ed = document.getElementById("EditarMotorista");
           var log = document.getElementById("Login");
           var cad = document.getElementById("Cad");
-          var usu = document.getElementById("Usuario");
-          var excl = document.getElementById("ExcluirMotorista");
           var infMot = document.getElementById("InfMotorista");
 
 
           // Define o conteúdo HTML da div (ANTES de inserir)
           detalhesDiv.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
-          '<img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4216967Y1" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
+          '<img src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
           '<div id="descMotorista">' +
           'Rotas: ' + dados.rotas + '<br>' +
           'Periodo: ' + dados.periodo + '<br>' +
@@ -53,9 +51,7 @@ $(document).ready(function(){
             mot.style.display = "none";
           });
           cad.style.display = "none";
-          usu.style.display = "none";
           ed.style.display = "none";
-          excl.style.display = "none";
           infMot.style.display = "block";
         } else {
           alert("Erro: Dados do motorista não encontrados."); // Lidar com a ausência de dados (exibir mensagem de erro, etc.)
@@ -126,40 +122,17 @@ function buttonLogin(){
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad"); 
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
 
    log.style.display = "block";
    moto.style.display = "none";
    cad.style.display = "none";
-   usu.style.display = "none";
    ed.style.display = "none";
-   excl.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 
-}
-
-
-function buttonUsuario(){
-  var perfil = document.getElementById("Perfil");
-  var ed = document.getElementById("EditarMotorista");
-  var log = document.getElementById("Login");
-  var moto = document.getElementById("transportadores");
-  var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
-  var infMot = document.getElementById("InfMotorista");
-  
-   log.style.display = "none";
-   moto.style.display = "none";
-   cad.style.display = "none";
-   usu.style.display = "block";
-   ed.style.display = "none";
-   excl.style.display = "none";
-   infMot.style.display = "none";
-   perfil.style.display = "none";
 }
 
 function buttonMoto(){
@@ -168,18 +141,16 @@ function buttonMoto(){
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
    log.style.display = "none";
    moto.style.display = "block";
    cad.style.display = "none";
-   usu.style.display = "none";
    ed.style.display = "none";
-   excl.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 }
 
 function buttonCadastra(){
@@ -188,18 +159,16 @@ function buttonCadastra(){
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
    log.style.display = "none";
    moto.style.display = "none";
    cad.style.display = "block";
-   usu.style.display = "none";
    ed.style.display = "none";
-   excl.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
 }
 
 function buttonEdita(){
@@ -209,41 +178,19 @@ function buttonEdita(){
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
    log.style.display = "none";
    moto.style.display = "none";
    cad.style.display = "none";
-   usu.style.display = "none";
    ed.style.display = "block";
-   excl.style.display = "none";
    infMot.style.display = "none";
    perfil.style.display = "none";
+   divEsqueciSenha.style.display = "none";
   
 }
 
-function buttonExclui(){
-
-  var perfil = document.getElementById("Perfil");
-  var ed = document.getElementById("EditarMotorista");
-  var log = document.getElementById("Login");
-  var moto = document.getElementById("transportadores");
-  var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
-  var infMot = document.getElementById("InfMotorista");
-  
-   log.style.display = "none";
-   moto.style.display = "none";
-   cad.style.display = "none";
-   usu.style.display = "none";
-   ed.style.display = "none";
-   excl.style.display = "block";
-   infMot.style.display = "none";
-   perfil.style.display = "none";
-}
 function buttonInfoMotorista(){
 
   var perfil = document.getElementById("Perfil");
@@ -251,19 +198,15 @@ function buttonInfoMotorista(){
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
-  var excl = document.getElementById("ExcluirMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
 
    log.style.display = "none";
    moto.style.display = "none";
    cad.style.display = "none";
-   usu.style.display = "none";
    ed.style.display = "none";
-   excl.style.display = "none";
    perfil.style.display = "none";
-
-   var detalhesDiv = document.getElementById("InfMotorista"); 
+   divEsqueciSenha.style.display = "none";
 
    $.ajax({
        url: "mostraPerfil.php",
@@ -271,8 +214,8 @@ function buttonInfoMotorista(){
        dataType: "json",
        success: function(dados) {
            if ("nome" in dados && "sobrenome" in dados) {
-               detalhesDiv.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
-               '<img src="http://servicosweb.cnpq.br/wspessoa/servletrecuperafoto?tipo=1&id=K4216967Y1" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
+               infMot.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
+               '<img src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
                '<div id="descMotorista">' +
                'Rotas: ' + dados.rotas + '<br>' +
                'Periodo: ' + dados.periodo + '<br>' +
@@ -312,19 +255,17 @@ function buttonPerfil(){
   var log = document.getElementById("Login");
   var moto = document.getElementById("transportadores");
   var cad = document.getElementById("Cad");
-  var usu = document.getElementById("Usuario");
   var ed = document.getElementById("EditarMotorista");
-  var excl = document.getElementById("ExcluirMotorista");
   var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
   
   log.style.display = "none";
   moto.style.display = "none";
   cad.style.display = "none";
-  usu.style.display = "none";
   ed.style.display = "none";
-  excl.style.display = "none";
   infMot.style.display = "none";
   perfil.style.display = "block";
+  divEsqueciSenha.style.display = "none";
 }
 
 function buttonVerPerfil(){
@@ -332,4 +273,46 @@ function buttonVerPerfil(){
 }
 function buttonLogout(){
   window.location.href = "logout.php";
+}
+
+function buttonEsqueciSenha(){
+  var perfil = document.getElementById("Perfil");
+  var ed = document.getElementById("EditarMotorista");
+  var log = document.getElementById("Login");
+  var moto = document.getElementById("transportadores");
+  var cad = document.getElementById("Cad");
+  var infMot = document.getElementById("InfMotorista");
+  var divEsqueciSenha = document.getElementById("esqueciSenha");
+  
+  log.style.display = "none";
+  moto.style.display = "none";
+  cad.style.display = "none";
+  ed.style.display = "none";
+  infMot.style.display = "none";
+  perfil.style.display = "none";
+  divEsqueciSenha.style.display = "block";
+
+  divEsqueciSenha.innerHTML = '<input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><br><button class="butCad" onclick="enviarEmailRedefinicao()">Enviar</button>';
+}
+
+function enviarEmailRedefinicao(){
+  var email = document.getElementById("emailEsqueciSenha").value;
+  if(email === "") {
+    alert("Por favor, digite seu email!");
+    return;
+  }
+
+  $.ajax({
+    url: "enviarEmailRedefinicao.php",
+    method: "POST",
+    data: { email: email },
+    success: function(response) {
+      alert(response);
+      document.getElementById("esqueciSenha").display = "none";
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      alert("Erro ao enviar email. Tente novamente mais tarde.");
+      console.log(jqXHR, textStatus, errorThrown);
+    }
+  });
 }

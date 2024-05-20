@@ -529,6 +529,16 @@ input[type="search"]::-webkit-search-cancel-button {
   background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
 }
 
+#esqueciSenha{
+  position: relative;
+  margin: auto;
+}
+
+#emailEsqueciSenha{
+  margin-bottom: 40px;
+  width: 150px;
+}
+
 /* Estilos responsivos */
 
 /* Tablets */

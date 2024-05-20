@@ -292,7 +292,7 @@ function buttonEsqueciSenha(){
   perfil.style.display = "none";
   divEsqueciSenha.style.display = "block";
 
-  divEsqueciSenha.innerHTML = '<input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><button onclick="enviarEmailRedefinicao()">Enviar</button>';
+  divEsqueciSenha.innerHTML = '<input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><br><button class="butCad" onclick="enviarEmailRedefinicao()">Enviar</button>';
 }
 
 function enviarEmailRedefinicao(){

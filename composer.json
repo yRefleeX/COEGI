@@ -1,0 +1,19 @@
+{
+    "name": "andre/coegi",
+    "description": "COEGI - Desenvolvimento do Site",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Andre\\Coegi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "André Takeo Miiada Caseiro",
+            "email": "andre.miiada@gmail.com"
+        }
+    ],
+    "require": {
+        "phpmailer/phpmailer": "^6.9"
+    }
+}

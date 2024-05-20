@@ -3,9 +3,8 @@
 # Lista de versões
 - 0.0.1
 - 0.0.1-b
-- 0.0.2
 
-# Versão 0.0.2 (13/05/2024)
+# Versão 0.0.1 (13/05/2024)
 
 Novidades
 -
@@ -37,10 +36,3 @@ Sistema de Login
 Novidades
 -
 >- Correção na responsividade do site para celular.
-
-# Versão 0.0.2 (20/05/2024)
-
-Novidades
--
->- Implementação do sistema de armazenamento de imagem do motorista;
->- Implementação do sistema de recuperação de senha e verificação de email (utilizando o PHPMailer).

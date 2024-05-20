@@ -1,0 +1,38 @@
+# Versão atual: 0.0.1-b
+
+# Lista de versões
+- 0.0.1
+- 0.0.1-b
+
+# Versão 0.0.1
+
+Novidades
+-
+>- Criação do repositório para elaboração do projeto do site no GitLab;
+>- Codificação do Banco de dados do site em MySQL;
+>- Codificação do sistema de cadastro de motoristas em HTML;
+>- Criação da div "Editar Motoristas" e sua estilização;
+>- Codificação em PHP para exibição na tela inicial dos motoristas cadastrados no site;
+>- Inserção do botão “Saiba Mais” para o direcionamento à tela de informações do motorista selecionado;
+>- Verificação parcial do sistema de cadastro através do PHP (não é mais possível realizar o cadastro com campos vazios);
+>- Implementação do PHP e do Ajax no botão saiba mais para o envio do id para a exposição das informações de determinado motorista;
+>- Implementação do PHP e do Ajax para o funcionamento do campo pesquisar no site (com êxito);
+>- Implementação do menu hambúrguer no site através das linguagens CSS e JavaScript;
+>- Inserção de criptografia para senha ao fazer cadastro e proteção contra SQL Injection;
+>- Ajuste completo no CSS do site, com novos estilos para botões, lista dos motoristas, cadastro, login, pesquisar, etc.;
+>- Implementação da responsividade do site (para celulares e tablets);
+>- Implementação do **sistema de login.**
+
+
+Sistema de Login
+-
+>- Ao fazer login, o usuário é apresentado ao usuário o botão de Perfil, onde, ao clicar nele, aparecerá três opções: Ver Perfil, Editar Perfil e Fazer Logout.
+>- Ao fazer login, os botões “Cadastrar” e “Login” sumirão.
+
+---
+
+# Versão 0.0.1-b
+
+Novidades
+-
+>- Correção na responsividade do site para celular.

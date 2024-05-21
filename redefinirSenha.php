@@ -65,6 +65,6 @@
 
         $stmt->close();
     } else {
-        echo "Token não encontrado.";
+        header("Location: index.php");
     }
 ?>

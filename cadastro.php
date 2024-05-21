@@ -124,15 +124,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 //Server settings
                 $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
                 $mail->isSMTP();                                            //Send using SMTP
-                $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
+                $mail->Host       = 'smtp.hostinger.com';                     //Set the SMTP server to send through
                 $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-                $mail->Username   = 'andre.miiada@gmail.com';                     //SMTP username
-                $mail->Password   = 'kzamisbnlwyicwve';                               //SMTP password
+                $mail->Username   = 'no-reply@coegi.com.br';                     //SMTP username
+                $mail->Password   = '972356noreplyCoegi,';                               //SMTP password
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
                 $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-        
+
                 //Recipients
-                $mail->setFrom('andre.miiada@gmail.com', 'COEGI');
+                $mail->setFrom('no-reply@coegi.com.br', 'COEGI');
                 $mail->addAddress($email);
         
                 //Content

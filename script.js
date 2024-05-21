@@ -38,7 +38,7 @@ $(document).ready(function(){
 
           // Define o conteúdo HTML da div (ANTES de inserir)
           detalhesDiv.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
-          '<img src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
+          '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
           '<div id="descMotorista">' +
           'Rotas: ' + dados.rotas + '<br>' +
           'Periodo: ' + dados.periodo + '<br>' +
@@ -215,7 +215,7 @@ function buttonInfoMotorista(){
        success: function(dados) {
            if ("nome" in dados && "sobrenome" in dados) {
                infMot.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
-               '<img src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
+               '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
                '<div id="descMotorista">' +
                'Rotas: ' + dados.rotas + '<br>' +
                'Periodo: ' + dados.periodo + '<br>' +

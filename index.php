@@ -1,12 +1,14 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="pt-br">
 
 <head>
 
   <meta charset="utf-8">
   <title>Projeto COEGI</title>
-  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="style.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script type='text/javascript' src='script.js'> </script>
+  <script src='script.js'> </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
@@ -23,8 +25,7 @@
 
       <div class="head">
 
-        <img src="https://moodle.cmp.ifsp.edu.br/pluginfile.php/1/theme_moove/logo/1706647608/LogoIFSPCMP_moodle.png"
-          style="height: 80px; width: 180px;">
+        <img src="https://moodle.cmp.ifsp.edu.br/pluginfile.php/1/theme_moove/logo/1706647608/LogoIFSPCMP_moodle.png" style="height: 80px; width: 180px;" alt="Logo IFSP">
         
           <svg id="menuBurger" onclick="buttonMenu()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
 
@@ -34,15 +35,15 @@
       <div class="menu">
 
         <div class="botoes" id="botoes">
-        <button type="submit" onclick="buttonMoto()"> Motoristas</button>
-        <?php
-          session_start();
-          if (isset($_SESSION['motorista_id'])) {
-            echo '<button type="submit" onclick="buttonPerfil()"> Perfil</button>';
-          } else {
-            echo '<button type="submit" onclick="buttonCadastra()"> Cadastrar</button>';
-            echo '<button type="submit" onclick="buttonLogin()">Login</button>';
-          }
+          <button type="submit" onclick="buttonMoto()"> Motoristas</button>
+          <?php
+            session_start();
+            if (isset($_SESSION['motorista_id'])) {
+              echo '<button type="submit" onclick="buttonPerfil()"> Perfil</button>';
+            } else {
+              echo '<button type="submit" onclick="buttonCadastra()"> Cadastrar</button>';
+              echo '<button type="submit" onclick="buttonLogin()">Login</button>';
+            }
           ?>
         </div>
 
@@ -75,7 +76,7 @@
 					 
 					 while (  $row = mysqli_fetch_assoc($query)) {
 										 
-						  echo '<div class="Mot"><div class="ImgM"><img style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
+						  echo '<div class="Mot"><div class="ImgM"><img alt="imagemMotorista" style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
 						  echo '<h3>'. $row['nome']. ' ' .$row['sobrenome'].'</h3>';
 						  echo'<p >'. 'Rotas:  ' .$row['rotas']. '</p>';
 						  echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';
@@ -120,8 +121,7 @@
 
         <div id="FormularioLogin">
 
-          <img id="img"
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjSAK1iGtaQ6QTCdpq1iGyJki53MmDISyYag&s">
+          <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjSAK1iGtaQ6QTCdpq1iGyJki53MmDISyYag&s" alt="Ícone cadastro">
 
           <form method="POST" action="login.php">
 
@@ -177,8 +177,7 @@
 
       </div>
 
-      <div id="InfMotorista">
-      </div>
+      <div id="InfMotorista"></div>
 
         <div id="Cad" class="row">
           <p>CADASTRAR MOTORISTA</p>
@@ -220,8 +219,9 @@
 
         <div id="myMap" class="map"></div>
 
-        <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=AqpANMZ9clo-TaUnWYgSMzqTZEcd6-kAisw3L0ny18ltPnCdDb3YnbksBUQMsO2i&callback=loadMapScenario'> </script>
+        <script src='https://www.bing.com/api/maps/mapcontrol?key=AqpANMZ9clo-TaUnWYgSMzqTZEcd6-kAisw3L0ny18ltPnCdDb3YnbksBUQMsO2i&callback=loadMapScenario'> </script>
 
+  </div>
 </body>
 
 </html>

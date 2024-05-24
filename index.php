@@ -6,6 +6,7 @@
   <meta charset="utf-8">
   <title>COEGI</title>
   <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="icon.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
   <script src='script.js'></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">

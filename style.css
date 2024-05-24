@@ -403,20 +403,6 @@ input[text-text]:focus {
   height: 50px;
 }
 
-#salvar {
-  background-color: #4CAF50; /* Cor de fundo verde */
-  color: white; /* Texto branco */
-  padding: 10px 20px; /* Espaçamento interno */
-  border: none; /* Sem borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de ponteiro */
-  float: left;
-  transition: background-color 0.3s ease; /* Transição suave */
-}
-
-#salvar:hover {
-  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
-}
 
 #salvar::before {
   content: "\f00c"; /* Ícone de "check" do FontAwesome */

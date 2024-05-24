@@ -13,14 +13,12 @@ p,h1,h3{
   font-family: Arial;
 }
 .container {
-  background-color: blue;
   display: flex;
   width: 100%;
   height: 100%;
 }
 
 .coluna1 {
-
   background-color: whitesmoke;
   display: flex;
   flex-direction: column;
@@ -40,17 +38,6 @@ p,h1,h3{
   padding: 5px;
   justify-content: space-between;
   align-items: center;
-}
-
-.phead {
-
-  padding: 3px;
-  text-align: center;
-  background-color: white;
-  border-radius: 2px;
-
-
-
 }
 
 .menu {
@@ -109,24 +96,23 @@ p,h1,h3{
 }
 
 .botoes button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
   padding: 4px;
   margin: 1px;
-  border-radius: 5px;
-  cursor: pointer;
   font-size: 16px;
+}
+
+button{
+  background-color: #4CAF50; /* Cor de fundo verde */
+  color: white; /* Texto branco */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
   transition: background-color 0.3s ease; /* Transição suave */
 }
 
-.botoes button:hover {
-  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
-}
-
-
 button:hover {
-  background-color: whitesmoke;
+  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
   cursor: pointer;
 }
 
@@ -148,10 +134,6 @@ button:active {
 }
 
 #transportadores {
-
-  
-  flex-direction: column;
-  background-color: whitesmoke;
   text-align: center;
   opacity: 90%;
   overflow-y: auto; /* Adicione esta linha para habilitar a barra de rolagem vertical */
@@ -164,15 +146,10 @@ button:active {
 }
 
 #Login {
-
- 
-  background-color: whitesmoke;
   border-top: 0px solid black;
   text-align: center;
-  align-items: center;
   opacity: 90%;
   display: none;
-  justify-content: center;
   height: 100%;
 }
 
@@ -201,7 +178,6 @@ button:active {
 }
 
 #FormularioLogin input {
-
   margin: 6px;
   border-color:white;
 }
@@ -218,21 +194,6 @@ button:active {
   margin: 5px;
 }
 
-
-
-#Usuario {
-
-  height: 100%;
-  background-color: whitesmoke;
-  border-top: 0px solid black;
-  text-align: center;
-  opacity: 90%;
-  display: none;
-  align-items: center;
-  flex-direction: column;
-
-}
-
 .formularioCentro {
   display: flex;
   flex-direction: column;
@@ -245,11 +206,6 @@ button:active {
 
 }
 
-#Usuario label {
-
-  position: center;
-}
-
 #myMap {
   display: flex;
 }
@@ -260,8 +216,6 @@ button:active {
 }
 
 #Cad {
-
-  background-color: whitesmoke;
   border: 0px solid black;
   text-align: center;
   opacity: 90%;
@@ -284,7 +238,6 @@ button:active {
 #EditarMotorista {
 
   height: 700px;
-  background-color: whitesmoke;
   border-top: 0px solid black;
   text-align: center;
   opacity: 90%;
@@ -301,7 +254,6 @@ button:active {
 
 flex-direction: column;
 height: 100%;
-background-color: whitesmoke;
 text-align: center;
 opacity: 90%;
 display: none;
@@ -310,7 +262,6 @@ display: none;
 #InfMotorista{
   flex-direction: column;
   height: 100%;
-  background-color: whitesmoke;
   text-align: center;
   opacity: 90%;
   display: none;
@@ -425,7 +376,6 @@ width:230px;
   border: 0px;
   margin: auto;
   float: right;
-  background-color: whitesmoke;
 }
 
 .Mot:hover {
@@ -451,17 +401,6 @@ input[text-text]:focus {
 .ButCad {
   width: 150px;
   height: 50px;
-  background-color: #4CAF50; /* Cor de fundo verde */
-  color: white; /* Texto branco */
-  padding: 10px 20px; /* Espaçamento interno */
-  border: none; /* Sem borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de ponteiro */
-  transition: background-color 0.3s ease; /* Transição suave */
-}
-
-.butCad:hover{
-  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
 }
 
 #salvar {
@@ -505,7 +444,6 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 #Perfil {
-  background-color: whitesmoke;
   border-top: 0px solid black;
   text-align: center;
   align-items: center;
@@ -513,20 +451,6 @@ input[type="search"]::-webkit-search-cancel-button {
   display: none;
   justify-content: center;
   height: 100%;
-}
-
-.Login button{
-  background-color: #4CAF50; /* Cor de fundo verde */
-  color: white; /* Texto branco */
-  padding: 10px 20px; /* Espaçamento interno */
-  border: none; /* Sem borda */
-  border-radius: 5px; /* Bordas arredondadas */
-  cursor: pointer; /* Cursor de ponteiro */
-  transition: background-color 0.3s ease; /* Transição suave */
-}
-
-.Login button:hover {
-  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
 }
 
 #esqueciSenha{

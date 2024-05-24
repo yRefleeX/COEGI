@@ -18,7 +18,7 @@ $(document).ready(function(){
   });
 
   // Função para enviar a solicitação AJAX e exibir detalhes
-  function exibirDetalhes(idMot, motDiv) {  
+  function exibirDetalhes(idMot) {  
     $.ajax({
       url: "listaMotoristaId.php",
       method: "POST",
@@ -27,17 +27,16 @@ $(document).ready(function(){
       success: function(dados) {
         // Verificar se os dados existem
         if ("nome" in dados && "sobrenome" in dados) {
-          var detalhesDiv = document.getElementById("InfMotorista"); // Cria a div com o ID "InfMotorista"
+          var infMot = document.getElementById("InfMotorista"); // Cria a div com o ID "InfMotorista"
 
           // Pegando as outras divs para apresentar display: "none"
           var ed = document.getElementById("EditarMotorista");
           var log = document.getElementById("Login");
           var cad = document.getElementById("Cad");
-          var infMot = document.getElementById("InfMotorista");
 
 
           // Define o conteúdo HTML da div (ANTES de inserir)
-          detalhesDiv.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
+          infMot.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
           '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
           '<div id="descMotorista">' +
           'Rotas: ' + dados.rotas + '<br>' +
@@ -67,8 +66,7 @@ $(document).ready(function(){
   // Vincule o evento de clique ao botão "saiba mais"
   $("#listMot").on("click", "#salvar", function(event) {
     var idMot = $(this).siblings('#idMot').val();
-    var motDiv = $(this).closest('.Mot');
-    exibirDetalhes(idMot, motDiv);
+    exibirDetalhes(idMot);
   });
 });
 

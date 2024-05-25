@@ -5,11 +5,33 @@
 <head>
   <meta charset="utf-8">
   <title>COEGI</title>
-  <link href="style.css" rel="stylesheet" type="text/css">
+  <link href="style.css" rel="stylesheet" type="text/css" preload>
+  <link href="styleMap.css" rel="stylesheet" type="text/css" preload>
+  <link href="styleMotorista.css" rel="stylesheet" type="text/css" preload>
   <link rel="icon" href="icon.png">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src='script.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" async></script>
+  <script src="script.js" async></script>
+  <script src="scriptButtons.js" async></script>
+  <script src="scriptMapa.js" async></script> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Página principal do site">
+  <meta name="theme-color" content="#317EFB"/>
+
+  <style>
+    #logo{
+      height: 90px;
+      width: 252px;
+    }
+    .imgMLista{
+      display: inline-block;
+      height: 100;
+      width: 80px;
+      z-index: -1;
+    }
+    hr{
+      border: 1px solid black;
+    }
+  </style>
 </head>
 
 <body>
@@ -17,7 +39,7 @@
 
     <div class="coluna1">
       <div class="head">
-        <img src="https://moodle.cmp.ifsp.edu.br/pluginfile.php/1/theme_moove/logo/1706647608/LogoIFSPCMP_moodle.png" style="height: 80px; width: 180px;" alt="Logo IFSP">
+        <img src="https://moodle.cmp.ifsp.edu.br/pluginfile.php/1/theme_moove/logo/1706647608/LogoIFSPCMP_moodle.png" id="logo" alt="Logo IFSP">
         <svg id="menuBurger" onclick="buttonMenu()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
       </div>
 
@@ -49,12 +71,12 @@
 					  include_once("listaMotorista.php");
             
 					  while (  $row = mysqli_fetch_assoc($query)) { 
-              echo '<div class="Mot"><div class="ImgM"><img alt="imagemMotorista" style="display: inline-block;  height: 100; width: 80px; z-index: -1;" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
+              echo '<div class="Mot"><div class="ImgM"><img alt="imagemMotorista" class="imgMLista" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
               echo '<h3>'. $row['nome']. ' ' .$row['sobrenome'].'</h3>';
               echo'<p >'. 'Rotas:  ' .$row['rotas']. '</p>';
               echo'<p >'. 'Periodo:  '.$row['periodo'].'</p>';
               echo'<p >'. 'telefone:  ' .$row['telefone'].'</p>';
-              echo'<input type="hidden" name="idMot" id="idMot" value="'.$row['motorista_id'].'"><button type="button" id="salvar" name="salvar">Saiba Mais</button></div></div>';
+              echo'<input type="hidden" name="idMot" id="idMot" value="'.$row['motorista_id'].'"><button type="button" class="salvar" name="salvar">Saiba Mais</button></div></div>';
 					  }
 					?>
         </div>
@@ -62,7 +84,7 @@
 
       <div id="Perfil" class="Login">
         <p>PERFIL</p>
-        <hr style="border: 1px solid black;">
+        <hr>
         <div class="botoes" id="botoesPerfil">
           <button type="button" onclick="buttonVerPerfil()"> Ver Perfil</button>
           <button type="submit" onclick="buttonEdita()"> Editar Perfil</button>
@@ -73,7 +95,7 @@
       <!-- Tela de login -->
       <div id="Login" class="Login">
         <p>LOGIN</p>
-        <hr style="border: 1px solid black;">
+        <hr>
         <p>Entre com a sua conta para ter acesso as ferramentas do motorista:</p>
 
         <div id="FormularioLogin">
@@ -96,7 +118,7 @@
 
       <div id="EditarMotorista">
         <p>EDITAR</p>
-        <hr style="border: 1px solid black;">
+        <hr>
         <p>Preencha os campos em que deseja alterar a informação. Para manter as informações que deseja, deixe o campo específico em branco.</p>
 
         <!-- Editar motorista -->
@@ -123,7 +145,7 @@
       <div id="InfMotorista"></div>
         <div id="Cad" class="row">
           <p>CADASTRAR MOTORISTA</p>
-          <hr style="border: 1px solid black;">
+          <hr>
 
           <p>Para cadastrar-se no site como um motorista, preencha e insira os documetos abaixo:</p>
 
@@ -159,7 +181,7 @@
 
         <div id="myMap" class="map"></div>
 
-        <script src='https://www.bing.com/api/maps/mapcontrol?key=AqpANMZ9clo-TaUnWYgSMzqTZEcd6-kAisw3L0ny18ltPnCdDb3YnbksBUQMsO2i&callback=loadMapScenario'> </script>
+        <script src='https://www.bing.com/api/maps/mapcontrol?key=AqpANMZ9clo-TaUnWYgSMzqTZEcd6-kAisw3L0ny18ltPnCdDb3YnbksBUQMsO2i&callback=loadMapScenario' async> </script>
   </div>
 </body>
 </html>

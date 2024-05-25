@@ -129,18 +129,6 @@ button:active {
 
 }
 
-#transportadores {
-  text-align: center;
-  opacity: 90%;
-  overflow-y: auto; /* Adicione esta linha para habilitar a barra de rolagem vertical */
-  max-height: 1000px; /* Defina uma altura máxima para a lista (ajuste conforme necessário) */
-  overflow-x: hidden;
-}
-
-.transportadores hr {
-  width: 100%;
-}
-
 #Login {
   border-top: 0px solid black;
   text-align: center;
@@ -202,15 +190,6 @@ button:active {
 
 }
 
-#myMap {
-  display: flex;
-}
-
-.map {
-  width: calc(100% - 500px); /* Largura do mapa */
-  height: 100%;
-}
-
 #Cad {
   border: 0px solid black;
   text-align: center;
@@ -229,153 +208,6 @@ button:active {
 #Cad i {
   position: relative;
   margin: 20px;
-}
-
-#EditarMotorista {
-
-  height: 700px;
-  border-top: 0px solid black;
-  text-align: center;
-  opacity: 90%;
-   overflow-y: auto;
-  display: none;
-
-}
-
-#EditarMotorista input,p{
-  margin:20px;
-}
-
-#ExcluirMotorista{
-
-flex-direction: column;
-height: 100%;
-text-align: center;
-opacity: 90%;
-display: none;
-}
-
-#InfMotorista{
-  flex-direction: column;
-  height: 100%;
-  text-align: center;
-  opacity: 90%;
-  display: none;
-}
-
-#descMotorista{
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  margin-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  width:300px;
-  height: 200px;
-  border: 2px solid black;
-  border-radius: 2%;
-}
-#descMotorista p{
-  margin: 5px;
-  margin-top: 10px;
-  float: left;
- 
-  
-}
-
-#listMot{
-  
-  display:flex;
-  flex-direction: column;
-  width: 100%;
- 
-}
-
-.ImgM {
-  display: block;
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-right: 10px;
-  background: #fff;
-  line-height: 1.7em;
-  overflow: hidden;
-  float: left;
-  margin-top: 13px;
-}
-
-.Mot .ImgM {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin-right: 20px;
-}
-
-.Mot .desc {
-  display: flex;
-  flex-direction: column;
-}
-
-.Mot .desc h3 {
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.Mot .desc p {
-  margin-bottom: 3px;
-  color: #555;
-  font-size: 14px;
-}
-
-.desc{
-
-float:left;
-position:relative;
-width:230px; 
-	
-}
-.desc p {
-	
-  margin-left: 0px;
-  margin:auto;
-
-}
-
-.desc h3{
-	
-	background-color:#64a44e;
-	border-radius:2px;
-	
-}
-
-
-.Mot {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ccc; /* Linha sutil separando os motoristas */
-  background-color: #f9f9f9; /* Fundo levemente cinza */
-  border-radius: 5px; /* Bordas arredondadas */
-}
-
-.Mot button img{
-  width:20px; 
-  height: 20px;
-  float: right;
-  mix-blend-mode: multiply;
-}
-
-.Mot button{
-  border: 0px;
-  margin: auto;
-  float: right;
-}
-
-.Mot:hover {
-  box-shadow: 0 5px 5px -5px #333;
 }
 
 input[text-text] {
@@ -400,7 +232,7 @@ input[text-text]:focus {
 }
 
 
-#salvar::before {
+.salvar::before {
   content: "\f00c"; /* Ícone de "check" do FontAwesome */
   font-family: FontAwesome;
   margin-right: 10px;
@@ -453,11 +285,6 @@ input[type="search"]::-webkit-search-cancel-button {
     width: 40%; 
     height: auto;
   }
-
-  .map {
-    width: 60%;
-    height: 100%;
-  }
 }
 
 /* Celulares */
@@ -469,11 +296,5 @@ input[type="search"]::-webkit-search-cancel-button {
   .coluna1 {
     width: 100%; /* Ocupa a largura total da tela */
     height: 50%; /* Altura ajustada em 50% */
-  }
-
-  .map {
-    width: 100%; /* Ocupa a largura total da tela */
-    height: 50vh; /* Define a altura do mapa como 50% da altura da viewport */
-    flex-grow: 1;
   }
 }

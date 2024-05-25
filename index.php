@@ -5,14 +5,16 @@
 <head>
   <meta charset="utf-8">
   <title>COEGI</title>
-  <link href="style.css" rel="stylesheet" type="text/css" preload>
-  <link href="styleMap.css" rel="stylesheet" type="text/css" preload>
-  <link href="styleMotorista.css" rel="stylesheet" type="text/css" preload>
-  <link rel="icon" href="icon.png">
+  <link href="css/style.css" rel="stylesheet" type="text/css" preload>
+  <link href="css/styleMap.css" rel="stylesheet" type="text/css" preload>
+  <link href="css/styleMotorista.css" rel="stylesheet" type="text/css" preload>
+  <link rel="img/icon" href="img/icon.webp">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" async></script>
-  <script src="script.js" async></script>
-  <script src="scriptButtons.js" async></script>
-  <script src="scriptMapa.js" async></script> 
+  <script src="js/script.js" async></script>
+  <script src="js/scriptButtons.js" async></script>
+  <script src="js/scriptMapa.js" async></script> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Página principal do site">
   <meta name="theme-color" content="#317EFB"/>
@@ -39,7 +41,7 @@
 
     <div class="coluna1">
       <div class="head">
-        <img src="https://moodle.cmp.ifsp.edu.br/pluginfile.php/1/theme_moove/logo/1706647608/LogoIFSPCMP_moodle.png" id="logo" alt="Logo IFSP">
+        <img src="img/LogoIFSPCMP_moodle.webp" id="logo" alt="Logo IFSP">
         <svg id="menuBurger" onclick="buttonMenu()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
       </div>
 
@@ -99,7 +101,7 @@
         <p>Entre com a sua conta para ter acesso as ferramentas do motorista:</p>
 
         <div id="FormularioLogin">
-          <img id="img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjSAK1iGtaQ6QTCdpq1iGyJki53MmDISyYag&s" alt="Ícone cadastro">
+          <img id="img" src="img/imgLogin.webp" alt="Ícone cadastro">
           <form method="POST" action="login.php">
             <input type="email" placeholder="email" name="emailLogin">
             <input type="password" placeholder="senha" name="senhaLogin"><br>
@@ -180,8 +182,8 @@
       </div>
 
         <div id="myMap" class="map"></div>
-
-        <script src='https://www.bing.com/api/maps/mapcontrol?key=AqpANMZ9clo-TaUnWYgSMzqTZEcd6-kAisw3L0ny18ltPnCdDb3YnbksBUQMsO2i&callback=loadMapScenario' async> </script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
   </div>
 </body>
 </html>

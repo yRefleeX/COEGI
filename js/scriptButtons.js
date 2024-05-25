@@ -154,6 +154,7 @@ function buttonLogin(){
   
   function buttonVerPerfil(){
     buttonInfoMotorista();
+    adicionarControleDesenho();
   }
   function buttonLogout(){
     window.location.href = "logout.php";

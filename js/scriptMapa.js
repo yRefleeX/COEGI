@@ -1,3 +1,5 @@
+var drawnItems;
+
 $(document).ready(function() {
   // funções para o funcionamento do mapa
 
@@ -6,22 +8,9 @@ $(document).ready(function() {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
   // Camada para armazenar as rotas
-  var drawnItems = L.featureGroup().addTo(map);
+  drawnItems = L.featureGroup().addTo(map);
 
-  // Controle de desenho para motoristas
-  var drawControl = new L.Control.Draw({
-    edit: {
-      featureGroup: drawnItems // Camada para armazenar as rotas desenhadas
-    },
-    draw: {
-      polyline: true,
-      polygon: false,
-      marker: false,
-      circle: false,
-      rectangle: false,
-      circlemarker: false
-    }
-  });
+  var drawControl;
 
   // Manipulação de eventos de desenho
   map.on(L.Draw.Event.CREATED, function(e) {
@@ -33,9 +22,12 @@ $(document).ready(function() {
 
   // Envia os dados para o servidor via AJAX
   $.ajax({
-    url: 'salvar_rota.php', // Arquivo PHP que irá receber os dados
+    url: 'salvarRota.php', // Arquivo PHP que irá receber os dados
     type: 'POST', // Método HTTP
-    data: { geojson: JSON.stringify(geojson) }, // Dados a serem enviados
+    data: { // Dados a serem enviados
+      geojson: JSON.stringify(geojson),
+      motorista_id: $('#motorista_id').val()
+    },
     dataType: 'json', // Tipo de dado esperado na resposta do servidor
     success: function(resposta) {
       if (resposta.status === 'sucesso') {
@@ -57,7 +49,7 @@ $(document).ready(function() {
   // Função para carregar as rotas usando jQuery AJAX
   function carregarRotas() {
     $.ajax({
-      url: 'get_rotas.php',
+      url: 'getRotas.php',
       type: 'GET',
       dataType: 'json', // Espera-se uma resposta JSON do servidor
       success: function(rotas) {
@@ -65,7 +57,6 @@ $(document).ready(function() {
         $.each(rotas, function(index, rota) { 
           // Adicionar cada rota ao mapa usando Leaflet
           var geojsonLayer = L.geoJSON(rota.geojson).addTo(map);
-          geojsonLayer.bindPopup("Rota do motorista: " + rota.nome_motorista); 
         });
       },
       error: function(erro) {
@@ -84,6 +75,17 @@ $(document).ready(function() {
     if (!drawControl) { 
       drawControl = new L.Control.Draw({
         // ... (suas opções do Leaflet Draw)
+        edit: {
+          featureGroup: drawnItems // Camada para armazenar as rotas desenhadas
+        },
+        draw: {
+          polyline: true,
+          polygon: false,
+          marker: false,
+          circle: false,
+          rectangle: false,
+          circlemarker: false
+        }
       });
       map.addControl(drawControl);
     }

@@ -73,6 +73,7 @@ function buttonLogin(){
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
     
+     adicionarControleDesenho();
   }
   
   function buttonInfoMotorista(){
@@ -154,7 +155,6 @@ function buttonLogin(){
   
   function buttonVerPerfil(){
     buttonInfoMotorista();
-    adicionarControleDesenho();
   }
   function buttonLogout(){
     window.location.href = "logout.php";

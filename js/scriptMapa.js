@@ -3,7 +3,10 @@ var drawnItems;
 $(document).ready(function() {
   // funções para o funcionamento do mapa
 
-  var map = L.map('myMap').setView([-23.5505, -46.6333], 13); // Coordenadas de São Paulo como exemplo
+  var map = L.map('myMap', {
+    minZoom: 15, 
+    maxZoom: 18
+  }).setView([-22.948060704805442, -47.14962819945917], 16);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
@@ -11,6 +14,7 @@ $(document).ready(function() {
   drawnItems = L.featureGroup().addTo(map);
 
   var drawControl;
+  var rotaDesenhada = false; // Variável para controlar se o motorista já desenhou uma rota
 
   // Manipulação de eventos de desenho
   map.on(L.Draw.Event.CREATED, function(e) {
@@ -32,7 +36,18 @@ $(document).ready(function() {
     success: function(resposta) {
       if (resposta.status === 'sucesso') {
         // Rota salva com sucesso!
-        alert(resposta.mensagem); 
+        alert(resposta.mensagem);
+
+        // Adiciona a nova rota ao mapa
+        var novaRotaLayer = L.geoJSON(geojson, { // 'geojson' deve estar acessível aqui
+          style: { 
+            color: 'blue',
+            weight: 5
+          }
+        });
+
+        // 2. Adicione a nova camada ao drawnItems
+        drawnItems.addLayer(novaRotaLayer); 
       } else {
         // Exibe a mensagem de erro
         alert("Erro ao salvar a rota: " + resposta.mensagem); 
@@ -66,7 +81,7 @@ $(document).ready(function() {
   }
 
   // Chamar a função para carregar as rotas quando o mapa estiver pronto
-  map.on('load', carregarRotas);
+  carregarRotas();
 
   var drawControl; // Declarando a variável globalmente
 
@@ -76,7 +91,7 @@ $(document).ready(function() {
       drawControl = new L.Control.Draw({
         // ... (suas opções do Leaflet Draw)
         edit: {
-          featureGroup: drawnItems // Camada para armazenar as rotas desenhadas
+          featureGroup: drawnItems, // Camada para armazenar as rotas desenhadas
         },
         draw: {
           polyline: true,

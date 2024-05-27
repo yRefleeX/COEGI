@@ -12,9 +12,10 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet-draw/dist/leaflet.draw.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js" async></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+  <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js" defer></script>
   <script src="js/script.js" async></script>
-  <script src="js/scriptButtons.js" async></script>
-  <script src="js/scriptMapa.js" async></script> 
+  <script src="js/scriptButtons.js" async></script> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Página principal do site">
   <meta name="theme-color" content="#317EFB"/>
@@ -104,8 +105,8 @@
         <div id="FormularioLogin">
           <img id="img" src="img/imgLogin.webp" alt="Ícone cadastro">
           <form method="POST" action="login.php">
-            <input type="email" placeholder="email" name="emailLogin">
-            <input type="password" placeholder="senha" name="senhaLogin"><br>
+            <input type="email" placeholder="email" name="emailLogin" autocomplete="off">
+            <input type="password" placeholder="senha" name="senhaLogin" autocomplete="off"><br>
             <button type="submit">Entrar</button>
           </form>
         </div>
@@ -164,7 +165,7 @@
             <input type="text" placeholder="Telefone" name="telefone" id="telefone">
             <input type="text" placeholder="Periodo" name="periodo" id="periodo">
             <input type="email" placeholder="Email para Login" name="email" id="email" autocomplete="off">
-            <input type="password" placeholder="Senha para Login" name="senha" id="senha"><br>
+            <input type="password" placeholder="Senha para Login" name="senha" id="senha" autocomplete="off"><br>
 
             <h1> Documentos Necessários</h1>
 
@@ -183,8 +184,7 @@
       </div>
 
         <div id="myMap" class="map"></div>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-        <script src="https://unpkg.com/leaflet-draw/dist/leaflet.draw.js"></script>
+        <script src="js/scriptMapa.js" async></script>
   </div>
 </body>
 </html>

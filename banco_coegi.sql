@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 19-Maio-2024 às 06:07
+-- Tempo de geração: 27-Maio-2024 às 04:37
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -62,6 +62,18 @@ CREATE TABLE `redsenha_email` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `rotas`
+--
+
+CREATE TABLE `rotas` (
+  `id` int(11) NOT NULL,
+  `motorista_id` int(11) NOT NULL,
+  `pontos_rota` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`pontos_rota`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `verificacao_email`
 --
 
@@ -96,6 +108,13 @@ ALTER TABLE `redsenha_email`
   ADD UNIQUE KEY `token` (`token`);
 
 --
+-- Índices para tabela `rotas`
+--
+ALTER TABLE `rotas`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `motorista_id` (`motorista_id`);
+
+--
 -- Índices para tabela `verificacao_email`
 --
 ALTER TABLE `verificacao_email`
@@ -119,10 +138,26 @@ ALTER TABLE `redsenha_email`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `rotas`
+--
+ALTER TABLE `rotas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `verificacao_email`
 --
 ALTER TABLE `verificacao_email`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Restrições para despejos de tabelas
+--
+
+--
+-- Limitadores para a tabela `rotas`
+--
+ALTER TABLE `rotas`
+  ADD CONSTRAINT `rotas_ibfk_1` FOREIGN KEY (`motorista_id`) REFERENCES `motorista` (`motorista_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

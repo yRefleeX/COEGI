@@ -52,6 +52,42 @@ function verificaEmail($email) {
     return checkdnsrr($dominio, 'MX');
 }
 
+function verificaCPF($cpf){
+    // Remove caracteres especiais e espaços em branco
+    $cpf = preg_replace('/[^0-9]/', '', $cpf);
+
+    // Verifica se o CPF tem 11 dígitos
+    if (strlen($cpf) != 11) {
+        return false;
+    }
+
+    // Verifica se todos os dígitos são iguais
+    if (preg_match('/(\d)\1{10}/', $cpf)) {
+        return false;
+    }
+
+    // Calcula o primeiro dígito verificador
+    for ($i = 0, $j = 10, $soma = 0; $i < 9; $i++, $j--) {
+        $soma += $cpf[$i] * $j;
+    }
+    $resto = $soma % 11;
+    $digito1 = $resto < 2 ? 0 : 11 - $resto;
+
+    // Calcula o segundo dígito verificador
+    for ($i = 0, $j = 11, $soma = 0; $i < 10; $i++, $j--) {
+        $soma += $cpf[$i] * $j;
+    }
+    $resto = $soma % 11;
+    $digito2 = $resto < 2 ? 0 : 11 - $resto;
+
+    // Verifica se os dígitos verificadores são válidos
+    if ($digito1 != $cpf[9] || $digito2 != $cpf[10]) {
+        return false;
+    }
+
+    return true;
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
@@ -113,7 +149,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
 
-        if(verificaTelefone($telefone) && verificaEmail($email)){
+        if(verificaTelefone($telefone) && verificaEmail($email) && verificaCPF($cpf)){
             // Gere um código de 6 caracteres
             $codigoVerificacao = gerarCodigo();
 

@@ -23,7 +23,6 @@
   }
   
   #InfMotorista{
-    flex-direction: column;
     height: 100%;
     text-align: center;
     opacity: 90%;

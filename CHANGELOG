@@ -1,9 +1,10 @@
-# Versão atual: 0.0.2
+# Versão atual: 0.0.3
 
 # Lista de versões
 - 0.0.1
 - 0.0.1-b
 - 0.0.2
+- 0.0.3
 
 # Versão 0.0.1 (13/05/2024)
 
@@ -44,3 +45,13 @@ Novidades
 -
 >- Implementação do sistema de armazenamento de imagem do motorista;
 >- Implementação do sistema de recuperação de senha e verificação de email (utilizando o PHPMailer).
+
+# Versão 0.0.3 (29/05/2024)
+
+Novidades
+-
+>- Implementação de verificação antes de realizar o cadastro do motorista (CPF, telefone e email);
+>- Mudança de ferramenta para utilização do mapa (Bing Maps API -> Leaflet);
+>- Implementação do sistema de desenho de rotas no mapa;
+>- Mudanças para otimizar o desempenho do site;
+>- Agora o site está sendo hospedado! Link: coegi.com.br

@@ -106,3 +106,32 @@ $(document).ready(function() {
     }
   }
 });
+
+window.exibirRotaMotorista = function(motoristaId) {
+  // Limpa as rotas existentes do mapa
+  drawnItems.clearLayers();
+
+  // Faz a requisição AJAX para buscar a rota do motorista
+  $.ajax({
+    url: 'getRotaMotorista.php', // Crie este arquivo PHP
+    type: 'GET',
+    data: { motorista_id: motoristaId }, 
+    dataType: 'json',
+    success: function(rota) {
+      if (rota && rota.geojson) {
+        // Adiciona a rota ao mapa
+        L.geoJSON(rota.geojson, {
+          style: { 
+            color: 'blue',
+            weight: 5
+          }
+        }).addTo(drawnItems); // Adicione ao drawnItems
+      } else {
+        console.error("Rota não encontrada para o motorista:", motoristaId);
+      }
+    },
+    error: function(erro) {
+      console.error('Erro ao carregar a rota do motorista:', erro);
+    }
+  });
+}

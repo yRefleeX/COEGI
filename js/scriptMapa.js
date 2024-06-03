@@ -2,9 +2,8 @@ var drawnItems;
 
 $(document).ready(function() {
   // funções para o funcionamento do mapa
-
   var map = L.map('myMap', {
-    minZoom: 15, 
+    minZoom: 13, 
     maxZoom: 18
   }).setView([-22.948060704805442, -47.14962819945917], 16);
 
@@ -60,28 +59,6 @@ $(document).ready(function() {
     }
   });
 });
-
-  // Função para carregar as rotas usando jQuery AJAX
-  function carregarRotas() {
-    $.ajax({
-      url: 'getRotas.php',
-      type: 'GET',
-      dataType: 'json', // Espera-se uma resposta JSON do servidor
-      success: function(rotas) {
-        // Iterar pelas rotas recebidas
-        $.each(rotas, function(index, rota) { 
-          // Adicionar cada rota ao mapa usando Leaflet
-          var geojsonLayer = L.geoJSON(rota.geojson).addTo(map);
-        });
-      },
-      error: function(erro) {
-        console.error('Erro ao carregar rotas:', erro);
-      }
-    });
-  }
-
-  // Chamar a função para carregar as rotas quando o mapa estiver pronto
-  carregarRotas();
 
   var drawControl; // Declarando a variável globalmente
 

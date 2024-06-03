@@ -1,7 +1,5 @@
 <?php
-// Conecte-se ao banco de dados 
-// ...
-
+// Conexão com o banco de dados
 include_once("conexao.php");
 
 if (!$conn) {

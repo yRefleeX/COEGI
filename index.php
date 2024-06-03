@@ -38,19 +38,31 @@
 </head>
 
 <body>
+
+  <!-- Div container -->
   <div class="container">
 
+    <!-- Coluna da esquerda da página -->
     <div class="coluna1">
+
+      <!-- Cabeçário da coluna -->
       <div class="head">
         <img src="img/LogoIFSPCMP_moodle.webp" id="logo" alt="Logo IFSP">
         <svg id="menuBurger" onclick="buttonMenu()" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#5f6368"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
       </div>
 
+      <!-- Menu da página (aqui aparecerão os botões, cada um com uma funcionalidade diferente do site) -->
       <div class="menu">
         <div class="botoes" id="botoes">
+          <!-- Botão para abrir a lista dos motoristas -->
           <button type="submit" onclick="buttonMoto()">Motoristas</button>
           <?php
+
+            // Verifica se o motorista está logado
             session_start();
+
+            // Se o motorista estiver logado, aparecerá o botão de perfil, onde será possível ver seu perfil, editar os dados e fazer logout
+            // Se não, apenas aparecerão os botões de "Cadastrar" e "Login"
             if (isset($_SESSION['motorista_id'])) {
               echo '<button type="submit" onclick="buttonPerfil()"> Perfil</button>';
             } else {
@@ -61,7 +73,10 @@
         </div>
       </div>
 
+      <!-- Div abaixo do menu -->
       <div id="transportadores" class="transportadores">
+
+        <!-- Seção para pesquisar motoristas -->
         <div class="pesquisar">
           <form method="POST">
             <input type="search" placeholder="Procurar..." id="searchInput">
@@ -69,10 +84,14 @@
           </form>
         </div>
 
+        <!-- Div com a lista de motoristas cadastrados -->
         <div id="listMot">
           <?php
+
+            // Inclui a função para dar um SELECT * FROM motoristas
 					  include_once("listaMotorista.php");
             
+            // Enquanto tiver motorista na tabela, será dado um echo, mostrando a imagem de cada motorista e seus dados (nome e sobrenome, rotas, período e telefone)
 					  while (  $row = mysqli_fetch_assoc($query)) { 
               echo '<div class="Mot"><div class="ImgM"><img alt="imagemMotorista" class="imgMLista" src="'. $row['path_2x2_1']. '"></div><div class="desc">';			 
               echo '<h3>'. $row['nome']. ' ' .$row['sobrenome'].'</h3>';
@@ -85,9 +104,12 @@
         </div>
       </div>
 
+      <!-- Div que aparecerá caso o motorista clicar no botão "Perfil" -->
       <div id="Perfil" class="Login">
         <p>PERFIL</p>
         <hr>
+
+        <!-- Botões com as opções: Ver Perfil, Editar Perfil e Fazer Logout -->
         <div class="botoes" id="botoesPerfil">
           <button type="button" onclick="buttonVerPerfil()"> Ver Perfil</button>
           <input type="hidden" name="motorista_id" id="motorista_id" value="<?php echo $_SESSION['motorista_id']; ?>">
@@ -111,21 +133,24 @@
           </form>
         </div>
 
+        <!-- Caso o motorista esquecer a senha -->
         <div id="LoginOpcoes">
           <p>Suporte</p>
-          <button onclick="buttonEsqueciSenha()">Esqueceu a senha</button>
+          <button onclick="buttonEsqueciSenha()">Esqueci a senha</button>
         </div>
       </div>
 
+      <!-- Div que aparecerá ao motorista clicar em "Esqueci a senha" -->
       <div id="esqueciSenha">
       </div>
 
+      <!-- Div que aparecerá caso o motorista clicar no botão "Editar Perfil" -->
       <div id="EditarMotorista">
         <p>EDITAR</p>
         <hr>
         <p>Preencha os campos em que deseja alterar a informação. Para manter as informações que deseja, deixe o campo específico em branco.</p>
 
-        <!-- Editar motorista -->
+        <!-- Formulário para editar os dados do motorista -->
         <form>
           <input type="text" placeholder="Nome" name="nome" required>
           <input type="text" placeholder="Sobrenome" name="sobrenome" required>
@@ -146,14 +171,17 @@
         <br><br>
       </div>
 
+      <!-- Div com as informações do motorista caso for clicado em "Saiba Mais"-->
       <div id="InfMotorista"></div>
+
+      <!-- Div que aparecerá caso for clicado no botão "Cadastrar"-->
         <div id="Cad" class="row">
           <p>CADASTRAR MOTORISTA</p>
           <hr>
 
           <p>Para cadastrar-se no site como um motorista, preencha e insira os documetos abaixo:</p>
 
-          <!-- Cadastro -->
+          <!-- Formulário para cadastro do motorista -->
           <form action="cadastro.php" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Nome" name="nome" id="nome">
             <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
@@ -183,6 +211,7 @@
         </div>
       </div>
 
+        <!-- Declaração do mapa (localizado na direita do site) -->
         <div id="myMap" class="map"></div>
         <script src="js/scriptMapa.js" async></script>
   </div>

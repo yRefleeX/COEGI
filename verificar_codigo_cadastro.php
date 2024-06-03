@@ -81,7 +81,7 @@
         
                     echo 'Usuário cadastrado e email verificado com sucesso!';
                     
-                    // Redirecione para a página de login ou outra página de sua preferência
+                    // Redireciona para a página principal
                     header("Location: index.php");
                     exit();
         

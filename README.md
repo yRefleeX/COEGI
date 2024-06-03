@@ -11,10 +11,12 @@ Email do site: suporte@coegi.com.br
 Email pessoal: andre.miiada@gmail.com
 
 ## Próximos objetivos com o projeto
-- Verificação de cadastro; ✅
-- Mexer no mapa; ✅
-- Hospedagem do site; (Hostinger) ✅
-- Otimização no desempenho do site. ✅
+- Referencial teórico; ❌
+- Referências; ❌
+- Texto da BRAGANTEC; ❌
+- Centralizar o botão em "Esqueci a Senha" (CSS); ❌
+- Ajustar o "Editar Perfil"; ❌
+- Enviar o site para o Emílio. ❌
 
 ## Autores do projeto:
 Desenvolvedores do projeto:

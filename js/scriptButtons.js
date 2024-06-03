@@ -16,6 +16,8 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+
+     drawnItems.clearLayers();
   
   }
   
@@ -35,6 +37,8 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+
+    drawnItems.clearLayers();
   }
   
   function buttonCadastra(){
@@ -53,6 +57,8 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+
+     drawnItems.clearLayers();
   }
   
   function buttonEdita(){
@@ -108,7 +114,9 @@ function buttonLogin(){
                  '</div></div>';
   
                  // Exibe a div InfMotorista
-                 infMot.style.display = "block"; 
+                 infMot.style.display = "block";
+
+                 exibirRotaMotorista(dados.motorista_id);
              } else {
                  alert("Erro: Dados do motorista não encontrados."); 
              }
@@ -151,6 +159,8 @@ function buttonLogin(){
     infMot.style.display = "none";
     perfil.style.display = "block";
     divEsqueciSenha.style.display = "none";
+    
+    drawnItems.clearLayers();
   }
   
   function buttonVerPerfil(){

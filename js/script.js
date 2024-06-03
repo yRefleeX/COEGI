@@ -53,7 +53,7 @@ $(document).ready(function(){
           ed.style.display = "none";
           infMot.style.display = "block";
 
-          exibirRotaMotorista(dados.motorista_id)
+          exibirRotaMotorista(dados.motorista_id);
         } else {
           alert("Erro: Dados do motorista não encontrados."); // Lidar com a ausência de dados (exibir mensagem de erro, etc.)
         }
@@ -72,6 +72,7 @@ $(document).ready(function(){
   });
 });
 
+// Função para enviar o email de redefinição de senha
 function enviarEmailRedefinicao(){
   var email = document.getElementById("emailEsqueciSenha").value;
   if(email === "") {

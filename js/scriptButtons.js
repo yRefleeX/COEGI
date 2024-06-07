@@ -80,6 +80,34 @@ function buttonLogin(){
      divEsqueciSenha.style.display = "none";
     
      adicionarControleDesenho();
+
+      
+	  $.ajax({
+         url: "mostraPerfil.php",
+         method: "POST",
+         dataType: "json",
+         success: function(dados) {
+             if ("nome" in dados && "sobrenome" in dados) {
+                
+                 exibirRotaMotorista(dados.motorista_id);
+             } else {
+                 alert("Erro: Dados do motorista não encontrados."); 
+             }
+         },
+         error: function(jqXHR, textStatus, errorThrown) {
+             alert("Erro ao buscar detalhes.");
+             console.log(jqXHR, textStatus, errorThrown);
+         }
+		 
+		 // Vincule o evento de clique ao botão "editar"
+		  $("#Perfil").on("click", ".edita", function(event) {
+			var motorista_id = $(this).siblings('#motorista_id').val();
+			exibirDetalhes(motorista_id);
+		  });
+
+
+     });
+
   }
   
   function buttonInfoMotorista(){

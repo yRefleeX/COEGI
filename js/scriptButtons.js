@@ -99,13 +99,6 @@ function buttonLogin(){
              console.log(jqXHR, textStatus, errorThrown);
          }
 		 
-		 // Vincule o evento de clique ao botão "editar"
-		  $("#Perfil").on("click", ".edita", function(event) {
-			var motorista_id = $(this).siblings('#motorista_id').val();
-			exibirDetalhes(motorista_id);
-		  });
-
-
      });
 
   }

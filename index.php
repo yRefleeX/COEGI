@@ -113,7 +113,8 @@
         <div class="botoes" id="botoesPerfil">
           <button type="button" onclick="buttonVerPerfil()"> Ver Perfil</button>
           <input type="hidden" name="motorista_id" id="motorista_id" value="<?php echo $_SESSION['motorista_id']; ?>">
-          <button type="submit" onclick="buttonEdita()"> Editar Perfil</button>
+          <button type="button" class="edita" onclick="buttonEdita()"> Editar Perfil</button>
+ <input type="hidden" name="motorista_id" id="motorista_id" value="<?php echo $_SESSION['motorista_id']; ?>">
           <button type="submit" onclick="buttonLogout()"> Fazer Logout</button>
         </div>
       </div>

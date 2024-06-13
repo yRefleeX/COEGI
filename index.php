@@ -151,25 +151,34 @@
         <p>Preencha os campos em que deseja alterar a informação. Para manter as informações que deseja, deixe o campo específico em branco.</p>
 
         <!-- Formulário para editar os dados do motorista -->
-        <form>
-          <input type="text" placeholder="Nome" name="nome" required>
-          <input type="text" placeholder="Sobrenome" name="sobrenome" required>
-          <input type="text" placeholder="RG" name="rg" required>
-          <input type="text" placeholder="CPF" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" required>
-          <input type="text" placeholder="CNH" name="cnh" required><br>
-          <input type="text" placeholder="Preço" name="preco" required>
-          <input type="text" placeholder="Rotas" name="rotas" required>
-          <input type="text" placeholder="Telefone" name="telefone" required>
-          <input type="text" placeholder="Periodo" name="periodo" required><br>
+        <form action="editaPerfil.php" method="post" enctype="multipart/form-data">
+          <input type="text" placeholder="Nome" name="nomeEdita" id="nomeEdita">
+          <input type="text" placeholder="Sobrenome" name="sobrenomeEdita" id="sobrenomeEdita">
+          <input type="text" placeholder="RG" name="rgEdita" id="rgEdita">
+          <input type="text" placeholder="CPF" name="cpfEdita" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" id="cpfEdita">
+          <input type="text" placeholder="CNH" name="cnhEdita" id="cnhEdita"><br>
+          <input type="text" placeholder="Preço" name="precoEdita" id="precoEdita">
+          <input type="text" placeholder="Rotas" name="rotasEdita" id="rotasEdita">
+          <input type="text" placeholder="Telefone" name="telefoneEdita" id="telefoneEdita">
+          <input type="text" placeholder="Periodo" name="periodoEdita" id="periodoEdita">
 
-          <p>DUAS FOTOS TAMANHO 2x2:</p>
-          <input type="file" accept=".png, .pdf, .jpg">
+          <p>FOTO TAMANHO 2X2:</p>
+          <input type="file" name="foto_2x2_1_edita" accept=".png, .pdf, .jpg">
 
-          <button class="ButCad" type="submit" onclick="buttonMoto()">Editar</button>
+          <br>
+
+          <button class="ButCad" type="submit">Editar</button>
         </form>
         
+        <br>
+
+        <button class="ButCad" type="button" onclick="buttonRemoverPerfil()">Remover Conta</button>
+
         <br><br>
       </div>
+
+      <!-- Div que aparecerá caso for clicado no botão "Remover Conta"-->
+      <div id="RemoverMotorista"></div>
 
       <!-- Div com as informações do motorista caso for clicado em "Saiba Mais"-->
       <div id="InfMotorista"></div>

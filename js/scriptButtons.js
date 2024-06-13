@@ -8,6 +8,7 @@ function buttonLogin(){
     var cad = document.getElementById("Cad"); 
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
   
      log.style.display = "block";
      moto.style.display = "none";
@@ -16,6 +17,7 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+     rem.style.display = "none";
 
      drawnItems.clearLayers();
   
@@ -29,6 +31,7 @@ function buttonLogin(){
     var cad = document.getElementById("Cad");
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
     
      log.style.display = "none";
      moto.style.display = "block";
@@ -37,6 +40,7 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+     rem.style.display = "none";
 
     drawnItems.clearLayers();
   }
@@ -49,6 +53,7 @@ function buttonLogin(){
     var cad = document.getElementById("Cad");
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
     
      log.style.display = "none";
      moto.style.display = "none";
@@ -57,6 +62,7 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+     rem.style.display = "none";
 
      drawnItems.clearLayers();
   }
@@ -70,6 +76,7 @@ function buttonLogin(){
     var cad = document.getElementById("Cad");
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
     
      log.style.display = "none";
      moto.style.display = "none";
@@ -78,6 +85,7 @@ function buttonLogin(){
      infMot.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+     rem.style.display = "none";
     
      adicionarControleDesenho();
   }
@@ -91,6 +99,7 @@ function buttonLogin(){
     var cad = document.getElementById("Cad");
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
   
      log.style.display = "none";
      moto.style.display = "none";
@@ -98,6 +107,7 @@ function buttonLogin(){
      ed.style.display = "none";
      perfil.style.display = "none";
      divEsqueciSenha.style.display = "none";
+     rem.style.display = "none";
   
      $.ajax({
          url: "mostraPerfil.php",
@@ -106,7 +116,7 @@ function buttonLogin(){
          success: function(dados) {
              if ("nome" in dados && "sobrenome" in dados) {
                  infMot.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
-                 '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1;">' +
+                 '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100; width: 100px; z-index: -1; margin-left: auto; margin-right: auto;">' +
                  '<div id="descMotorista">' +
                  'Rotas: ' + dados.rotas + '<br>' +
                  'Periodo: ' + dados.periodo + '<br>' +
@@ -151,6 +161,7 @@ function buttonLogin(){
     var ed = document.getElementById("EditarMotorista");
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
     
     log.style.display = "none";
     moto.style.display = "none";
@@ -159,6 +170,7 @@ function buttonLogin(){
     infMot.style.display = "none";
     perfil.style.display = "block";
     divEsqueciSenha.style.display = "none";
+    rem.style.display = "none";
     
     drawnItems.clearLayers();
   }
@@ -166,6 +178,33 @@ function buttonLogin(){
   function buttonVerPerfil(){
     buttonInfoMotorista();
   }
+
+  function buttonRemoverPerfil(){
+    var perfil = document.getElementById("Perfil");
+    var log = document.getElementById("Login");
+    var moto = document.getElementById("transportadores");
+    var cad = document.getElementById("Cad");
+    var ed = document.getElementById("EditarMotorista");
+    var infMot = document.getElementById("InfMotorista");
+    var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
+
+    log.style.display = "none";
+    moto.style.display = "none";
+    cad.style.display = "none";
+    ed.style.display = "none";
+    infMot.style.display = "none";
+    perfil.style.display = "none";
+    divEsqueciSenha.style.display = "none";
+    rem.style.display = "block";
+
+    rem.innerHTML = '<p>Você deseja mesmo remover sua conta?</p><button class="butCad" type="submit" onclick="removerConta()">Sim</button>';
+  }
+
+  function removerConta(){
+    window.location.href = "removerPerfil.php";
+  }
+
   function buttonLogout(){
     window.location.href = "logout.php";
   }
@@ -178,6 +217,7 @@ function buttonLogin(){
     var cad = document.getElementById("Cad");
     var infMot = document.getElementById("InfMotorista");
     var divEsqueciSenha = document.getElementById("esqueciSenha");
+    var rem = document.getElementById("RemoverMotorista");
     
     log.style.display = "none";
     moto.style.display = "none";
@@ -185,6 +225,7 @@ function buttonLogin(){
     ed.style.display = "none";
     infMot.style.display = "none";
     perfil.style.display = "none";
+    rem.style.display = "none";
     divEsqueciSenha.style.display = "block";
   
     divEsqueciSenha.innerHTML = '<input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><br><button class="butCad" onclick="enviarEmailRedefinicao()">Enviar</button>';

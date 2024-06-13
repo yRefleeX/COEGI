@@ -6,7 +6,7 @@ if (!$conn) {
 }
 
 if (isset($_POST["search"])) {
-  $searchTerm = mysqli_real_escape_string($conn, $_POST["search"]);
+  $searchTerm = addslashes(mysqli_real_escape_string($conn, $_POST["search"]));
 
   // Consulta SQL
   $sql = "SELECT * FROM motorista WHERE nome LIKE '%$searchTerm%' OR sobrenome LIKE '%$searchTerm%'";

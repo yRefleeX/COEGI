@@ -17,10 +17,8 @@ $stmtRota->execute();
 $stmtRota->store_result();
 
 if($stmtRota->num_rows > 0){
-    $stmtRota->bind_result($rota_id);
-
     // Consulta SQL para remover a rota
-    $sqlRota = "DELETE FROM rotas WHERE id = '$rota_id'";
+    $sqlRota = "DELETE FROM rotas WHERE motorista_id = '$motorista_id'";
 
     if(!mysqli_query($conn, $sqlRota)){
         die("Erro ao deletar o motorista.");

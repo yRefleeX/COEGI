@@ -5,6 +5,12 @@ if (!$conn) {
   die("Conexão falhou: " . mysqli_connect_error());
 }
 
+if ($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+    // Quando entrar nessa condição, significa que o usuário tentou acessar o link diretamente    
+    // Faça algo.
+    die();        
+}
+
 // Verifica se houve requisição POST e se os dados da rota foram enviados
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['geojson'])) {
     session_start();

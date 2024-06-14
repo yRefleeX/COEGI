@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Maio-2024 às 04:37
+-- Tempo de geração: 14-Jun-2024 às 21:18
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -158,6 +158,16 @@ ALTER TABLE `verificacao_email`
 --
 ALTER TABLE `rotas`
   ADD CONSTRAINT `rotas_ibfk_1` FOREIGN KEY (`motorista_id`) REFERENCES `motorista` (`motorista_id`);
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `delete_old_token_verificacao` ON SCHEDULE EVERY 1 HOUR STARTS '2024-06-14 15:19:22' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM verificacao_email WHERE data_expiracao < DATE_SUB(NOW(), INTERVAL 1 HOUR)$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `delete_old_token_red` ON SCHEDULE EVERY 1 HOUR STARTS '2024-06-14 15:22:55' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM redsenha_email WHERE data_expiracao < DATE_SUB(NOW(), INTERVAL 1 HOUR)$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

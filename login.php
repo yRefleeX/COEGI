@@ -5,6 +5,13 @@ if (!$conn) {
     die("Conexão falhou: " . mysqli_connect_error());
 }
 
+// Verifica o local de execução do script PHP
+if ($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+    // Quando entrar nessa condição, significa que o usuário tentou acessar o link diretamente    
+    // Faça algo.
+    die();        
+}
+
 $email = addslashes($_POST["emailLogin"]);
 $senha = addslashes($_POST["senhaLogin"]);
 

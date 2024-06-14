@@ -1,4 +1,4 @@
-var drawnItems;
+var drawnItems, rotaDesenhada = false;
 
 $(document).ready(function() {
   // funções para o funcionamento do mapa
@@ -13,54 +13,69 @@ $(document).ready(function() {
   drawnItems = L.featureGroup().addTo(map);
 
   var drawControl;
-  var rotaDesenhada = false; // Variável para controlar se o motorista já desenhou uma rota
 
   // Manipulação de eventos de desenho
   map.on(L.Draw.Event.CREATED, function(e) {
-  var layer = e.layer;
-  drawnItems.addLayer(layer);
-  
-  // Obter os pontos da rota em formato GeoJSON
-  var geojson = layer.toGeoJSON();
+    var layer = e.layer;
+    drawnItems.addLayer(layer);
+    
+    // Obter os pontos da rota em formato GeoJSON
+    var geojson = layer.toGeoJSON();
 
-  // Envia os dados para o servidor via AJAX
-  $.ajax({
-    url: 'salvarRota.php', // Arquivo PHP que irá receber os dados
-    type: 'POST', // Método HTTP
-    data: { // Dados a serem enviados
-      geojson: JSON.stringify(geojson),
-      motorista_id: $('#motorista_id').val()
-    },
-    dataType: 'json', // Tipo de dado esperado na resposta do servidor
-    success: function(resposta) {
-      if (resposta.status === 'sucesso') {
-        // Rota salva com sucesso!
-        alert(resposta.mensagem);
+    // Define a URL da requisição AJAX com base em rotaDesenhada
+    var urlRequisicao = rotaDesenhada ? 'atualizarRota.php' : 'salvarRota.php';
 
-        // Adiciona a nova rota ao mapa
-        var novaRotaLayer = L.geoJSON(geojson, { // 'geojson' deve estar acessível aqui
-          style: { 
-            color: 'blue',
-            weight: 5
-          }
-        });
+    // Envia os dados para o servidor via AJAX
+    $.ajax({
+      url: urlRequisicao, // Arquivo PHP que irá receber os dados
+      type: 'POST', // Método HTTP
+      data: { // Dados a serem enviados
+        geojson: JSON.stringify(geojson),
+        motorista_id: $('#motorista_id').val()
+      },
+      dataType: 'json', // Tipo de dado esperado na resposta do servidor
+      success: function(resposta) {
+        if (resposta.status === 'sucesso') {
+          // Rota salva com sucesso!
+          alert(resposta.mensagem);
 
-        // 2. Adicione a nova camada ao drawnItems
-        drawnItems.addLayer(novaRotaLayer); 
-      } else {
-        // Exibe a mensagem de erro
-        alert("Erro ao salvar a rota: " + resposta.mensagem); 
+          rotaDesenhada = true; // Define como true após a primeira rota ser desenhada
+
+          // Adiciona a nova rota ao mapa
+          var novaRotaLayer = L.geoJSON(geojson, { // 'geojson' deve estar acessível aqui
+            style: { 
+              color: 'blue',
+              weight: 5
+            }
+          });
+
+          // 2. Adicione a nova camada ao drawnItems
+          drawnItems.addLayer(novaRotaLayer);
+        } else {
+          // Exibe a mensagem de erro
+          alert("Erro ao salvar a rota: " + resposta.mensagem); 
+        }
+      },
+      error: function(erro) {
+        // Erro na requisição AJAX
+        console.error("Erro ao enviar dados da rota:", erro);
+        alert("Erro ao salvar a rota. Por favor, tente novamente.");
       }
-    },
-    error: function(erro) {
-      // Erro na requisição AJAX
-      console.error("Erro ao enviar dados da rota:", erro);
-      alert("Erro ao salvar a rota. Por favor, tente novamente.");
-    }
+    });
   });
-});
 
-  var drawControl; // Declarando a variável globalmente
+  // Manipula o evento 'draw:editstart'
+  map.on('draw:editstart', function(e) {
+    // Limpa a rota existente do mapa
+    drawnItems.clearLayers(); 
+
+    // Habilita o desenho de polilinhas
+    drawControl.setDrawingOptions({
+      polyline: true 
+    });
+
+    rotaDesenhada = false; // Reseta a variável para permitir uma nova inserção
+  });
 
   // Função para adicionar o controle de desenho ao mapa
   window.adicionarControleDesenho = function() {

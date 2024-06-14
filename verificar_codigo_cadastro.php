@@ -6,6 +6,12 @@
         die("Conexão falhou: " . mysqli_connect_error());
     }
 
+    if ($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+        // Quando entrar nessa condição, significa que o usuário tentou acessar o link diretamente    
+        // Faça algo.
+        die();        
+    }
+
     session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

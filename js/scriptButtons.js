@@ -247,5 +247,5 @@ function buttonLogin(){
     rem.style.display = "none";
     divEsqueciSenha.style.display = "block";
   
-    divEsqueciSenha.innerHTML = '<input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><br><button class="butCad" onclick="enviarEmailRedefinicao()">Enviar</button>';
+    divEsqueciSenha.innerHTML = '<div style="display: grid; justify-content: center;"><input type="email" placeholder="Digite seu email" id="emailEsqueciSenha"><button class="butCad" onclick="enviarEmailRedefinicao()">Enviar</button></div>';
   }

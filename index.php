@@ -151,7 +151,8 @@
         <div id="EditarMotorista">
           <p>EDITAR</p>
           <hr>
-          <p>Preencha os campos em que deseja alterar a informação. Para manter as informações que deseja, deixe o campo específico em branco.</p>
+          <p>Preencha os campos em que deseja alterar a informação. Para manter as informações que deseja, deixe o campo específico em branco.<br>
+          Caso queira desenhar a rota, clique no botão com um desenho de linha, no canto superior esquerdo do mapa. Já para editar a rota, clique no botão logo abaixo, e depois clique no botão com desenho de linha para desenhar a rota novamente.</p>
 
           <!-- Formulário para editar os dados do motorista -->
           <form action="editaPerfil.php" method="post" enctype="multipart/form-data">

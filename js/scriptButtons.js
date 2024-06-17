@@ -42,6 +42,8 @@ function buttonLogin(){
      divEsqueciSenha.style.display = "none";
      rem.style.display = "none";
 
+
+    removerControleDesenho();
     drawnItems.clearLayers();
   }
   
@@ -95,10 +97,17 @@ function buttonLogin(){
       dataType: "json",
       success: function(dados) {
           if ("nome" in dados && "sobrenome" in dados) {
-             
-              exibirRotaMotorista(dados.motorista_id);
+            exibirRotaMotorista(dados.motorista_id);
+
+            // Adie a habilitação da edição
+            setTimeout(function() {
+            if (drawControl && drawControl.edit) {
+              drawControl.setDrawingOptions({ polyline: false });
+              drawControl.edit.enable(); 
+            }
+            }, 100);
           } else {
-              alert("Erro: Dados do motorista não encontrados."); 
+            alert("Erro: Dados do motorista não encontrados."); 
           }
       },
       error: function(jqXHR, textStatus, errorThrown) {
@@ -191,6 +200,8 @@ function buttonLogin(){
     divEsqueciSenha.style.display = "none";
     rem.style.display = "none";
     
+    removerControleDesenho();
+    
     drawnItems.clearLayers();
   }
   
@@ -217,7 +228,7 @@ function buttonLogin(){
     divEsqueciSenha.style.display = "none";
     rem.style.display = "block";
 
-    rem.innerHTML = '<p>Você deseja mesmo remover sua conta?</p><button class="butCad" type="submit" onclick="removerConta()">Sim</button>';
+    rem.innerHTML = '<div style="display: grid; justify-items: center;"><p>Você deseja mesmo remover sua conta?</p><button class="butCad" type="submit" onclick="removerConta()">Sim</button></div>';
   }
 
   function removerConta(){

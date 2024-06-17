@@ -43,7 +43,6 @@ $(document).ready(function(){
           'Periodo: ' + dados.periodo + '<br>' +
           'Telefone: ' + dados.telefone + '' +
           '</div></div>';
-          // Adicione outras informações conforme necessário
           
           log.style.display = "none";
           document.querySelectorAll('.transportadores').forEach(function(mot){
@@ -65,7 +64,7 @@ $(document).ready(function(){
     });
   }
 
-  // Vincule o evento de clique ao botão "saiba mais"
+  // Vincula o evento de clique ao botão "saiba mais"
   $("#listMot").on("click", ".salvar", function(event) {
     var idMot = $(this).siblings('#idMot').val();
     exibirDetalhes(idMot);
@@ -85,12 +84,11 @@ function enviarEmailRedefinicao(){
     method: "POST",
     data: { email: email },
     success: function(response) {
-      alert(response);
+      alert("Link para recuperação enviado ao seu email.")
       document.getElementById("esqueciSenha").display = "none";
     },
     error: function(jqXHR, textStatus, errorThrown) {
       alert("Erro ao enviar email. Tente novamente mais tarde.");
-      console.log(jqXHR, textStatus, errorThrown);
     }
   });
 }

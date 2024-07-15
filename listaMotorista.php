@@ -16,7 +16,7 @@ if ( realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
 }
 
 
-$query = mysqli_query($conn, "select * from motorista");
+$query = mysqli_query($conn, "select * from motorista where verificacao = 1");
 
 
 

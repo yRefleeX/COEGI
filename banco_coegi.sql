@@ -69,7 +69,9 @@ CREATE TABLE `redsenha_email` (
 CREATE TABLE `rotas` (
   `id` int(11) NOT NULL,
   `motorista_id` int(11) NOT NULL,
-  `pontos_rota` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`pontos_rota`))
+  `pontos_rota_tarde` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin CHECK (json_valid(`pontos_rota`)),
+  `pontos_rota_manha` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin CHECK (json_valid(`pontos_rota_manha`)),
+  `pontos_rota_noite` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`pontos_rota`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

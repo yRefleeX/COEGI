@@ -35,6 +35,7 @@ CREATE TABLE `motorista` (
   `rg` char(12) NOT NULL,
   `cnh` char(10) NOT NULL,
   `preco` decimal(6,2) NOT NULL,
+  `verificacao` boolean NOT NULL,
   `rotas` varchar(50) NOT NULL,
   `telefone` char(15) NOT NULL,
   `periodo` varchar(30) NOT NULL,

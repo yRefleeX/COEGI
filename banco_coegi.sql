@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 14-Jun-2024 às 21:18
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 05-Ago-2024 às 19:16
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,13 +29,14 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `motorista` (
   `motorista_id` int(11) NOT NULL,
+  `verificacao` tinyint(1) NOT NULL,
+  `data_expiracao` date NOT NULL,
   `nome` varchar(50) NOT NULL,
   `sobrenome` varchar(50) NOT NULL,
   `cpf` char(14) NOT NULL,
   `rg` char(12) NOT NULL,
   `cnh` char(10) NOT NULL,
   `preco` decimal(6,2) NOT NULL,
-  `verificacao` boolean NOT NULL,
   `rotas` varchar(50) NOT NULL,
   `telefone` char(15) NOT NULL,
   `periodo` varchar(30) NOT NULL,
@@ -45,7 +46,7 @@ CREATE TABLE `motorista` (
   `path_2x2_1` varchar(100) NOT NULL,
   `path_2x2_2` varchar(100) NOT NULL,
   `pathCrlv` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -58,7 +59,7 @@ CREATE TABLE `redsenha_email` (
   `email` varchar(100) NOT NULL,
   `token` varchar(10) NOT NULL,
   `data_expiracao` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -69,10 +70,10 @@ CREATE TABLE `redsenha_email` (
 CREATE TABLE `rotas` (
   `id` int(11) NOT NULL,
   `motorista_id` int(11) NOT NULL,
-  `pontos_rota_tarde` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin CHECK (json_valid(`pontos_rota`)),
-  `pontos_rota_manha` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin CHECK (json_valid(`pontos_rota_manha`)),
-  `pontos_rota_noite` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`pontos_rota`))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `pontos_rota` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota`)),
+  `pontos_rota_manha` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota_manha`)),
+  `pontos_rota_noite` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota_noite`))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -85,7 +86,7 @@ CREATE TABLE `verificacao_email` (
   `email` varchar(100) NOT NULL,
   `codigo_verificacao` varchar(10) NOT NULL,
   `data_expiracao` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Índices para tabelas despejadas
@@ -169,6 +170,8 @@ DELIMITER $$
 CREATE DEFINER=`root`@`localhost` EVENT `delete_old_token_verificacao` ON SCHEDULE EVERY 1 HOUR STARTS '2024-06-14 15:19:22' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM verificacao_email WHERE data_expiracao < DATE_SUB(NOW(), INTERVAL 1 HOUR)$$
 
 CREATE DEFINER=`root`@`localhost` EVENT `delete_old_token_red` ON SCHEDULE EVERY 1 HOUR STARTS '2024-06-14 15:22:55' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM redsenha_email WHERE data_expiracao < DATE_SUB(NOW(), INTERVAL 1 HOUR)$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `delete_old_motorista_verificacao` ON SCHEDULE EVERY 1 MONTH STARTS '2024-08-05 14:07:07' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM motorista WHERE verificacao = 0 AND data_expiracao < DATE_SUB(NOW(), INTERVAL 1 MONTH)$$
 
 DELIMITER ;
 COMMIT;

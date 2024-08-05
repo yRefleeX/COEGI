@@ -31,7 +31,8 @@
     
         // Verifica se o código existe e se não expirou
         if ($codigoInserido === $codigoSalvo && strtotime($dataExpiracao) > time() && $emailSalvo === $email) {
-            // Recupere os dados do usuário da sessão
+            // Recupera os dados do usuário da sessão
+            $dataExpiracaoMot = $_SESSION['dados_motorista']['dataExpiracaoMot'];
             $nome = $_SESSION['dados_motorista']['nome'];
             $sobrenome = $_SESSION['dados_motorista']['sobrenome'];
             $rg = $_SESSION['dados_motorista']['rg'];
@@ -65,9 +66,9 @@
             $pathCrlv = $pastaCrlv . $nomeCrlv;
 
             if(copy($tempPathRes, $pathRes) && copy($tempPath_2x2_1, $path_2x2_1) && copy($tempPath_2x2_2, $path_2x2_2) && copy($tempPathCrlv, $pathCrlv)){
-                $sql = "insert into motorista(nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "insert into motorista(verificacao,data_expiracao,nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("sssssdsssssssss", $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
+                $stmt->bind_param("issssssdsssssssss", 0, $dataExpiracaoMot, $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
 
                 if (($stmt->execute())) {
                     // Remove o código da tabela 'verificacao_email'

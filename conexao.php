@@ -10,7 +10,7 @@ $severname = "localhost";
 $username = "root";  
 $password = "";
 $dbName = "banco_coegi";
-$porta = "3306";
+$porta = "3307";
 
 
 $conn = mysqli_connect($severname,$username,$password,$dbName,$porta);

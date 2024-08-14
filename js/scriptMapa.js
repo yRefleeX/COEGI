@@ -1,4 +1,4 @@
-var drawnItems, rotaDesenhada = false, drawControl, urlRequisicao = rotaDesenhada ? 'atualizarRota.php' : 'salvarRota.php';
+var drawnItems, rotaDesenhada = false, drawControl, urlRequisicao = rotaDesenhada ? 'atualizarRota.php' : 'salvarRota.php', rotasVal;
 
 $(document).ready(function() {
   // funções para o funcionamento do mapa
@@ -26,7 +26,8 @@ $(document).ready(function() {
       type: 'POST', // Método HTTP
       data: { // Dados a serem enviados
         geojson: JSON.stringify(geojson),
-        motorista_id: $('#motorista_id').val()
+        motorista_id: $('#motorista_id').val(),
+        valoresRota: rotasVal
       },
       dataType: 'json', // Tipo de dado esperado na resposta do servidor
       success: function(resposta) {
@@ -56,6 +57,16 @@ $(document).ready(function() {
         alert("Erro ao salvar a rota. Por favor, tente novamente.");
       }
     }); 
+  });
+
+  $('#butRotasManha').click(function() {
+    rotasVal = 'manha';
+  });
+  $('#butRotasTarde').click(function() {
+    rotasVal = 'tarde';
+  });
+  $('#butRotasNoite').click(function() {
+    rotasVal = 'noite';
   });
 
   // Manipula o evento 'draw:editstart'

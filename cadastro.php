@@ -153,11 +153,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Gere um código de 6 caracteres
             $codigoVerificacao = gerarCodigo();
 
-            // Cria uma data de expiração para verificar o motorista
-            $dataExpiracaoMot = date('Y-m-d H:i:s', strtotime('+1 month'));
-
             $_SESSION['dados_motorista'] = [
-                'dataExpiracaoMot' => $dataExpiracaoMot,
                 'nome' => $nome,
                 'sobrenome' => $sobrenome,
                 'rg' => $rg,

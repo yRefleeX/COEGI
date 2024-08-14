@@ -16,10 +16,23 @@ if ($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVE
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $geojsonData = $_POST['geojson'];
     $motorista_id = $_POST['motorista_id'];
+    $rotasVal = $_POST['valoresRota'];
 
-    $sql = "UPDATE rotas SET pontos_rota = ? WHERE motorista_id = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $geojsonData, $motorista_id);
+    if($rotasVal === 'tarde'){
+        $sql = "UPDATE rotas SET pontos_rota = ? WHERE motorista_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $geojsonData, $motorista_id);
+    }
+    elseif($rotasVal === 'manha'){
+        $sql = "UPDATE rotas SET pontos_rota_manha = ? WHERE motorista_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $geojsonData, $motorista_id);
+    }
+    else{
+        $sql = "UPDATE rotas SET pontos_rota_noite = ? WHERE motorista_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("si", $geojsonData, $motorista_id);
+    }
 
     if ($stmt->execute()) {
         echo json_encode(['status' => 'sucesso', 'mensagem' => 'Rota atualizada com sucesso!']);

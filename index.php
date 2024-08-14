@@ -179,6 +179,10 @@
           <button class="ButCad" type="button" onclick="buttonRemoverPerfil()">Remover Conta</button>
 
           <br><br>
+
+          <button class="ButCad" id="butRotasManha" type="button" value="manha">Editar Rotas (manhã)</button>
+          <button class="ButCad" id="butRotasTarde" type="button" value="tarde">Editar Rotas (tarde)</button>
+          <button class="ButCad" id="butRotasNoite" type="button" value="noite">Editar Rotas (noite)</button>
         </div>
 
         <!-- Div que aparecerá caso for clicado no botão "Remover Conta"-->

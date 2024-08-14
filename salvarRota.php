@@ -32,14 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['geojson'])) {
     $stmtVerifica->store_result();
 
     if ($stmtVerifica->num_rows > 0) {
-        if ($rotasVal === 'manha') {
-            $sqlAtualizaRota = "UPDATE rotas SET pontos_rota_manha = ? WHERE motorista_id = ?";
-        } elseif ($rotasVal === 'tarde') {
-            $sqlAtualizaRota = "UPDATE rotas SET pontos_rota = ? WHERE motorista_id = ?"; // Coluna para tarde
-        } else { // noite
-            $sqlAtualizaRota = "UPDATE rotas SET pontos_rota_noite = ? WHERE motorista_id = ?";
-        }
-
+        $sqlAtualizaRota = "UPDATE rotas SET pontos_rota_$rotasVal = ? WHERE motorista_id = ?";
         $stmtVerifica->close();
         $stmtAtualiza = $conn->prepare($sqlAtualizaRota);
         $stmtAtualiza->bind_param("si", $geojsonData, $motorista_id);
@@ -53,24 +46,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['geojson'])) {
     else{
         $stmtVerifica->close();
 
-        if($rotasVal === 'tarde'){
-            // Consulta SQL para inserir a rota da tarde no banco de dados
-            $sql = "INSERT INTO rotas (motorista_id, pontos_rota) VALUES (?, ?)";
-            $stmt = $conn->prepare($sql); 
-            $stmt->bind_param("is", $motorista_id, $geojsonData);
-        }
-        elseif($rotasVal === 'manha'){
-            // Consulta SQL para inserir a rota da tarde no banco de dados
-            $sql = "INSERT INTO rotas (motorista_id, pontos_rota_manha) VALUES (?, ?)";
-            $stmt = $conn->prepare($sql); 
-            $stmt->bind_param("is", $motorista_id, $geojsonData);
-        }
-        else{
-            // Consulta SQL para inserir a rota da tarde no banco de dados
-            $sql = "INSERT INTO rotas (motorista_id, pontos_rota_noite) VALUES (?, ?)";
-            $stmt = $conn->prepare($sql); 
-            $stmt->bind_param("is", $motorista_id, $geojsonData);
-        }
+        // Consulta SQL para inserir a rota no banco de dados
+        $sql = "INSERT INTO rotas (motorista_id, pontos_rota_$rotasVal) VALUES (?, ?)";
+        $stmt = $conn->prepare($sql); 
+        $stmt->bind_param("is", $motorista_id, $geojsonData);
 
         if ($stmt->execute()){
             echo json_encode(['status' => 'sucesso', 'mensagem' => 'Rota salva com sucesso!']);

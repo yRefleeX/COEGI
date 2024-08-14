@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Tempo de geração: 05-Ago-2024 às 19:16
--- Versão do servidor: 10.4.22-MariaDB
--- versão do PHP: 8.1.1
+-- Host: 127.0.0.1
+-- Tempo de geração: 15-Ago-2024 às 01:48
+-- Versão do servidor: 10.4.27-MariaDB
+-- versão do PHP: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -46,7 +46,7 @@ CREATE TABLE `motorista` (
   `path_2x2_1` varchar(100) NOT NULL,
   `path_2x2_2` varchar(100) NOT NULL,
   `pathCrlv` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,7 @@ CREATE TABLE `redsenha_email` (
   `email` varchar(100) NOT NULL,
   `token` varchar(10) NOT NULL,
   `data_expiracao` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -70,10 +70,10 @@ CREATE TABLE `redsenha_email` (
 CREATE TABLE `rotas` (
   `id` int(11) NOT NULL,
   `motorista_id` int(11) NOT NULL,
-  `pontos_rota` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota`)),
+  `pontos_rota_tarde` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
   `pontos_rota_manha` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota_manha`)),
   `pontos_rota_noite` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota_noite`))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE `verificacao_email` (
   `email` varchar(100) NOT NULL,
   `codigo_verificacao` varchar(10) NOT NULL,
   `data_expiracao` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Índices para tabelas despejadas

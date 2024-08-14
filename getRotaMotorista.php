@@ -8,14 +8,21 @@ if (!$conn) {
 // Obtém o ID do motorista da requisição GET
 $motoristaId = $_GET['motorista_id'];
 
-// Consulta SQL para buscar a rota do motorista
-$sql = "SELECT pontos_rota FROM rotas WHERE motorista_id = ?"; 
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $motoristaId);
-$stmt->execute();
-$stmt->bind_result($pontosRota); 
-$stmt->fetch();
-$stmt->close();
+if(isset($_GET['valoresRota'])){
+  $rotasVal = $_GET['valoresRota'];
+  
+  // Consulta SQL para buscar a rota do motorista
+  $sql = "SELECT pontos_rota_$rotasVal FROM rotas WHERE motorista_id = ?"; 
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("i", $motoristaId);
+  $stmt->execute();
+  $stmt->bind_result($pontosRota); 
+  $stmt->fetch();
+  $stmt->close();
+}
+else{
+  die();
+}
 
 // Formata a resposta como JSON
 $rota = array(

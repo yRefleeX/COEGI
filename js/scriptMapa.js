@@ -59,16 +59,6 @@ $(document).ready(function() {
     }); 
   });
 
-  $('#butRotasManha').click(function() {
-    rotasVal = 'manha';
-  });
-  $('#butRotasTarde').click(function() {
-    rotasVal = 'tarde';
-  });
-  $('#butRotasNoite').click(function() {
-    rotasVal = 'noite';
-  });
-
   // Manipula o evento 'draw:editstart'
   map.on('draw:editstart', function(e) {
     // Limpa a rota existente do mapa
@@ -111,7 +101,7 @@ $(document).ready(function() {
   }
 });
 
-window.exibirRotaMotorista = function(motoristaId) {
+window.exibirRotaMotorista = function(motoristaId, periodoRota) {
   // Limpa as rotas existentes do mapa
   drawnItems.clearLayers();
 
@@ -119,7 +109,10 @@ window.exibirRotaMotorista = function(motoristaId) {
   $.ajax({
     url: 'getRotaMotorista.php',
     type: 'GET',
-    data: { motorista_id: motoristaId }, 
+    data: { 
+      motorista_id: motoristaId,
+      valoresRota: periodoRota
+    }, 
     dataType: 'json',
     success: function(rota) {
       if (rota && rota.geojson) {
@@ -139,3 +132,13 @@ window.exibirRotaMotorista = function(motoristaId) {
     }
   });
 }
+
+$('.butRotasManha').click(function() {
+  rotasVal = 'manha';
+});
+$('.butRotasTarde').click(function() {
+  rotasVal = 'tarde';
+});
+$('.butRotasNoite').click(function() {
+  rotasVal = 'noite';
+});

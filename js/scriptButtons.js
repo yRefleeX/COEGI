@@ -97,8 +97,6 @@ function buttonLogin(){
       dataType: "json",
       success: function(dados) {
           if ("nome" in dados && "sobrenome" in dados) {
-            exibirRotaMotorista(dados.motorista_id);
-
             // Adie a habilitação da edição
             setTimeout(function() {
             if (drawControl && drawControl.edit) {
@@ -148,13 +146,23 @@ function buttonLogin(){
                  '<div id="descMotorista">' +
                  'Rotas: ' + dados.rotas + '<br>' +
                  'Periodo: ' + dados.periodo + '<br>' +
-                 'Telefone: ' + dados.telefone + '' +
-                 '</div></div>';
+                 'Telefone: ' + dados.telefone + '</div><br>' +
+                 '<div><button class="ButCad butRotasManha" type="button">Rotas (manhã)</button>' +
+                 '<button class="ButCad butRotasTarde" type="button">Rotas (tarde)</button>' +
+                 '<button class="ButCad butRotasNoite" type="button">Rotas (noite)</button></div></div>';
   
                  // Exibe a div InfMotorista
                  infMot.style.display = "block";
 
-                 exibirRotaMotorista(dados.motorista_id);
+                 $('.butRotasManha').click(function() {
+                  exibirRotaMotorista(dados.motorista_id, 'manha');
+                });
+                $('.butRotasTarde').click(function() {
+                  exibirRotaMotorista(dados.motorista_id, 'tarde');
+                });
+                $('.butRotasNoite').click(function() {
+                  exibirRotaMotorista(dados.motorista_id, 'noite');
+                });
              } else {
                  alert("Erro: Dados do motorista não encontrados."); 
              }

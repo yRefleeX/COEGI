@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Maio-2024 às 04:37
+-- Tempo de geração: 15-Ago-2024 às 01:48
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -29,6 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `motorista` (
   `motorista_id` int(11) NOT NULL,
+  `verificacao` tinyint(1) NOT NULL,
+  `data_expiracao` date NOT NULL,
   `nome` varchar(50) NOT NULL,
   `sobrenome` varchar(50) NOT NULL,
   `cpf` char(14) NOT NULL,
@@ -68,8 +70,9 @@ CREATE TABLE `redsenha_email` (
 CREATE TABLE `rotas` (
   `id` int(11) NOT NULL,
   `motorista_id` int(11) NOT NULL,
-  `pontos_rota` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin CHECK (json_valid(`pontos_rota`)),
-  `pontos_rota_manha` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin CHECK (json_valid(`pontos_rota_manha`))
+  `pontos_rota_tarde` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
+  `pontos_rota_manha` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota_manha`)),
+  `pontos_rota_noite` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`pontos_rota_noite`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -159,6 +162,18 @@ ALTER TABLE `verificacao_email`
 --
 ALTER TABLE `rotas`
   ADD CONSTRAINT `rotas_ibfk_1` FOREIGN KEY (`motorista_id`) REFERENCES `motorista` (`motorista_id`);
+
+DELIMITER $$
+--
+-- Eventos
+--
+CREATE DEFINER=`root`@`localhost` EVENT `delete_old_token_verificacao` ON SCHEDULE EVERY 1 HOUR STARTS '2024-06-14 15:19:22' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM verificacao_email WHERE data_expiracao < DATE_SUB(NOW(), INTERVAL 1 HOUR)$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `delete_old_token_red` ON SCHEDULE EVERY 1 HOUR STARTS '2024-06-14 15:22:55' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM redsenha_email WHERE data_expiracao < DATE_SUB(NOW(), INTERVAL 1 HOUR)$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `delete_old_motorista_verificacao` ON SCHEDULE EVERY 1 MONTH STARTS '2024-08-05 14:07:07' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM motorista WHERE verificacao = 0 AND data_expiracao < DATE_SUB(NOW(), INTERVAL 1 MONTH)$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

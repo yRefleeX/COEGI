@@ -5,11 +5,17 @@ if (!$conn) {
   die("Conexão falhou: " . mysqli_connect_error());
 }
 
+if ($_SERVER['REQUEST_METHOD']=='GET' && realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+  // Quando entrar nessa condição, significa que o usuário tentou acessar o link diretamente    
+  // Faça algo.
+  die();        
+}
+
 if (isset($_POST["search"])) {
-  $searchTerm = mysqli_real_escape_string($conn, $_POST["search"]);
+  $searchTerm = addslashes(mysqli_real_escape_string($conn, $_POST["search"]));
 
   // Consulta SQL
-  $sql = "SELECT * FROM motorista WHERE nome LIKE '%$searchTerm%' OR sobrenome LIKE '%$searchTerm%'";
+  $sql = "SELECT * FROM motorista WHERE (nome LIKE '%$searchTerm%' OR sobrenome LIKE '%$searchTerm%') AND verificacao = 1";
   $result = mysqli_query($conn, $sql);
 
   // Se tiver algum motorista de acordo com a pesquisa, aparecerão seus dados. Se não, aparecerá a mensagem "Nenhum motorista encontrado."

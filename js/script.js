@@ -39,11 +39,12 @@ $(document).ready(function(){
           infMot.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
           '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100px; width: 100px; z-index: -1; margin-left: auto; margin-right: auto;">' +
           '<div id="descMotorista">' +
-          'Rotas: ' + dados.rotas + '<br>' +
+          'Rotas: ' + dados.rotas + '<br>' +  
           'Periodo: ' + dados.periodo + '<br>' +
-          'Telefone: ' + dados.telefone + '' +
-          '</div></div>';
-          // Adicione outras informações conforme necessário
+          'Telefone: ' + dados.telefone + '</div><br>' +
+          '<div><button class="ButCad butRotasManha" type="button">Rotas (manhã)</button>' +
+          '<button class="ButCad butRotasTarde" type="button">Rotas (tarde)</button>' +
+          '<button class="ButCad butRotasNoite" type="button">Rotas (noite)</button></div></div>';
           
           log.style.display = "none";
           document.querySelectorAll('.transportadores').forEach(function(mot){
@@ -53,7 +54,15 @@ $(document).ready(function(){
           ed.style.display = "none";
           infMot.style.display = "block";
 
-          exibirRotaMotorista(dados.motorista_id);
+          $('.butRotasManha').click(function() {
+            exibirRotaMotorista(dados.motorista_id, 'manha');
+          });
+          $('.butRotasTarde').click(function() {
+            exibirRotaMotorista(dados.motorista_id, 'tarde');
+          });
+          $('.butRotasNoite').click(function() {
+            exibirRotaMotorista(dados.motorista_id, 'noite');
+          });
         } else {
           alert("Erro: Dados do motorista não encontrados."); // Lidar com a ausência de dados (exibir mensagem de erro, etc.)
         }
@@ -65,7 +74,7 @@ $(document).ready(function(){
     });
   }
 
-  // Vincule o evento de clique ao botão "saiba mais"
+  // Vincula o evento de clique ao botão "saiba mais"
   $("#listMot").on("click", ".salvar", function(event) {
     var idMot = $(this).siblings('#idMot').val();
     exibirDetalhes(idMot);
@@ -85,12 +94,11 @@ function enviarEmailRedefinicao(){
     method: "POST",
     data: { email: email },
     success: function(response) {
-      alert(response);
+      alert("Link para recuperação enviado ao seu email.")
       document.getElementById("esqueciSenha").display = "none";
     },
     error: function(jqXHR, textStatus, errorThrown) {
       alert("Erro ao enviar email. Tente novamente mais tarde.");
-      console.log(jqXHR, textStatus, errorThrown);
     }
   });
 }

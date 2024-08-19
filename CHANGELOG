@@ -1,10 +1,11 @@
-# Versão atual: 0.0.3
+# Versão atual: 0.0.4
 
 # Lista de versões
 - 0.0.1
 - 0.0.1-b
 - 0.0.2
 - 0.0.3
+- 0.0.4
 
 # Versão 0.0.1 (13/05/2024)
 
@@ -55,3 +56,10 @@ Novidades
 >- Implementação do sistema de desenho de rotas no mapa;
 >- Mudanças para otimizar o desempenho do site;
 >- Agora o site está sendo hospedado! Link: coegi.com.br
+
+# Versão 0.0.4 (14/08/2024)
+
+Novidades
+-
+>- Adição de sistema de verificação manual para motoristas recém-cadastrados: caso o motorista não estiver verificado, ele não aparecerá no site. Prazo máximo para verificação de motorista: 1 mês; 
+>- Novo sistema de rotas! Agora é possível desenhar e ver diferentes rotas para os períodos manhã, tarde e noite.

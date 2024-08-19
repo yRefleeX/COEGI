@@ -142,14 +142,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $tempPath_2x2_2 = $tempPasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
    $tempPathCrlv = $tempPastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
 
-   move_uploaded_file($res['tmp_name'], $tempPathRes);
-   move_uploaded_file($foto_2x2_1['tmp_name'], $tempPath_2x2_1);
-   move_uploaded_file($foto_2x2_2['tmp_name'], $tempPath_2x2_2);
-   move_uploaded_file($crlv['tmp_name'], $tempPathCrlv);
-
     if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
 
         if(verificaTelefone($telefone) && verificaEmail($email) && verificaCPF($cpf)){
+            move_uploaded_file($res['tmp_name'], $tempPathRes);
+            move_uploaded_file($foto_2x2_1['tmp_name'], $tempPath_2x2_1);
+            move_uploaded_file($foto_2x2_2['tmp_name'], $tempPath_2x2_2);
+            move_uploaded_file($crlv['tmp_name'], $tempPathCrlv);
+
             // Gere um código de 6 caracteres
             $codigoVerificacao = gerarCodigo();
 

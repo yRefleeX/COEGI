@@ -155,6 +155,14 @@ button:active {
 
 }
 
+#butLogin{
+  background-color: #276327;
+}
+
+#butLogin:hover{
+  background-color: #d32f2f;
+}
+
 #img {
   mix-blend-mode: multiply;
   width:100px;
@@ -172,9 +180,10 @@ img {
 }
 
 #LoginOpcoes {
-
   position: relative;
   top: 100px;
+  display: grid;
+  justify-content: center;
 }
 
 #LoginOpcoes button {

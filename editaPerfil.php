@@ -30,47 +30,9 @@ function verificaTelefone($telefone) {
     }
 }
 
-function verificaCPF($cpf){
-    // Remove caracteres especiais e espaços em branco
-    $cpf = preg_replace('/[^0-9]/', '', $cpf);
-
-    // Verifica se o CPF tem 11 dígitos
-    if (strlen($cpf) != 11) {
-        return false;
-    }
-
-    // Verifica se todos os dígitos são iguais
-    if (preg_match('/(\d)\1{10}/', $cpf)) {
-        return false;
-    }
-
-    // Calcula o primeiro dígito verificador
-    for ($i = 0, $j = 10, $soma = 0; $i < 9; $i++, $j--) {
-        $soma += $cpf[$i] * $j;
-    }
-    $resto = $soma % 11;
-    $digito1 = $resto < 2 ? 0 : 11 - $resto;
-
-    // Calcula o segundo dígito verificador
-    for ($i = 0, $j = 11, $soma = 0; $i < 10; $i++, $j--) {
-        $soma += $cpf[$i] * $j;
-    }
-    $resto = $soma % 11;
-    $digito2 = $resto < 2 ? 0 : 11 - $resto;
-
-    // Verifica se os dígitos verificadores são válidos
-    if ($digito1 != $cpf[9] || $digito2 != $cpf[10]) {
-        return false;
-    }
-
-    return true;
-}
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST["nomeEdita"];
     $sobrenome = $_POST["sobrenomeEdita"];
-    $cpf = $_POST["cpfEdita"];
-    $rg = $_POST["rgEdita"];
     $cnh = $_POST["cnhEdita"];
     $preco = $_POST["precoEdita"];
     $rotas = $_POST["rotasEdita"];
@@ -95,16 +57,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (!empty($sobrenome)) {
         $sql .= "sobrenome = ?, ";
         $params[] = $sobrenome;
-        $types .= "s";
-    }
-    if (!empty($cpf) && verificaCPF($cpf)) {
-        $sql .= "cpf = ?, ";
-        $params[] = $cpf;
-        $types .= "s";
-    }
-    if (!empty($rg)) {
-        $sql .= "rg = ?, ";
-        $params[] = $rg;
         $types .= "s";
     }
     if (!empty($cnh)) {

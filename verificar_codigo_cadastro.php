@@ -34,8 +34,6 @@
             // Recupera os dados do usuário da sessão
             $nome = $_SESSION['dados_motorista']['nome'];
             $sobrenome = $_SESSION['dados_motorista']['sobrenome'];
-            $rg = $_SESSION['dados_motorista']['rg'];
-            $cpf = $_SESSION['dados_motorista']['cpf'];
             $cnh = $_SESSION['dados_motorista']['cnh'];
             $preco = $_SESSION['dados_motorista']['preco'];
             $rotas = $_SESSION['dados_motorista']['rotas'];
@@ -69,9 +67,9 @@
                 $dataExpiracaoMot = date('Y-m-d H:i:s', strtotime('+1 month'));
                 $verificacao = 0;
 
-                $sql = "insert into motorista(verificacao,data_expiracao,nome,sobrenome,rg,cpf,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "insert into motorista(verificacao,data_expiracao,nome,sobrenome,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("issssssdsssssssss", $verificacao, $dataExpiracaoMot, $nome, $sobrenome, $rg, $cpf, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
+                $stmt->bind_param("issssdsssssssss", $verificacao, $dataExpiracaoMot, $nome, $sobrenome, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
 
                 if (($stmt->execute())) {
                     // Remove o código da tabela 'verificacao_email'

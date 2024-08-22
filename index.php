@@ -158,8 +158,6 @@
           <form action="editaPerfil.php" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Nome" name="nomeEdita" id="nomeEdita">
             <input type="text" placeholder="Sobrenome" name="sobrenomeEdita" id="sobrenomeEdita">
-            <input type="text" placeholder="RG" name="rgEdita" id="rgEdita">
-            <input type="text" placeholder="CPF" name="cpfEdita" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" id="cpfEdita">
             <input type="text" placeholder="CNH" name="cnhEdita" id="cnhEdita"><br>
             <input type="text" placeholder="Preço" name="precoEdita" id="precoEdita">
             <input type="text" placeholder="Rotas" name="rotasEdita" id="rotasEdita">
@@ -202,8 +200,6 @@
             <form action="cadastro.php" method="post" enctype="multipart/form-data">
               <input type="text" placeholder="Nome" name="nome" id="nome">
               <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
-              <input type="text" placeholder="RG" name="rg" id="rg">
-              <input type="text" placeholder="CPF" name="cpf" pattern="\d{3}\.?\d{3}\.?\d{3}-?\d{2}" id="cpf">
               <input type="text" placeholder="CNH" name="cnh" id="cnh"><br>
               <input type="text" placeholder="Preço" name="preco" id="preco">
               <input type="text" placeholder="Rotas" name="rotas" id="rotas">

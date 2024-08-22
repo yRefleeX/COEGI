@@ -52,47 +52,9 @@ function verificaEmail($email) {
     return checkdnsrr($dominio, 'MX');
 }
 
-function verificaCPF($cpf){
-    // Remove caracteres especiais e espaços em branco
-    $cpf = preg_replace('/[^0-9]/', '', $cpf);
-
-    // Verifica se o CPF tem 11 dígitos
-    if (strlen($cpf) != 11) {
-        return false;
-    }
-
-    // Verifica se todos os dígitos são iguais
-    if (preg_match('/(\d)\1{10}/', $cpf)) {
-        return false;
-    }
-
-    // Calcula o primeiro dígito verificador
-    for ($i = 0, $j = 10, $soma = 0; $i < 9; $i++, $j--) {
-        $soma += $cpf[$i] * $j;
-    }
-    $resto = $soma % 11;
-    $digito1 = $resto < 2 ? 0 : 11 - $resto;
-
-    // Calcula o segundo dígito verificador
-    for ($i = 0, $j = 11, $soma = 0; $i < 10; $i++, $j--) {
-        $soma += $cpf[$i] * $j;
-    }
-    $resto = $soma % 11;
-    $digito2 = $resto < 2 ? 0 : 11 - $resto;
-
-    // Verifica se os dígitos verificadores são válidos
-    if ($digito1 != $cpf[9] || $digito2 != $cpf[10]) {
-        return false;
-    }
-
-    return true;
-}
-
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
-    $cpf = $_POST["cpf"];
-    $rg = $_POST["rg"];
     $cnh = $_POST["cnh"];
     $preco = $_POST["preco"];
     $rotas = $_POST["rotas"];
@@ -142,9 +104,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $tempPath_2x2_2 = $tempPasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
    $tempPathCrlv = $tempPastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
 
-    if(!(empty($nome) || empty($sobrenome) || empty($cpf) || empty($rg) || empty($cnh) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
+    if(!(empty($nome) || empty($sobrenome) || empty($cnh) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
 
-        if(verificaTelefone($telefone) && verificaEmail($email) && verificaCPF($cpf)){
+        if(verificaTelefone($telefone) && verificaEmail($email)){
             move_uploaded_file($res['tmp_name'], $tempPathRes);
             move_uploaded_file($foto_2x2_1['tmp_name'], $tempPath_2x2_1);
             move_uploaded_file($foto_2x2_2['tmp_name'], $tempPath_2x2_2);
@@ -156,8 +118,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['dados_motorista'] = [
                 'nome' => $nome,
                 'sobrenome' => $sobrenome,
-                'rg' => $rg,
-                'cpf' => $cpf,
                 'cnh' => $cnh,
                 'preco' => $preco,
                 'rotas' => $rotas,

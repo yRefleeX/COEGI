@@ -164,7 +164,7 @@
             <input type="text" placeholder="Telefone" name="telefoneEdita" id="telefoneEdita">
             <input type="text" placeholder="Periodo" name="periodoEdita" id="periodoEdita">
 
-            <p>FOTO TAMANHO 2X2:</p>
+            <p>FOTO DE PERFIL (TAMANHO 2X2):</p>
             <input type="file" name="foto_2x2_1_edita" accept=".png, .jpg">
 
             <br>
@@ -212,8 +212,9 @@
 
               <p>COMPROVANTE ATUALIZADO DE RESIDÊNCIA: - PDF</p>
               <input type="file" name="res" accept=".pdf">
-              <p>DUAS FOTOS TAMANHO 2x2: - PNG ou JPG</p>
+              <p>FOTO DE PERFIL (TAMANHO 2X2) - PNG ou JPG</p>
               <input type="file" name="foto_2x2_1" accept=".png, .jpg">
+              <p>SEGUNDA FOTO 2X2 - PNG ou JPG</p>
               <input type="file" name="foto_2x2_2" accept=".png, .jpg">
               <p>Certificado de registro e licenciamento de veículo (CRLV) - PDF</p>
               <input type="file" name="crlv" accept=".pdf"><br>

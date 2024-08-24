@@ -95,7 +95,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $extensao_2x2_2 = strtolower(pathinfo($nome_2x2_2, PATHINFO_EXTENSION));
    $extensaoCrlv = strtolower(pathinfo($nomeCrlv, PATHINFO_EXTENSION));
 
-   if(($extensaoRes != 'jpg' && $extensaoRes != 'png') || ($extensao_2x2_1 != 'jpg' && $extensao_2x2_1 != 'png') || ($extensao_2x2_2 != 'jpg' && $extensao_2x2_2 != 'png') || ($extensaoCrlv != 'jpg' && $extensaoCrlv != 'png')){
+   if(($extensaoRes != 'pdf') || ($extensao_2x2_1 != 'jpg' && $extensao_2x2_1 != 'png') || ($extensao_2x2_2 != 'jpg' && $extensao_2x2_2 != 'png') || ($extensaoCrlv != 'pdf')){
         die("Tipo de arquivo não aceito!");    
    }
 

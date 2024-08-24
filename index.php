@@ -164,8 +164,8 @@
             <input type="text" placeholder="Telefone" name="telefoneEdita" id="telefoneEdita">
             <input type="text" placeholder="Periodo" name="periodoEdita" id="periodoEdita">
 
-            <p>FOTO TAMANHO 2X2:</p>
-            <input type="file" name="foto_2x2_1_edita" accept=".png, .pdf, .jpg">
+            <p>FOTO DE PERFIL (TAMANHO 2X2):</p>
+            <input type="file" name="foto_2x2_1_edita" accept=".png, .jpg">
 
             <br>
 
@@ -210,13 +210,14 @@
 
               <h1> Documentos Necessários</h1>
 
-              <p>COMPROVANTE ATUALIZADO DE RESIDÊNCIA:</p>
-              <input type="file" name="res" accept=".png, .pdf, .jpg">
-              <p>DUAS FOTOS TAMANHO 2x2:</p>
-              <input type="file" name="foto_2x2_1" accept=".png, .pdf, .jpg">
-              <input type="file" name="foto_2x2_2" accept=".png, .pdf, .jpg">
-              <p>Certificado de registro e licenciamento de veículo (CRLV)</p>
-              <input type="file" name="crlv" accept=".png, .pdf, .jpg"><br>
+              <p>COMPROVANTE ATUALIZADO DE RESIDÊNCIA: - PDF</p>
+              <input type="file" name="res" accept=".pdf">
+              <p>FOTO DE PERFIL (TAMANHO 2X2) - PNG ou JPG</p>
+              <input type="file" name="foto_2x2_1" accept=".png, .jpg">
+              <p>SEGUNDA FOTO 2X2 - PNG ou JPG</p>
+              <input type="file" name="foto_2x2_2" accept=".png, .jpg">
+              <p>Certificado de registro e licenciamento de veículo (CRLV) - PDF</p>
+              <input type="file" name="crlv" accept=".pdf"><br>
               <button class="ButCad" type="submit">Cadastrar</button>
             </form>
             

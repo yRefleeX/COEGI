@@ -1,0 +1,27 @@
+#myMap {
+    display: flex;
+  }
+  
+.map {
+    width: calc(100% - 500px); /* Largura do mapa */
+    height: 100%;
+}
+
+/* Estilos responsivos */
+
+/* Tablets */
+@media (max-width: 992px) {    
+    .map {
+      width: 60%;
+      height: 100%;
+    }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+    .map {
+        width: 100%; /* Ocupa a largura total da tela */
+        height: 50vh; /* Define a altura do mapa como 50% da altura da viewport */
+        flex-grow: 1;
+    }
+}

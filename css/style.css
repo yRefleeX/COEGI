@@ -1,0 +1,314 @@
+html,
+body {
+  height: 100%;
+  margin: 0%;
+  padding: 0;
+}
+
+p,h1,h3{
+  font-family: Arial;
+}
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.coluna1 {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+}
+
+.head {
+  background-color: #64a44e;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu {
+  background-color: transparent; /* Remove a cor de fundo */
+  border-bottom: none; /* Remove a linha inferior */ 
+}
+
+#menuBurger{
+	cursor:pointer;
+  margin-right: 10px;
+}
+
+
+.pesquisar {
+  background-color: #f5f5f5; /* Fundo cinza claro */
+  padding: 20px; /* Espaçamento interno */
+  display: flex;
+  justify-content: center; /* Centraliza os elementos horizontalmente */
+  align-items: center; /* Centraliza os elementos verticalmente */
+}
+
+.pesquisar form {
+  display: flex; /* Permite organizar os elementos do formulário lado a lado */
+}
+
+.pesquisar input[type="search"] {
+  width: 300px; /* Largura do campo de pesquisa */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px; /* Borda arredondada à esquerda */
+  font-size: 16px;
+}
+
+.pesquisar input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 0 5px 5px 0; /* Borda arredondada à direita */
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.pesquisar input[type="submit"]:hover {
+  background-color: #d32f2f /* Cor mais escura ao passar o mouse */
+}
+
+.botoes {
+  display: none;
+  justify-content: space-around; /* Distribui os botões com espaço entre eles */
+  padding: 15px;
+  background-color: #f0f0f0; /* Fundo cinza bem claro */
+  flex-direction: column;
+  border: none;
+}
+
+.botoes button {
+  padding: 4px;
+  margin: 1px;
+  font-size: 16px;
+}
+
+button{
+  background-color: #4CAF50; /* Cor de fundo verde */
+  color: white; /* Texto branco */
+  padding: 10px 20px; /* Espaçamento interno */
+  border: none; /* Sem borda */
+  border-radius: 5px; /* Bordas arredondadas */
+  cursor: pointer; /* Cursor de ponteiro */
+  transition: background-color 0.3s ease; /* Transição suave */
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+  cursor: pointer;
+}
+
+button:active {
+  -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
+  box-shadow: inset 0px 0px 5px #c1c1c1;
+  outline: none;
+}
+
+#botao {
+
+  position: relative;
+  right: 5px;
+  width: 50px;
+  border-radius: 0px 10px 10px 0px;
+  cursor: pointer;
+
+}
+
+#Login {
+  border-top: 0px solid black;
+  text-align: center;
+  opacity: 90%;
+  display: none;
+  height: 100%;
+}
+
+#FormularioLogin {
+
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50px;
+  padding: 10px;
+  align-items: center;
+  background-color:#64a44e;
+  border:1px solid black;
+  border-radius: 5px;
+
+
+}
+
+#butLogin{
+  background-color: #276327;
+}
+
+#butLogin:hover{
+  background-color: #d32f2f;
+}
+
+#img {
+  mix-blend-mode: multiply;
+  width:100px;
+  height:100px ;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#FormularioLogin input {
+  margin: 6px;
+  border-color:white;
+}
+
+#LoginOpcoes {
+  position: relative;
+  top: 100px;
+  display: grid;
+  justify-content: center;
+}
+
+#LoginOpcoes button {
+
+  width: 100px;
+  margin: 5px;
+}
+
+.formularioCentro {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.formularioCentro label {
+
+  margin: 20px;
+
+}
+
+#Cad {
+  border: 0px solid black;
+  text-align: center;
+  opacity: 90%;
+  display: none;
+  overflow-y: auto;
+}
+
+#Cad input {
+  margin: 20px;
+  width: 50%;
+  height: 20px;
+  border-radius: 5px;
+}
+
+#Cad i {
+  position: relative;
+  margin: 20px;
+}
+
+input[text-text] {
+  width: 100%;
+  border: 2px solid black;
+  border-radius: 5px;
+  margin: 8px 0;
+  outline: none;
+  padding: 8px;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+input[text-text]:focus {
+  border-color: blue;
+  box-shadow: 0 0 8px 0 blue;
+}
+
+.ButCad {
+  width: 150px;
+  height: 50px;
+}
+
+
+.salvar::before {
+  content: "\f00c"; /* Ícone de "check" do FontAwesome */
+  font-family: FontAwesome;
+  margin-right: 10px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+#botoesPerfil {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50px;
+  padding: 10px;
+  align-items: center;
+  background-color: #64a44e;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#Perfil {
+  border-top: 0px solid black;
+  text-align: center;
+  align-items: center;
+  opacity: 90%;
+  display: none;
+  justify-content: center;
+  height: 100%;
+}
+
+#esqueciSenha{
+  position: relative;
+  margin: auto;
+}
+
+#emailEsqueciSenha{
+  margin-bottom: 40px;
+  width: 150px;
+}
+
+/* Estilos responsivos */
+
+/* Tablets */
+@media (max-width: 992px) {  
+  .sidebar {
+    width: 40%; 
+    height: auto;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) { /* Ajuste o valor conforme necessário */
+  .container {
+    flex-direction: column;
+  }
+
+  .coluna1 {
+    width: 100%; /* Ocupa a largura total da tela */
+    height: 50%; /* Altura ajustada em 50% */
+  }
+}

@@ -55,59 +55,53 @@ function verificaEmail($email) {
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
-    $cnh = $_POST["cnh"];
+    $placa = $_POST["placa"];
+    $renavam = $_POST["renavam"];
     $preco = $_POST["preco"];
     $rotas = $_POST["rotas"];
     $telefone = $_POST["telefone"];
     $periodo= $_POST["periodo"];
     $email = $_POST["email"];
     $senha = password_hash($_POST["senha"], PASSWORD_DEFAULT);
-    $res = $_FILES["res"];
     $foto_2x2_1 = $_FILES["foto_2x2_1"];
     $foto_2x2_2 = $_FILES["foto_2x2_2"];
     $crlv = $_FILES["crlv"];
 
-    if($res["error"] || $foto_2x2_1["error"] || $foto_2x2_2["error"] || $crlv["error"]){
+    if($foto_2x2_1["error"] || $foto_2x2_2["error"] || $crlv["error"]){
         die("Falha ao enviar as imagens!");
     }
 
-    if($res["size"] > 2097152 || $foto_2x2_1["size"] > 2097152 || $foto_2x2_2["size"] > 2097152 || $crlv["size"] > 2097152){
+    if($foto_2x2_1["size"] > 2097152 || $foto_2x2_2["size"] > 2097152 || $crlv["size"] > 2097152){
         die("Imagens muito grandes! Max: 2MB");
     }
 
-   $tempPastaRes = "tempRes/";
    $tempPasta_2x2_1 = "temp_2x2_1/";
    $tempPasta_2x2_2 = "temp_2x2_2/";
    $tempPastaCrlv = "tempCrlv/";
 
-   $nomeRes = $res['name'];
    $nome_2x2_1 = $foto_2x2_1['name'];
    $nome_2x2_2 = $foto_2x2_2['name'];
    $nomeCrlv = $crlv['name'];
 
-   $novoNomeRes = uniqid();
    $novoNome_2x2_1 = uniqid();
    $novoNome_2x2_2 = uniqid();
    $novoNomeCrlv = uniqid();
 
-   $extensaoRes = strtolower(pathinfo($nomeRes, PATHINFO_EXTENSION));
    $extensao_2x2_1 = strtolower(pathinfo($nome_2x2_1, PATHINFO_EXTENSION));
    $extensao_2x2_2 = strtolower(pathinfo($nome_2x2_2, PATHINFO_EXTENSION));
    $extensaoCrlv = strtolower(pathinfo($nomeCrlv, PATHINFO_EXTENSION));
 
-   if(($extensaoRes != 'pdf') || ($extensao_2x2_1 != 'jpg' && $extensao_2x2_1 != 'png') || ($extensao_2x2_2 != 'jpg' && $extensao_2x2_2 != 'png') || ($extensaoCrlv != 'pdf')){
+   if(($extensao_2x2_1 != 'jpg' && $extensao_2x2_1 != 'png') || ($extensao_2x2_2 != 'jpg' && $extensao_2x2_2 != 'png') || ($extensaoCrlv != 'pdf')){
         die("Tipo de arquivo não aceito!");    
    }
 
-   $tempPathRes = $tempPastaRes . $novoNomeRes . "." . $extensaoRes;
    $tempPath_2x2_1 = $tempPasta_2x2_1 . $novoNome_2x2_1 . "." . $extensao_2x2_1;
    $tempPath_2x2_2 = $tempPasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
    $tempPathCrlv = $tempPastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
 
-    if(!(empty($nome) || empty($sobrenome) || empty($cnh) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
+    if(!(empty($nome) || empty($sobrenome) || empty($placa) || empty($renavam) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
 
         if(verificaTelefone($telefone) && verificaEmail($email)){
-            move_uploaded_file($res['tmp_name'], $tempPathRes);
             move_uploaded_file($foto_2x2_1['tmp_name'], $tempPath_2x2_1);
             move_uploaded_file($foto_2x2_2['tmp_name'], $tempPath_2x2_2);
             move_uploaded_file($crlv['tmp_name'], $tempPathCrlv);
@@ -118,14 +112,14 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['dados_motorista'] = [
                 'nome' => $nome,
                 'sobrenome' => $sobrenome,
-                'cnh' => $cnh,
+                'placa' => $placa,
+                'renavam' => $renavam,
                 'preco' => $preco,
                 'rotas' => $rotas,
                 'telefone' => $telefone,
                 'periodo' => $periodo,
                 'email' => $email,
                 'senha' => $senha,
-                'tempPathRes' => $tempPathRes,
                 'tempPath_2x2_1' => $tempPath_2x2_1,
                 'tempPath_2x2_2' => $tempPath_2x2_2,
                 'tempPathCrlv' => $tempPathCrlv

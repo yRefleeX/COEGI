@@ -34,42 +34,39 @@
             // Recupera os dados do usuário da sessão
             $nome = $_SESSION['dados_motorista']['nome'];
             $sobrenome = $_SESSION['dados_motorista']['sobrenome'];
-            $cnh = $_SESSION['dados_motorista']['cnh'];
+            $placa = $_SESSION['dados_motorista']['placa'];
+            $renavam = $_SESSION['dados_motorista']['renavam'];
             $preco = $_SESSION['dados_motorista']['preco'];
             $rotas = $_SESSION['dados_motorista']['rotas'];
             $periodo = $_SESSION['dados_motorista']['periodo'];
             $telefone = $_SESSION['dados_motorista']['telefone'];
             $senha = $_SESSION['dados_motorista']['senha'];
-            $tempPathRes = $_SESSION['dados_motorista']['tempPathRes'];
             $tempPath_2x2_1 = $_SESSION['dados_motorista']['tempPath_2x2_1'];
             $tempPath_2x2_2 = $_SESSION['dados_motorista']['tempPath_2x2_2'];
             $tempPathCrlv = $_SESSION['dados_motorista']['tempPathCrlv'];
 
-            $pastaRes = "imagensRes/";
             $pasta_2x2_1 = "imagens_2x2_1/";
             $pasta_2x2_2 = "imagens_2x2_2/";
             $pastaCrlv = "imagensCrlv/";
 
             $stmt->close(); // Fecha o statement da consulta SELECT 
 
-            $nomeRes = basename($tempPathRes);
             $nome_2x2_1 = basename($tempPath_2x2_1);
             $nome_2x2_2 = basename($tempPath_2x2_2);
             $nomeCrlv = basename($tempPathCrlv);
 
-            $pathRes = $pastaRes . $nomeRes;
             $path_2x2_1 = $pasta_2x2_1 . $nome_2x2_1;
             $path_2x2_2 = $pasta_2x2_2 . $nome_2x2_2;
             $pathCrlv = $pastaCrlv . $nomeCrlv;
 
-            if(copy($tempPathRes, $pathRes) && copy($tempPath_2x2_1, $path_2x2_1) && copy($tempPath_2x2_2, $path_2x2_2) && copy($tempPathCrlv, $pathCrlv)){
+            if(copy($tempPath_2x2_1, $path_2x2_1) && copy($tempPath_2x2_2, $path_2x2_2) && copy($tempPathCrlv, $pathCrlv)){
                 // Cria uma data de expiração para verificar o motorista
                 $dataExpiracaoMot = date('Y-m-d H:i:s', strtotime('+1 month'));
                 $verificacao = 0;
 
-                $sql = "insert into motorista(verificacao,data_expiracao,nome,sobrenome,cnh,preco,rotas,telefone,periodo,email,senha,pathRes,path_2x2_1,path_2x2_2,pathCrlv)values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $sql = "insert into motorista(verificacao,data_expiracao,nome,sobrenome,placa,renavam,preco,rotas,telefone,periodo,email,senha,path_2x2_1,path_2x2_2,pathCrlv)values(?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $conn->prepare($sql);
-                $stmt->bind_param("issssdsssssssss", $verificacao, $dataExpiracaoMot, $nome, $sobrenome, $cnh, $preco, $rotas, $telefone, $periodo, $email, $senha, $pathRes, $path_2x2_1, $path_2x2_2, $pathCrlv);
+                $stmt->bind_param("issssdsssssssss", $verificacao, $dataExpiracaoMot, $nome, $sobrenome, $placa, $renavam, $preco, $rotas, $telefone, $periodo, $email, $senha, $path_2x2_1, $path_2x2_2, $pathCrlv);
 
                 if (($stmt->execute())) {
                     // Remove o código da tabela 'verificacao_email'
@@ -82,7 +79,6 @@
                     unset($_SESSION['email_verificacao']);
                     unset($_SESSION['dados_motorista']);
 
-                    unlink($tempPathRes);
                     unlink($tempPath_2x2_1);
                     unlink($tempPath_2x2_2);
                     unlink($tempPathCrlv);

@@ -29,13 +29,6 @@ if($stmtRota->num_rows > 0){
 $sqlMotorista = "DELETE FROM motorista WHERE motorista_id = '$motorista_id'";
 
 // Remove as imagens das pastas
-$sqlPathRes = "SELECT pathRes FROM motorista WHERE motorista_id = ?";
-$stmtPathRes = $conn->prepare($sqlPathRes);
-$stmtPathRes->bind_param("i", $motorista_id);
-$stmtPathRes->execute();
-$stmtPathRes->bind_result($pathRes);
-$stmtPathRes->fetch();
-$stmtPathRes->close();
 
 $sql_path_2x2_1 = "SELECT path_2x2_1 FROM motorista WHERE motorista_id = ?";
 $stmt_path_2x2_1 = $conn->prepare($sql_path_2x2_1);
@@ -61,7 +54,7 @@ $stmtPathCrlv->bind_result($pathCrlv);
 $stmtPathCrlv->fetch();
 $stmtPathCrlv->close();
 
-if(!(mysqli_query($conn, $sqlMotorista) && unlink($pathRes) && unlink($path_2x2_1) && unlink($path_2x2_2) && unlink($pathCrlv))){
+if(!(mysqli_query($conn, $sqlMotorista) && unlink($path_2x2_1) && unlink($path_2x2_2) && unlink($pathCrlv))){
     die("Erro ao deletar o motorista.");
 }
 

@@ -200,7 +200,8 @@
             <form action="cadastro.php" method="post" enctype="multipart/form-data">
               <input type="text" placeholder="Nome" name="nome" id="nome">
               <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
-              <input type="text" placeholder="CNH" name="cnh" id="cnh"><br>
+              <input type="text" placeholder="Placa" name="placa" id="placa">
+              <input type="text" placeholder="Renavam" name="renavam" id="renavam"><br>
               <input type="text" placeholder="Preço" name="preco" id="preco">
               <input type="text" placeholder="Rotas" name="rotas" id="rotas">
               <input type="text" placeholder="Telefone" name="telefone" id="telefone">
@@ -210,13 +211,11 @@
 
               <h1> Documentos Necessários</h1>
 
-              <p>COMPROVANTE ATUALIZADO DE RESIDÊNCIA: - PDF</p>
-              <input type="file" name="res" accept=".pdf">
               <p>FOTO DE PERFIL (TAMANHO 2X2) - PNG ou JPG</p>
               <input type="file" name="foto_2x2_1" accept=".png, .jpg">
               <p>SEGUNDA FOTO 2X2 - PNG ou JPG</p>
               <input type="file" name="foto_2x2_2" accept=".png, .jpg">
-              <p>Certificado de registro e licenciamento de veículo (CRLV) - PDF</p>
+              <p>Certificado Nacional de Habilitação (CNH:frente e verso) - PDF</p>
               <input type="file" name="crlv" accept=".pdf"><br>
               <button class="ButCad" type="submit">Cadastrar</button>
             </form>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Ago-2024 às 03:07
+-- Tempo de geração: 02-Set-2024 às 06:50
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -33,14 +33,14 @@ CREATE TABLE `motorista` (
   `data_expiracao` date NOT NULL,
   `nome` varchar(50) NOT NULL,
   `sobrenome` varchar(50) NOT NULL,
-  `cnh` char(10) NOT NULL,
+  `placa` char(7) NOT NULL,
+  `renavam` char(11) NOT NULL,
   `preco` decimal(6,2) NOT NULL,
   `rotas` varchar(50) NOT NULL,
   `telefone` char(15) NOT NULL,
   `periodo` varchar(30) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `pathRes` varchar(100) NOT NULL,
   `path_2x2_1` varchar(100) NOT NULL,
   `path_2x2_2` varchar(100) NOT NULL,
   `pathCrlv` varchar(100) NOT NULL
@@ -95,7 +95,7 @@ CREATE TABLE `verificacao_email` (
 --
 ALTER TABLE `motorista`
   ADD PRIMARY KEY (`motorista_id`),
-  ADD UNIQUE KEY `cnh` (`cnh`),
+  ADD UNIQUE KEY `cnh` (`renavam`),
   ADD UNIQUE KEY `email` (`email`),
   ADD UNIQUE KEY `telefone` (`telefone`);
 
@@ -129,7 +129,7 @@ ALTER TABLE `verificacao_email`
 -- AUTO_INCREMENT de tabela `motorista`
 --
 ALTER TABLE `motorista`
-  MODIFY `motorista_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `motorista_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `redsenha_email`
@@ -141,13 +141,13 @@ ALTER TABLE `redsenha_email`
 -- AUTO_INCREMENT de tabela `rotas`
 --
 ALTER TABLE `rotas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `verificacao_email`
 --
 ALTER TABLE `verificacao_email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restrições para despejos de tabelas

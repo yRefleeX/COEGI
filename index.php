@@ -158,7 +158,6 @@
           <form action="editaPerfil.php" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Nome" name="nomeEdita" id="nomeEdita">
             <input type="text" placeholder="Sobrenome" name="sobrenomeEdita" id="sobrenomeEdita">
-            <input type="text" placeholder="CNH" name="cnhEdita" id="cnhEdita"><br>
             <input type="text" placeholder="Preço" name="precoEdita" id="precoEdita">
             <input type="text" placeholder="Rotas" name="rotasEdita" id="rotasEdita">
             <input type="text" placeholder="Telefone" name="telefoneEdita" id="telefoneEdita">

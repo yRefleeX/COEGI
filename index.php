@@ -199,8 +199,7 @@
             <form action="cadastro.php" method="post" enctype="multipart/form-data">
               <input type="text" placeholder="Nome" name="nome" id="nome">
               <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
-              <input type="text" placeholder="Placa" name="placa" id="placa">
-              <input type="text" placeholder="Renavam" name="renavam" id="renavam"><br>
+              <input type="text" placeholder="COTAC" name="cotac" id="cotac"><br>
               <input type="text" placeholder="Preço" name="preco" id="preco">
               <input type="text" placeholder="Rotas" name="rotas" id="rotas">
               <input type="text" placeholder="Telefone" name="telefone" id="telefone">

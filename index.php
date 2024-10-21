@@ -158,9 +158,8 @@
           <form action="editaPerfil.php" method="post" enctype="multipart/form-data">
             <input type="text" placeholder="Nome" name="nomeEdita" id="nomeEdita">
             <input type="text" placeholder="Sobrenome" name="sobrenomeEdita" id="sobrenomeEdita">
-            <input type="text" placeholder="Preço" name="precoEdita" id="precoEdita">
             <input type="text" placeholder="Rotas" name="rotasEdita" id="rotasEdita">
-            <input type="text" placeholder="Telefone" name="telefoneEdita" id="telefoneEdita">
+            <input type="text" placeholder="Telefone - (DDD) XXXXX-XXXX" name="telefoneEdita" id="telefoneEdita">
             <input type="text" placeholder="Periodo" name="periodoEdita" id="periodoEdita">
 
             <p>FOTO DE PERFIL (TAMANHO 2X2):</p>
@@ -199,10 +198,9 @@
             <form action="cadastro.php" method="post" enctype="multipart/form-data">
               <input type="text" placeholder="Nome" name="nome" id="nome">
               <input type="text" placeholder="Sobrenome" name="sobrenome" id="sobrenome">
-              <input type="text" placeholder="COTAC" name="cotac" id="cotac"><br>
-              <input type="text" placeholder="Preço" name="preco" id="preco">
+              <input type="text" placeholder="COTAC (apenas números)" name="cotac" id="cotac"><br>
               <input type="text" placeholder="Rotas" name="rotas" id="rotas">
-              <input type="text" placeholder="Telefone" name="telefone" id="telefone">
+              <input type="text" placeholder="Telefone - (DDD) XXXXX-XXXX" name="telefone" id="telefone">
               <input type="text" placeholder="Periodo" name="periodo" id="periodo">
               <input type="email" placeholder="Email para Login" name="email" id="email" autocomplete="off">
               <input type="password" placeholder="Senha para Login" name="senha" id="senha" autocomplete="off"><br>

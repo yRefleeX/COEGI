@@ -56,7 +56,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST["nome"];
     $sobrenome = $_POST["sobrenome"];
     $cotac = $_POST["cotac"];
-    $preco = $_POST["preco"];
     $rotas = $_POST["rotas"];
     $telefone = $_POST["telefone"];
     $periodo= $_POST["periodo"];
@@ -98,7 +97,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
    $tempPath_2x2_2 = $tempPasta_2x2_2 . $novoNome_2x2_2 . "." . $extensao_2x2_2;
    $tempPathCrlv = $tempPastaCrlv . $novoNomeCrlv . "." . $extensaoCrlv;
 
-    if(!(empty($nome) || empty($sobrenome) || empty($cotac) || empty($preco) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
+    if(!(empty($nome) || empty($sobrenome) || empty($cotac) || empty($rotas) || empty($periodo) || empty($email) || empty($senha))){
 
         if(verificaTelefone($telefone) && verificaEmail($email)){
             move_uploaded_file($foto_2x2_1['tmp_name'], $tempPath_2x2_1);
@@ -112,7 +111,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 'nome' => $nome,
                 'sobrenome' => $sobrenome,
                 'cotac' => $cotac,
-                'preco' => $preco,
                 'rotas' => $rotas,
                 'telefone' => $telefone,
                 'periodo' => $periodo,

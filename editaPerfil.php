@@ -33,7 +33,6 @@ function verificaTelefone($telefone) {
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $nome = $_POST["nomeEdita"];
     $sobrenome = $_POST["sobrenomeEdita"];
-    $preco = $_POST["precoEdita"];
     $rotas = $_POST["rotasEdita"];
     $telefone = $_POST["telefoneEdita"];
     $periodo= $_POST["periodoEdita"];
@@ -57,11 +56,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $sql .= "sobrenome = ?, ";
         $params[] = $sobrenome;
         $types .= "s";
-    }
-    if (!empty($preco)) {
-        $sql .= "preco = ?, ";
-        $params[] = $preco;
-        $types .= "d";
     }
     if (!empty($rotas)) {
         $sql .= "rotas = ?, ";

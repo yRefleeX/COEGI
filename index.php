@@ -186,9 +186,7 @@
         </div>
 
         <!-- Div que aparecerá caso for clicado no botão "Remover Conta"-->
-        <div id="RemoverMotorista">
-        <div id="botaoVoltar"> <img onclick="buttonPerfil()" src="img/ArrowBack.png"> </div>
-        </div>
+        <div id="RemoverMotorista"></div>
 
         <!-- Div com as informações do motorista caso for clicado em "Saiba Mais"-->
         <div id="InfMotorista"></div>

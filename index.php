@@ -149,8 +149,12 @@
 
         <!-- Div que aparecerá caso o motorista clicar no botão "Editar Perfil" -->
         <div id="EditarMotorista">
-          <p>EDITAR</p>
-          <hr>
+
+        <!--Div que aparecerá o botão voltar-->
+          <div id="botaoVoltar"> <img onclick="buttonPerfil()" src="img/ArrowBack.png">   EDITAR
+          <hr> </div>
+
+      
           <p>Preencha os campos em que deseja alterar a informação. Para manter as informações que deseja, deixe o campo específico em branco.<br>
           Caso queira desenhar a rota, clique no botão "Editar Rotas", de acordo com o período que desejar. Depois, no canto superior esquerdo do mapa, clique no botão com um desenho de linha. Já para editar a rota, clique no botão logo abaixo (ou no botão "Editar Rotas"), e depois clique no botão com desenho de linha para desenhar a rota novamente.</p>
 

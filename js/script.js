@@ -36,7 +36,8 @@ $(document).ready(function(){
 
 
           // Define o conteúdo HTML da div (ANTES de inserir)
-          infMot.innerHTML = '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
+          infMot.innerHTML = '<div id="botaoVoltar"> <img onclick="buttonMoto()" src="img/ArrowBack.png"> </div>'+
+          '<p><b>Motorista: ' + dados.nome + ' ' + dados.sobrenome + '</b></p>' +
           '<img alt="imagemMotorista" src="' + dados.path_2x2_1 + '" style="border-radius: 50%; height: 100px; width: 100px; z-index: -1; margin-left: auto; margin-right: auto;">' +
           '<div id="descMotorista">' +
           'Rotas: ' + dados.rotas + '<br>' +  

@@ -1,6 +1,6 @@
 # COEGI - Portal para Cadastro e Busca de Motoristas
 
-> Status: Em Desenvolvimento ⚠️ <br>
+> Status: Concluído ✅ <br>
 > Versão: 0.0.5
 
 ## Descrição
@@ -11,10 +11,7 @@ Email do site: suporte@coegi.com.br
 Email pessoal: andre.miiada@gmail.com
 
 ## Próximos objetivos com o projeto
-- Fazer os ajustes no texto do CONICT; ✅
-- Terminar de analisar o site e divulgar para estudantes e motoristas; ✅
-- Realizar a apresentação para a FECCIF; ❌
-- Cadastrar os motoristas no site. ❌
+- PROJETO JÁ FINALIZADO ✅
 
 ## Autores do projeto:
 Desenvolvedores do projeto:
@@ -22,6 +19,6 @@ Desenvolvedores do projeto:
 - Gabriel Fernandes Matozinhos;
 - Matheus Tonini dos Santos.
 
-Orientadores do projeto:
+## Orientadores do projeto:
 - Cecília Pereira de Andrade (orientadora);
 - Argemiro Belivacqua (coorientador).

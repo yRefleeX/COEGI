@@ -21,3 +21,7 @@ Desenvolvedores do projeto:
 ## Orientadores do projeto:
 - Cecília Pereira de Andrade (orientadora);
 - Argemiro Belivacqua (coorientador).
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter mais detalhes.
